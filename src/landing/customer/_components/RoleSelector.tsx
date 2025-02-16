@@ -62,12 +62,12 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute left-0 mt-2 w-40 rounded-md bg-transparent ring-opacity-5 z-10">
+        <div className="absolute left-0 mt-2 w-40 rounded-md bg-transparent ring-opacity-5 z-10 font-meduim">
           <ul className="py-2 bg-transparent text-black space-y-2">
             <li>
               <button
                 onClick={() => handleSelectRole("Customer")}
-                className="w-full text-left px-4 py-2 bg-[#EFFFFB] hover:bg-emerald-50 transition-colors rounded-sm"
+                className="w-fit text-left px-4 py-2 bg-[#EFFFFB] hover:bg-emerald-50 transition-colors rounded-lg"
               >
                 Customer
               </button>
@@ -75,12 +75,12 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
             <li>
               <button
                 onClick={() => handleSelectRole("Vendors")}
-                className="w-full text-left px-4 py-2 bg-[#EFFFFB] hover:bg-emerald-50 transition-colors"
+                className="w-fit text-left px-4 py-2 bg-[#EFFFFB] hover:bg-emerald-50 transition-colors rounded-lg"
               >
                 Vendors
               </button>
             </li>
-            <li className="px-4 py-2 text-gray-400 flex items-center justify-between cursor-not-allowed bg-[#EFFFFB]/50">
+            <li className="w-fit px-4 py-2 text-gray-600 flex gap-2 items-baseline justify-between cursor-not-allowed bg-[#EFFFFB]/90 rounded-lg">
               <span>Rider</span>
               <span className="text-xs text-orange-500">Coming soon</span>
             </li>
