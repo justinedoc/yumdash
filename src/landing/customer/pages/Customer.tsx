@@ -1,5 +1,13 @@
+import Hero from "../_components/Hero";
+import Navbar from "../_components/Navbar";
+
 function Customer() {
-  return <div>customer</div>;
+  return (
+    <section>
+      <Navbar />
+      <Hero />
+    </section>
+  );
 }
 
 export default Customer;
