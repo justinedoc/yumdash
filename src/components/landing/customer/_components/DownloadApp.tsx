@@ -1,14 +1,11 @@
 import { Button } from "@/components/ui/button";
+import SectionHeader from "../ui/SectionHeader";
 
 function DownloadApp() {
   return (
     <section className="py-6 px-16 flex justify-center items-center w-full overflow-x-hidden">
       <header className="text-hero max-w-[30rem] flex flex-col gap-3">
-        <div className="text-[#C20143] flex gap-2 items-center">
-          <Line />
-          <h1 className="text-xl">Download our app today</h1>
-          <Line />
-        </div>
+        <SectionHeader className="text-xl" text="Download our app today" />
 
         <h1 className="text-[#014734] text-5xl font-meduim leading-15">
           Get personalized experience
@@ -30,10 +27,6 @@ function DownloadApp() {
       </div>
     </section>
   );
-}
-
-function Line() {
-  return <div className="w-8 h-[0.1rem] bg-[#C20143]"></div>;
 }
 
 export default DownloadApp;

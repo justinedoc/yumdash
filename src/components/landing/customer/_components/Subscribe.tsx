@@ -2,8 +2,8 @@ import delivery from "@/assets/images/delivery.png";
 import { Button } from "@/components/ui/button";
 const Subscribe = () => {
   return (
-    <div className="bg-[#D5F6E6] text-[#013929] p-5 md:p-10">
-      <div className="md:flex items-center w-full md:w-[80%] mx-auto">
+    <div className="bg-[#D5F6E6] text-[#013929] p-5 md:p-10 flex flex-col items-center">
+      <div className="md:flex items-center w-full md:w-[80%] justify-between">
         <div className="md:w-1/2 md:py-20 py-10 ">
           <h1 className="text-3xl mb-4 text-hero">
             Subscribe for weekly or <br /> monthly delivery
@@ -20,7 +20,7 @@ const Subscribe = () => {
         <div className="md:w-1/3 md:mt-0 mt-7 mb-[40px] md:mb-0">
           <img
             src={delivery}
-            className="md:mx-48  md:w-[25rem] w-[23rem]"
+            className="md:w-[25rem] w-[23rem]"
             alt=""
           />
         </div>

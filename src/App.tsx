@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
 import { ToastContainer } from "react-toastify";
-import Customer from "./landing/customer/pages/Customer";
+import Customer from "./components/landing/customer/pages/Customer";
 
 function App() {
   return (
