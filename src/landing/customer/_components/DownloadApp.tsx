@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 
 function DownloadApp() {
   return (
-    <section className="py-6 px-16 flex justify-center items-center w-full lg:ml-5">
+    <section className="py-6 px-16 flex justify-center items-center w-full overflow-x-hidden">
       <header className="text-hero max-w-[30rem] flex flex-col gap-3">
         <div className="text-[#C20143] flex gap-2 items-center">
           <Line />
@@ -10,7 +10,7 @@ function DownloadApp() {
           <Line />
         </div>
 
-        <h1 className="text-[#014734] text-5xl font-meduim tracking-wider leading-15">
+        <h1 className="text-[#014734] text-5xl font-meduim leading-15">
           Get personalized experience
         </h1>
         <Button

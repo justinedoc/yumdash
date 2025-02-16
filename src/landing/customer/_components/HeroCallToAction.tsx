@@ -5,8 +5,8 @@ function HeroCallToAction() {
   return (
     <>
       <div className="main_wavy items-center justify-center">
-        <div className="md:px-[23rem] text-center pt-[5rem] ">
-          <h1 className="mx-5 md:mx-0 md:mt-[7rem]">
+        <div className="md:px-[8rem] text-center pt-[5rem] flex justify-center">
+          <h1 className="mx-5 md:mx-0 md:mt-[7rem] md:max-w-[50%]">
             we've curated an exceptional selection of restaurants that are
             guaranteed to delight your taste buds. From savory to sweet, from
             local favorites to international cuisine, we've got it all!.
