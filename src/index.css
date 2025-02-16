@@ -108,19 +108,26 @@
 }
 
 @utility slider-track {
-	@apply flex;
-	width: calc(250px * 18);
-	animation: scroll 40s linear infinite;
+  display: flex;
+  width: calc(250px * 18);
+  animation: scroll 40s linear infinite;
 }
 
 @keyframes scroll {
-	0% {
-		transform: translateX(0);
-	}
-	100% {
-		transform: translateX(calc(-250px * 5));
-	}
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 5));
+  }
 }
 @utility slide {
-	@apply h-[200px] w-[250px]  items-center p-3;
+  @apply h-[200px] w-[250px]  items-center p-3;
+}
+
+@utility main_wavy {
+  @apply md:h-[100%] h-[50dvh];
+  background-image: url("/src/assets/images/hero-wavy-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
