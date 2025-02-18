@@ -3,11 +3,11 @@ import SectionHeader from "../ui/SectionHeader";
 
 function DownloadApp() {
   return (
-    <section className="py-6 px-16 flex justify-center items-center w-full overflow-x-hidden">
-      <header className="text-hero max-w-[30rem] flex flex-col gap-3">
-        <SectionHeader className="text-xl" text="Download our app today" />
+    <section className="py-6 px-5 md:px-16 flex flex-col md:flex-row justify-center items-center w-full overflow-x-hidden">
+      <header className="text-hero w-full md:max-w-[30rem] flex flex-col items-center md:items-start md:gap-3 gap-6">
+        <SectionHeader className="md:text-xl md:text-left text-center" text="Download our app today" />
 
-        <h1 className="text-[#014734] text-5xl font-meduim leading-15">
+        <h1 className="text-[#014734] text-4xl text-center md:text-left md:text-5xl font-meduim md:leading-15">
           Get personalized experience
         </h1>
         <Button
@@ -19,7 +19,7 @@ function DownloadApp() {
         </Button>
       </header>
 
-      <div className="w-full md:w-1/2">
+      <div className="w-full mt-10 md:mt-0 md:w-1/2">
         <img
           className="w-full md:w-[90%] md:ml-12 mx-auto"
           src={"/src/assets/images/mobile-app.png"}
