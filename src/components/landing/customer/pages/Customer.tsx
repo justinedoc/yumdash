@@ -9,7 +9,7 @@ import Subscribe from "../_components/Subscribe";
 
 function Customer() {
   return (
-    <section>
+    <section className="w-full overflow-x-hidden">
       <Hero />
       <HeroCallToAction />
       <DownloadApp />
