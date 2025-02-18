@@ -1,90 +1,82 @@
-export type faqDataType = {
+export type FAQItem = {
   question: string;
   answer: string;
 };
 
-export const faqData = {
-  gettingStarted: [
-    {
-      question: "How do i get started?",
-      answer:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor voluptatem, voluptatibus doloremque tenetur voluptate consequuntur quaerat ratione magni quo sed incidunt animi debitis neque saepe laudantium esse harum ad enim magnam aperiam earum aliquam rerum maiores quos. Iste, ipsam ad! Sapiente quod quas rem. Eius libero accusamus iste doloribus aspernatur.",
-    },
-    {
-      question: "Can I order without creating an account?",
-      answer:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor voluptatem, voluptatibus doloremque tenetur voluptate consequuntur quaerat ratione magni quo sed incidunt animi debitis neque saepe laudantium esse harum ad enim magnam aperiam earum aliquam rerum maiores quos. Iste, ipsam ad! Sapiente quod quas rem. Eius libero accusamus iste doloribus aspernatur.",
-    },
-    {
-      question: "How can I provide special instructions for my order?",
-      answer:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor voluptatem, voluptatibus doloremque tenetur voluptate consequuntur quaerat ratione magni quo sed incidunt animi debitis neque saepe laudantium esse harum ad enim magnam aperiam earum aliquam rerum maiores quos. Iste, ipsam ad! Sapiente quod quas rem. Eius libero accusamus iste doloribus aspernatur.",
-    },
-    {
-      question:
-        "What is the process for selecting items and adding them to my cart?",
-      answer:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor voluptatem, voluptatibus doloremque tenetur voluptate consequuntur quaerat ratione magni quo sed incidunt animi debitis neque saepe laudantium esse harum ad enim magnam aperiam earum aliquam rerum maiores quos. Iste, ipsam ad! Sapiente quod quas rem. Eius libero accusamus iste doloribus aspernatur.",
-    },
-  ],
-  support: [
-    {
-      question: "How can I provide special instructions for my order?",
-      answer:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor voluptatem, voluptatibus doloremque tenetur voluptate consequuntur quaerat ratione magni quo sed incidunt animi debitis neque saepe laudantium esse harum ad enim magnam aperiam earum aliquam rerum maiores quos. Iste, ipsam ad! Sapiente quod quas rem. Eius libero accusamus iste doloribus aspernatur.",
-    },
-    {
-      question: "What are your customer support hours?",
-      answer:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor voluptatem, voluptatibus doloremque tenetur voluptate consequuntur quaerat ratione magni quo sed incidunt animi debitis neque saepe laudantium esse harum ad enim magnam aperiam earum aliquam rerum maiores quos. Iste, ipsam ad! Sapiente quod quas rem. Eius libero accusamus iste doloribus aspernatur.",
-    },
-    {
-      question: "Do you have a phone number for support inquiries?",
-      answer:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor voluptatem, voluptatibus doloremque tenetur voluptate consequuntur quaerat ratione magni quo sed incidunt animi debitis neque saepe laudantium esse harum ad enim magnam aperiam earum aliquam rerum maiores quos. Iste, ipsam ad! Sapiente quod quas rem. Eius libero accusamus iste doloribus aspernatur.",
-    },
-    {
-      question: "How do I report a problem with the website or app?",
-      answer:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor voluptatem, voluptatibus doloremque tenetur voluptate consequuntur quaerat ratione magni quo sed incidunt animi debitis neque saepe laudantium esse harum ad enim magnam aperiam earum aliquam rerum maiores quos. Iste, ipsam ad! Sapiente quod quas rem. Eius libero accusamus iste doloribus aspernatur.",
-    },
-  ],
-
-  subscription: [
-    {
-      question: "What should I do if I have a complaint or feedback?",
-      answer:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor voluptatem, voluptatibus doloremque tenetur voluptate consequuntur quaerat ratione magni quo sed incidunt animi debitis neque saepe laudantium esse harum ad enim magnam aperiam earum aliquam rerum maiores quos. Iste, ipsam ad! Sapiente quod quas rem. Eius libero accusamus iste doloribus aspernatur.",
-    },
-    {
-      question: "Do you have a FAQ section for common issues?",
-      answer:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor voluptatem, voluptatibus doloremque tenetur voluptate consequuntur quaerat ratione magni quo sed incidunt animi debitis neque saepe laudantium esse harum ad enim magnam aperiam earum aliquam rerum maiores quos. Iste, ipsam ad! Sapiente quod quas rem. Eius libero accusamus iste doloribus aspernatur.",
-    },
-    {
-      question: "What are the benefits of subscribing to your service?",
-      answer:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor voluptatem, voluptatibus doloremque tenetur voluptate consequuntur quaerat ratione magni quo sed incidunt animi debitis neque saepe laudantium esse harum ad enim magnam aperiam earum aliquam rerum maiores quos. Iste, ipsam ad! Sapiente quod quas rem. Eius libero accusamus iste doloribus aspernatur.",
-    },
-    {
-      question: "How do I sign up for a subscription plan?",
-      answer:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor voluptatem, voluptatibus doloremque tenetur voluptate consequuntur quaerat ratione magni quo sed incidunt animi debitis neque saepe laudantium esse harum ad enim magnam aperiam earum aliquam rerum maiores quos. Iste, ipsam ad! Sapiente quod quas rem. Eius libero accusamus iste doloribus aspernatur.",
-    },
-    {
-      question: "Can I save multiple payment methods in my account?",
-      answer:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor voluptatem, voluptatibus doloremque tenetur voluptate consequuntur quaerat ratione magni quo sed incidunt animi debitis neque saepe laudantium esse harum ad enim magnam aperiam earum aliquam rerum maiores quos. Iste, ipsam ad! Sapiente quod quas rem. Eius libero accusamus iste doloribus aspernatur.",
-    },
-    {
-      question: "Is my payment information secure on your platform?",
-      answer:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor voluptatem, voluptatibus doloremque tenetur voluptate consequuntur quaerat ratione magni quo sed incidunt animi debitis neque saepe laudantium esse harum ad enim magnam aperiam earum aliquam rerum maiores quos. Iste, ipsam ad! Sapiente quod quas rem. Eius libero accusamus iste doloribus aspernatur.",
-    },
-    {
-      question: "What should I do if there's an issue with my delivery?",
-      answer:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor voluptatem, voluptatibus doloremque tenetur voluptate consequuntur quaerat ratione magni quo sed incidunt animi debitis neque saepe laudantium esse harum ad enim magnam aperiam earum aliquam rerum maiores quos. Iste, ipsam ad! Sapiente quod quas rem. Eius libero accusamus iste doloribus aspernatur.",
-    },
-  ],
+export type FAQGroup = {
+  image: string;
+  items: FAQItem[];
 };
+
+export const faqData: FAQGroup[] = [
+  {
+    image: "/src/assets/icons/rocket.svg",
+    items: [
+      {
+        question: "Getting started?",
+        answer: "Visit Yumdash to create an account and start ordering easily.",
+      },
+      {
+        question: "Order without account?",
+        answer:
+          "Yes, you can order as a guest, though signing up offers extra benefits.",
+      },
+      {
+        question: "Special instructions?",
+        answer: "Add notes during checkout to customize your order.",
+      },
+      {
+        question: "How to add items?",
+        answer:
+          "Browse our menu, select items, and add them to your cart effortlessly.",
+      },
+    ],
+  },
+  {
+    image: "/src/assets/icons/message.svg",
+    items: [
+      {
+        question: "Special order notes?",
+        answer:
+          "Enter any special instructions in the designated field during checkout.",
+      },
+      {
+        question: "Support hours?",
+        answer: "Our customer support is available 24/7 to assist you.",
+      },
+      {
+        question: "Support phone?",
+        answer: "Yes, call our hotline at 123-456-7890 for assistance.",
+      },
+      {
+        question: "Report an issue?",
+        answer: "Visit our support page or email us at support@yumdash.com.",
+      },
+    ],
+  },
+  {
+    image: "/src/assets/icons/subscription.svg",
+    items: [
+      {
+        question: "Feedback/complaint?",
+        answer:
+          "We value your feedback. Use our form to share complaints or suggestions.",
+      },
+      {
+        question: "FAQ available?",
+        answer:
+          "Yes, check our FAQ section on the website for common questions.",
+      },
+      {
+        question: "Subscription benefits?",
+        answer:
+          "Subscribers enjoy exclusive deals, faster delivery, and more perks.",
+      },
+      {
+        question: "Subscribe?",
+        answer:
+          "Sign up on Yumdash and choose a subscription plan that fits your needs.",
+      },
+    ],
+  },
+];

@@ -20,7 +20,7 @@ function DownloadApp() {
 
       <div className="w-full md:w-1/2">
         <img
-          className="w-full md:w-[90%] mx-auto"
+          className="w-full md:w-[90%] md:ml-12 mx-auto"
           src={"/src/assets/images/mobile-app.png"}
           alt="Our mobile number"
         />

@@ -14,7 +14,7 @@ const navLinks: NavLink[] = [
     href: "/about",
   },
   {
-    element: <RoleSelector />,
+    element: <RoleSelector key={"role selector"} />,
   },
   {
     label: "Blogs",

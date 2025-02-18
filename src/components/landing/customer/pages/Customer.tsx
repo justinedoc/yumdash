@@ -3,6 +3,7 @@ import EarnWithUs from "../_components/EarnWithUs";
 import Faq from "../_components/Faq";
 import Hero from "../_components/Hero";
 import HeroCallToAction from "../_components/HeroCallToAction";
+import NewsLetter from "../_components/NewsLetter";
 import Subscribe from "../_components/Subscribe";
 
 function Customer() {
@@ -14,6 +15,7 @@ function Customer() {
       <EarnWithUs />
       <Subscribe />
       <Faq />
+      <NewsLetter />
     </section>
   );
 }
