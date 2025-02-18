@@ -23,7 +23,7 @@ function Faq() {
           className="text-[#FF5791] text-sm"
           color="#FF5791"
         />
-        <h1 className="text-4xl font-bold text-hero text-white">
+        <h1 className="text-4xl font-bold text-hero text-white text-center">
           Your Questions, Answered.
         </h1>
         <p className="text-gray-400 text-sm">
@@ -31,7 +31,7 @@ function Faq() {
         </p>
       </header>
 
-      <main className="bg-white rounded-4xl md:p-7 grid grid-cols-1 md:grid-cols-3 gap-10 justify-items-center w-[88%] mx-auto">
+      <main className="bg-white rounded-4xl p-4 md:p-7 grid grid-cols-1 md:grid-cols-3 gap-10 justify-items-center w-[88%] mx-auto">
         {faqData.map(({ image, items }, i) => (
           <article
             key={i}

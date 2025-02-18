@@ -5,9 +5,9 @@ function NewsLetter() {
   const imgPath = (side: "left" | "right"): string =>
     `/src/assets/images/newsletter-${side}.png`;
   return (
-    <section className="min-h-96 w-[90%] relative mx-auto bg-[#004834] rounded-b-[3.5rem] pt-10 mb-15">
-      <form className="text-white p-12 w-full flex flex-col items-center gap-4">
-        <h1 className="text-4xl text-hero">
+    <section className="min-h-96 w-[90%] relative mx-auto bg-[#004834] rounded-b-[3.5rem] pt-6 md:pt-10 md:mb-15 mb-7">
+      <form className="text-white p-7 md:p-12 w-full flex flex-col items-center gap-4">
+        <h1 className="md:text-4xl text-3xl text-hero">
           Stay Updated For Exciting Updates!
         </h1>
         <p className="text-sm text-gray-200 md:max-w-[50%] text-center text-pretty font-extralight">
@@ -21,9 +21,9 @@ function NewsLetter() {
           <input
             type="text"
             placeholder="Email here"
-            className="h-full text-gray-900 pl-5 flex-1 rounded-full outline-0"
+            className="h-full text-gray-900 pl-5 md:flex-1 rounded-full outline-0"
           />
-          <Button className="rounded-full size-12">
+          <Button className="rounded-full size-10 md:size-12">
             <ArrowRight size={25} />
           </Button>
         </div>
