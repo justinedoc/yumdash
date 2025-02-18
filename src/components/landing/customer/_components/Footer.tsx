@@ -13,11 +13,11 @@ import {
 
 function Footer() {
   return (
-    <footer className="relative z-[3] bg-[#FCE3B0] pt-8 px-8 md:pt-15 md:px-15">
+    <footer className="relative z-[3] bg-[#FCE3B0] pt-5 px-5 md:pt-15 md:px-15">
       {/* Footer Inner Container */}
-      <div className="mx-auto z-10 rounded-t-[4rem] bg-[#191104]">
+      <div className="mx-auto z-10 rounded-t-4xl md:rounded-t-[4rem] bg-[#191104]">
         {/* Top Section: Logo & Intro */}
-        <div className="flex flex-col gap-5 md:flex-row md:justify-between p-10 md:pt-20 md:px-20">
+        <div className="flex flex-col gap-5 md:flex-row md:justify-between py-15 px-7 md:pt-20 md:px-20">
           <div className="w-full md:max-w-[18rem] flex flex-col gap-5">
             <Logo className="w-28" />
             <p className="text-lg text-hero font-extralight text-white">
@@ -56,7 +56,7 @@ function Footer() {
           </nav>
         </div>
 
-        <div className="flex md:flex-row flex-col justify-between items-center text-sm p-7 border-t">
+        <div className="flex md:flex-row flex-col justify-between items-center text-sm p-7 border-t gap-6 md:gap-0">
           <p className="text-white">
             &copy; 2023 Yumdash. All rights reserved.
           </p>
