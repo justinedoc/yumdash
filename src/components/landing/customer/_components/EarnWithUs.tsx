@@ -42,7 +42,7 @@ function EarnWithUs() {
         </div>
       </header>
 
-      <main className="flex md:gap-44 items-center">
+      <main className="flex md:gap-44 items-center flex-col-reverse md:flex-row pt-[9rem] md:pt-0">
         <div>
           <img
             src={activeTab === "rider" ? carImg : vendorCookImg}
@@ -90,7 +90,7 @@ function EarnWithUsArticle({
   isVendorActive = true,
 }: EarnWithUsArticleType) {
   return (
-    <article className="space-y-3 w-full md:max-w-[25rem] h-full md:mt-24">
+    <article className="space-y-3 w-full md:max-w-[25rem] h-full md:mt-24 px-4 md:px-0">
       <h1
         className={cn(
           "text-hero text-2xl font-semibold text-primary",
