@@ -56,7 +56,7 @@ function Footer() {
           </nav>
         </div>
 
-        <div className="flex justify-between items-center text-sm p-7 border-t">
+        <div className="flex md:flex-row flex-col justify-between items-center text-sm p-7 border-t">
           <p className="text-white">
             &copy; 2023 Yumdash. All rights reserved.
           </p>

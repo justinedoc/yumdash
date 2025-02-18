@@ -29,7 +29,7 @@ function NewsLetter() {
         </div>
       </form>
 
-      <div className="flex justify-between w-full absolute bottom-0">
+      <div className="justify-between w-full absolute bottom-0 hidden md:flex">
         <img className="md:w-[25rem]" src={imgPath("left")} alt="leaf" />
         <img className="md:w-[25rem]" src={imgPath("right")} alt="leaf" />
       </div>
