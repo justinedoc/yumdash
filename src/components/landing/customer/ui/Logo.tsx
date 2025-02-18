@@ -1,11 +1,21 @@
-import { cn } from "@/lib/utils";
-import { type ClassValue } from "clsx";
 import { Link } from "react-router";
+import { cn } from "@/lib/utils";
+import type { ClassValue } from "clsx";
 
-function Logo({ className, ...props }: { className?: ClassValue }) {
+interface LogoProps
+  extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, "className"> {
+  className?: ClassValue;
+}
+
+function Logo({ className, ...props }: LogoProps) {
   return (
     <Link to="/">
-      <img src="/logo-transparent.png" alt="Yumdash" {...props} className={cn(className)} />
+      <img
+        src="/logo-transparent.png"
+        alt="Yumdash"
+        {...props}
+        className={cn(className)}
+      />
     </Link>
   );
 }

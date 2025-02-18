@@ -32,7 +32,7 @@ const navLinks: NavLink[] = [
 
 function Navbar() {
   return (
-    <nav className="rounded-b-4xl bg-[#F5E6BD] py-4 px-15 md:py-6 w-[95%] absolute top-0 left-1/2 transform -translate-x-1/2  flex justify-between items-center">
+    <nav className="rounded-b-4xl bg-[#F5E6BD] py-4 px-15 md:py-6 w-[95%] absolute top-0 left-1/2 transform -translate-x-1/2  flex justify-between items-center z-50">
       <Logo className="w-28" />
 
       <ul className="flex items-center gap-3">
@@ -49,7 +49,7 @@ function Navbar() {
         )}
       </ul>
 
-      <Button className="px-7 py-5 font-semibold rounded-full bg-white text-primary shadow-none">
+      <Button className="px-7 py-5 font-semibold rounded-full bg-white text-primary shadow-none hover:text-white">
         Resturants
       </Button>
     </nav>

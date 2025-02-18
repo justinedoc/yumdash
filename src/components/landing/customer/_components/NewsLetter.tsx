@@ -5,7 +5,7 @@ function NewsLetter() {
   const imgPath = (side: "left" | "right"): string =>
     `/src/assets/images/newsletter-${side}.png`;
   return (
-    <section className="min-h-96 w-[90%] relative mx-auto bg-[#004834] rounded-b-[3.5rem] pt-10">
+    <section className="min-h-96 w-[90%] relative mx-auto bg-[#004834] rounded-b-[3.5rem] pt-10 mb-15">
       <form className="text-white p-12 w-full flex flex-col items-center gap-4">
         <h1 className="text-4xl text-hero">
           Stay Updated For Exciting Updates!

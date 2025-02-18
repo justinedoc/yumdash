@@ -67,7 +67,7 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
             <li>
               <button
                 onClick={() => handleSelectRole("Customer")}
-                className="w-fit text-left px-4 py-2 bg-[#EFFFFB] hover:bg-emerald-50 transition-colors rounded-lg"
+                className="w-fit text-left px-4 py-2 bg-[#EFFFFB] hover:bg-emerald-50 transition-colors rounded-lg cursor-pointer"
               >
                 Customer
               </button>
@@ -75,7 +75,7 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
             <li>
               <button
                 onClick={() => handleSelectRole("Vendors")}
-                className="w-fit text-left px-4 py-2 bg-[#EFFFFB] hover:bg-emerald-50 transition-colors rounded-lg"
+                className="w-fit text-left px-4 py-2 bg-[#EFFFFB] hover:bg-emerald-50 transition-colors rounded-lg cursor-pointer"
               >
                 Vendors
               </button>

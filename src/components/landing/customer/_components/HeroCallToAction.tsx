@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
 
 function HeroCallToAction() {
@@ -13,14 +14,14 @@ function HeroCallToAction() {
           </h1>
         </div>
         <div className="items-center justify-center text-center mt-5 block md:flex pb-[4rem]">
-          <button
+          <Button
             onClick={() => {
               navigate("/resturants");
             }}
-            className="bg-secondary w-fit py-2 px-10 text-md md:font-semibold text-white rounded-full cursor-pointer"
+            className="bg-secondary w-fit py-5 px-10 text-md md:font-semibold text-white rounded-full cursor-pointer hover:bg-white hover:text-black"
           >
             Order Now
-          </button>
+          </Button>
         </div>
       </div>
     </>

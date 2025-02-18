@@ -13,7 +13,7 @@ const Subscribe = () => {
             monthly food ordering and delivering. Just subscribe and <br />{" "}
             focus on other important stuffs. We gat you.
           </p>
-          <Button className="bg-[#EFFFFB] border border-secondary py-2 w-full md:w-[70%] rounded-full text-sm text-secondary my-4 md:my-2">
+          <Button disabled className="bg-[#EFFFFB] border border-secondary py-2 w-full md:w-[70%] rounded-full text-sm text-secondary my-4 md:my-2">
             Coming soon
           </Button>
         </div>
