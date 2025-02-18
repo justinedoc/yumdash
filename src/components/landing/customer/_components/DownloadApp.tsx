@@ -12,7 +12,7 @@ function DownloadApp() {
         </h1>
         <Button
           disabled
-          className="bg-emerald-50 border cursor-not-allowed shadow-none border-secondary text-secondary rounded-full w-[80%] py-4 font-sans"
+          className="bg-emerald-50 border cursor-not-allowed shadow-none border-secondary text-secondary rounded-full w-full md:w-[80%] py-4 font-sans"
           variant={"outline"}
         >
           Coming soon
