@@ -1,10 +1,7 @@
-import FormHeader from "../../ui/FormHeader";
-
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-
+import { FieldValues, useFormContext } from "react-hook-form";
+import Logo from "@/components/landing/ui/Logo";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
@@ -13,40 +10,29 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import Logo from "@/components/landing/ui/Logo";
-import { CustomLink } from "../../ui/CustomLink";
+
+import FormHeader from "../../ui/FormHeader";
 import GoogleSignInButton from "../../ui/GoogleSignInBtn";
+import { CustomLink } from "../../ui/CustomLink";
 
-const formSchema = z.object({
-  email: z.string().email({
-    message: "Input a valid email address",
-  }),
-  phoneNumber: z.string().min(11, "Please enter a valid phone number"),
-});
-
-function SignupForm() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: "",
-      phoneNumber: "",
-    },
-  });
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-  }
+export default function SignUpForm({
+  onNext,
+}: {
+  onNext: (data: FieldValues) => void;
+}) {
+  // Initialize form with react-hook-form & Zod
+  const form = useFormContext();
 
   return (
-    <section className="flex flex-1 flex-col justify-center p-4 md:p-10">
-      <Logo className=" w-35 md:hidden my-8" />
+    <section className="flex flex-1 flex-col justify-center md:mt-15 p-4 md:p-10">
+      <Logo className="w-35 md:hidden my-6 mt-12" />
       <FormHeader title="Create an Account">
-        Please Input Your Details To Create Your Account
+        Please enter your details to create your account
       </FormHeader>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 mt-8">
+        <form onSubmit={form.handleSubmit(onNext)} className="space-y-3 mt-8">
+          {/* Email Field */}
           <FormField
             control={form.control}
             name="email"
@@ -57,7 +43,8 @@ function SignupForm() {
                 </FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Input email address"
+                    type="email"
+                    placeholder="Enter your email address"
                     className="py-6 md:py-5 rounded-sm border-[#00674B52] ring-[#00674B52]/30"
                     {...field}
                   />
@@ -66,6 +53,8 @@ function SignupForm() {
               </FormItem>
             )}
           />
+
+          {/* Phone Number Field */}
           <FormField
             control={form.control}
             name="phoneNumber"
@@ -76,7 +65,7 @@ function SignupForm() {
                 </FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Input phone number"
+                    placeholder="Enter your phone number"
                     className="py-6 md:py-5 rounded-sm border-[#00674B52] ring-[#00674B52]/30"
                     {...field}
                   />
@@ -85,31 +74,35 @@ function SignupForm() {
               </FormItem>
             )}
           />
+
+          {/* Submit Button */}
           <Button
+            disabled={form.formState.isSubmitting}
             type="submit"
-            className="py-6 md:py-5 w-full secondary-grad-bg my-3 rounded-sm"
+            className="text-base py-6 md:py-5 w-full secondary-grad-bg my-3 rounded-sm"
           >
-            Continue
+            {form.formState.isSubmitting ? "processing" : "Continue"}
           </Button>
 
+          {/* Divider */}
           <div className="relative my-3">
-            <div className="h-[0.1rem] bg-[#5799E333]"></div>
-            <span className="absolute top-0 left-1/2 -translate-1/2 bg-white w-1/3 font-medium text-center text-sm text-[#011933CC]">
+            <div className="h-[0.1rem] bg-[#5799E333]" />
+            <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white w-1/3 font-medium text-center text-sm text-[#011933CC] h-fit">
               OR
             </span>
           </div>
 
+          {/* Google Sign-In */}
           <GoogleSignInButton />
 
-          <p className="text-xs text-center md:max-w-[70%] mx-auto">
-            By clicking on “Sign Up” you have agreed to YumDash{" "}
-            <CustomLink>Terms of service</CustomLink> and acknowledge that Ray’s
-            resort <CustomLink>Privacy Policy</CustomLink> applies to you
+          {/* Terms & Policy */}
+          <p className="text-xs text-center md:max-w-[90%] mx-auto">
+            By clicking “Sign Up,” you agree to YumDash{" "}
+            <CustomLink>Terms of Service</CustomLink> and acknowledge that Ray’s
+            resort <CustomLink>Privacy Policy</CustomLink> applies to you.
           </p>
         </form>
       </Form>
     </section>
   );
 }
-
-export default SignupForm;
