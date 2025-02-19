@@ -8,6 +8,7 @@ import { ArrowLeft } from "lucide-react";
 import { useForm, FormProvider, FieldValues } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useLoadingContext } from "../../hooks/useLoadingContext";
 
 // Schema for step 1
 const firstStepSchema = z.object({
@@ -23,8 +24,9 @@ const secondStepSchema = z.object({
 });
 
 function Signup() {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
   const [firstStepData, setFirstStepData] = useState({});
+  const { handleLoading } = useLoadingContext();
 
   const firstStepMethods = useForm<z.infer<typeof firstStepSchema>>({
     resolver: zodResolver(firstStepSchema),
@@ -50,11 +52,22 @@ function Signup() {
 
   const prevStep = () => setStep((cur) => (cur > 1 ? cur - 1 : cur));
 
-  const onSubmitSecondStep = async (data: FieldValues) => {
+  const sleep = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
+
+  const onSubmitSecondStep = async (data: FieldValues): Promise<void> => {
     const finalData = { ...firstStepData, ...data };
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log("Final Data:", finalData);
-    // Handle your final submission here (e.g., API call)
+
+    try {
+      handleLoading("start");
+      await sleep(2000);
+      console.log("Final Data:", finalData);
+      // TODO: Add api call here
+    } catch (error) {
+      console.error("Error during submission:", error);
+    } finally {
+      handleLoading("end");
+    }
   };
 
   return (
