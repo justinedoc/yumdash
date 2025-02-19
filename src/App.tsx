@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router";
 import { ToastContainer } from "react-toastify";
 import Customer from "./components/landing/customer/pages/Customer";
+import Signup from "./components/auth/customer/page/Signup";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       />
       <Routes>
         <Route path="/" element={<Customer />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
     </>
   );
