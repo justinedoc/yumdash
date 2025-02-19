@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import Logo from "../ui/Logo";
+import Logo from "../../ui/Logo";
 import RoleSelector from "./RoleSelector";
 import { HiX } from "react-icons/hi";
 

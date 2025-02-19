@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import Logo from "../ui/Logo";
+import Logo from "../../ui/Logo";
 import { footerNavs } from "../constants/footerNavs";
 import { footerSocials } from "../constants/footerSocials";
 

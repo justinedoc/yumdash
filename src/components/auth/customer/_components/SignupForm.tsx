@@ -14,7 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import Logo from "@/components/landing/customer/ui/Logo";
+import Logo from "@/components/landing/ui/Logo";
 import { CustomLink } from "../../ui/CustomLink";
 import GoogleSignInButton from "../../ui/GoogleSignInBtn";
 

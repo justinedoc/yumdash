@@ -1,6 +1,6 @@
 import { MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Star } from "../ui/DisplayRating";
+import { Star } from "../../ui/DisplayRating";
 
 const foodItems = [
   {

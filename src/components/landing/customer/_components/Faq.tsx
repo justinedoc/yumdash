@@ -1,5 +1,5 @@
 import { faqData } from "../constants/faqs";
-import SectionHeader from "../ui/SectionHeader";
+import SectionHeader from "../../ui/SectionHeader";
 
 import {
   Accordion,
