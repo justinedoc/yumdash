@@ -92,7 +92,7 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
-                    className="data-[active=true]:border border-secondary/60 rounded-sm px-4"
+                    className="border border-transparent data-[active=true]:border-secondary/60 rounded-sm px-4"
                     isActive={
                       location.pathname.split("/").at(-1) ===
                       item.url.split("/").at(-1)

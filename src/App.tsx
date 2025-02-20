@@ -5,23 +5,14 @@ import Signup from "./components/auth/customer/page/Signup";
 import { AnimateLoad } from "./components/auth/utils/LoadingSetUp";
 import VerifyOtp from "./components/auth/customer/page/VerifyOtp";
 import Login from "./components/auth/customer/page/Login";
-import DashboardLayout from "./components/dashboard/customer/_components/DashBoardLayout";
+import DashboardLayout from "./components/dashboard/customer/_components/DashboardLayout";
 import Home from "./components/dashboard/customer/pages/Home";
+import { Toaster } from "sonner";
 
 function App() {
   return (
     <>
-      <ToastContainer
-        autoClose={2500}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss={false}
-        draggable
-        pauseOnHover={true}
-        closeButton={false}
-      />
+      <Toaster />
       <Routes>
         {/* Landing page route */}
         <Route path="/" element={<Customer />} />

@@ -1,5 +1,5 @@
 function Home() {
-  return <div>Home</div>;
+  return <section className="p-5">Home</section>;
 }
 
 export default Home;
