@@ -5,6 +5,7 @@ import Signup from "./components/auth/customer/page/Signup";
 import { AnimateLoad } from "./components/auth/utils/LoadingSetUp";
 import VerifyOtp from "./components/auth/customer/page/VerifyOtp";
 import Login from "./components/auth/customer/page/Login";
+import DashboardLayout from "./components/dashboard/customer/_components/DashBoardLayout";
 
 function App() {
   return (
@@ -21,7 +22,10 @@ function App() {
         closeButton={false}
       />
       <Routes>
+        {/* Landing page route */}
         <Route path="/" element={<Customer />} />
+
+        {/* Auth routes */}
         <Route path="/signup">
           <Route index element={<AnimateLoad element={<Signup />} />} />
           <Route
@@ -30,6 +34,12 @@ function App() {
           />
         </Route>
         <Route path="/login" element={<AnimateLoad element={<Login />} />} />
+
+        <Route path="/dashboard" element={<DashboardLayout />}>
+          
+        </Route>
+
+        {/* Default route for non-existing paths */}
         <Route path="*" element={<h1>Page Not Found</h1>} />
       </Routes>
     </>
