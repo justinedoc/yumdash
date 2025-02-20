@@ -6,6 +6,7 @@ import { AnimateLoad } from "./components/auth/utils/LoadingSetUp";
 import VerifyOtp from "./components/auth/customer/page/VerifyOtp";
 import Login from "./components/auth/customer/page/Login";
 import DashboardLayout from "./components/dashboard/customer/_components/DashBoardLayout";
+import Home from "./components/dashboard/customer/pages/Home";
 
 function App() {
   return (
@@ -36,7 +37,12 @@ function App() {
         <Route path="/login" element={<AnimateLoad element={<Login />} />} />
 
         <Route path="/dashboard" element={<DashboardLayout />}>
-          
+          <Route index element={<Home />} />
+          <Route path="food-order" element={<Home />} />
+          <Route path="order-history" element={<Home />} />
+          <Route path="favourites" element={<Home />} />
+          <Route path="messages" element={<Home />} />
+          <Route path="payment-details" element={<Home />} />
         </Route>
 
         {/* Default route for non-existing paths */}

@@ -7,8 +7,8 @@ function DashboardLayout() {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <Navbar />
       <main className="w-full">
+        <Navbar />
         <Outlet />
       </main>
     </SidebarProvider>

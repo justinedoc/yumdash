@@ -11,6 +11,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarTrigger,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import { Link, useLocation } from "react-router";
 import { GoHomeFill } from "react-icons/go";
@@ -54,6 +55,7 @@ const items = [
 
 export function AppSidebar() {
   const location = useLocation();
+  const { setOpenMobile } = useSidebar();
 
   return (
     <Sidebar>
@@ -61,6 +63,7 @@ export function AppSidebar() {
         <img src="/logo.svg" alt="" className="-translate-x-3" />
         <SidebarTrigger>
           <svg
+            className="size-6"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -94,6 +97,7 @@ export function AppSidebar() {
                       location.pathname.split("/").at(-1) ===
                       item.url.split("/").at(-1)
                     }
+                    onClick={() => setOpenMobile(false)}
                     size="lg"
                     asChild
                   >
