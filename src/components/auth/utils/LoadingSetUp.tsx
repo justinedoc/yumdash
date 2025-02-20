@@ -8,7 +8,7 @@ export const LoadingContext = createContext<
   | undefined
 >(undefined);
 
-export function LoadingRoutes({ el }: { el: React.ReactElement }) {
+export function AnimateLoad({ element }: { element: React.ReactElement }) {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLoading = (event: "start" | "end") => {
@@ -16,7 +16,7 @@ export function LoadingRoutes({ el }: { el: React.ReactElement }) {
   };
   return (
     <LoadingContext.Provider value={{ isLoading, handleLoading }}>
-      {el}
+      {element}
     </LoadingContext.Provider>
   );
 }

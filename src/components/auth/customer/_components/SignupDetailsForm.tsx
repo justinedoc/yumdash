@@ -54,7 +54,7 @@ export default function SignUpDetailsForm({
 
   return (
     <section className="flex flex-1 flex-col justify-center md:mt-15 p-4 md:p-10">
-      <Logo className="w-35 md:hidden my-6 mt-12" />
+      <Logo className="w-35 md:hidden my-7 mt-12" />
       <FormHeader title="Let's Know More About You">
         Secure Your Account
       </FormHeader>
