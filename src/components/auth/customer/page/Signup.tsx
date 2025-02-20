@@ -9,6 +9,8 @@ import { useForm, FormProvider, FieldValues } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLoadingContext } from "../../hooks/useLoadingContext";
+import { useNavigate } from "react-router";
+import { sleep } from "../../utils/sleep";
 
 // Schema for step 1
 const firstStepSchema = z.object({
@@ -24,9 +26,10 @@ const secondStepSchema = z.object({
 });
 
 function Signup() {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
   const [firstStepData, setFirstStepData] = useState({});
   const { handleLoading } = useLoadingContext();
+  const navigate = useNavigate();
 
   const firstStepMethods = useForm<z.infer<typeof firstStepSchema>>({
     resolver: zodResolver(firstStepSchema),
@@ -52,9 +55,6 @@ function Signup() {
 
   const prevStep = () => setStep((cur) => (cur > 1 ? cur - 1 : cur));
 
-  const sleep = (ms: number) =>
-    new Promise((resolve) => setTimeout(resolve, ms));
-
   const onSubmitSecondStep = async (data: FieldValues): Promise<void> => {
     const finalData = { ...firstStepData, ...data };
 
@@ -62,6 +62,9 @@ function Signup() {
       handleLoading("start");
       await sleep(2000);
       console.log("Final Data:", finalData);
+      navigate("/signup/verify-otp", {
+        state: finalData,
+      });
       // TODO: Add api call here
     } catch (error) {
       console.error("Error during submission:", error);
