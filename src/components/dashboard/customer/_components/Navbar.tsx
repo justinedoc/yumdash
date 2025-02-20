@@ -30,7 +30,7 @@ const Navbar = () => {
 
   return (
     <LocationContext.Provider value={{ location, handleLocationChange }}>
-      <nav className="bg-white shadow p-4">
+      <nav className="bg-white shadow p-4 sticky top-0 right-0 z-[90]">
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           {/* ============ Top Row (Mobile) / Left Side (Desktop) ============ */}
           <div className="flex items-center justify-between">
