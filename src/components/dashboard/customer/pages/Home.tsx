@@ -1,4 +1,3 @@
-import { TabsTrigger1 } from "../../ui/CustomTabsTrigger-1";
 import RestaurantCard from "../_components/RestaurantsCard";
 import RestaurantList from "../_components/RestaurantsList";
 import { restaurants } from "../data/restaurants";
@@ -6,6 +5,8 @@ import { Tabs, TabsContent, TabsList } from "@/components/ui/tabs";
 import { IoRestaurant } from "react-icons/io5";
 import { LuShoppingBag } from "react-icons/lu";
 import { FaCarSide } from "react-icons/fa6";
+import CustomTabsTrigger from "../../ui/CustomTabsTrigger";
+import { TabsTrigger } from "../../ui/TabsTrigger";
 
 function Home() {
   return (
@@ -58,10 +59,8 @@ function Home() {
 
       <Tabs defaultValue="recommended" className="w-full my-15">
         <TabsList className="bg-transparent">
-          <TabsTrigger1 value="recommended">
-            Recommended Resturants
-          </TabsTrigger1>
-          <TabsTrigger1 value="discounted">Discounted Resturants</TabsTrigger1>
+          <TabsTrigger value="recommended">Recommended Resturants</TabsTrigger>
+          <TabsTrigger value="discounted">Discounted Resturants</TabsTrigger>
         </TabsList>
         <TabsContent value="recommended">
           <RestaurantList
@@ -81,93 +80,34 @@ function Home() {
         </TabsContent>
       </Tabs>
 
-      <Tabs defaultValue="recommended" className="w-full my-4">
-        {/* 
-        TabsList 
-        - Use flex and gap for spacing
-        - Remove default borders/background if needed 
-      */}
+      <Tabs defaultValue="restaurants" className="w-full my-4">
         <TabsList className="flex flex-wrap justify-start h-fit gap-4 p-0 bg-transparent">
-          {/* 
-          First tab with an orange gradient background and teal badge 
-        */}
-          <TabsTrigger1
-            value="recommended"
-            className="
-            flex flex-col items-start gap-2
-            px-4 py-2
-            rounded-md
-            font-medium
-            hover:opacity-90
-            focus:outline-none
-            border border-[#0F5D8F29]
-            data-[state=active]:primary-grad
-          data-[state=active]:text-white 
-            data-[state=active]:border-transparent
-          "
-          >
-            <span className="flex gap-2">
-              Restaurants
-              <span className="secondary-grad-bg text-white size-6 px-2 py-0.5 rounded-full text-xs text-center flex items-center justify-center font-medium">
-                20
-              </span>
-            </span>
-            <IoRestaurant size={20} />
-          </TabsTrigger1>
+          <CustomTabsTrigger
+            value="restaurants"
+            label="Restaurants"
+            labelNum={20}
+            icon={<IoRestaurant size={20} />}
+          />
 
-          <TabsTrigger1
+          <CustomTabsTrigger
             value="eatIn"
-            className="
-            flex flex-col items-start gap-2
-            px-4 py-2
-            rounded-md
-            font-medium
-            hover:opacity-90
-            focus:outline-none
-            border border-[#0F5D8F29]
-            data-[state=active]:primary-grad
-          data-[state=active]:text-white 
-            data-[state=active]:border-transparent
-          "
-          >
-            <span className="flex gap-2">
-              Eat in/pick up
-              <span className="secondary-grad-bg text-white size-6 px-2 py-0.5 rounded-full text-xs text-center flex items-center justify-center font-medium">
-                20
-              </span>
-            </span>
-            <LuShoppingBag size={20} />
-          </TabsTrigger1>
+            label="Eat in/pick up"
+            labelNum={20}
+            icon={<LuShoppingBag size={20} />}
+          />
 
-          <TabsTrigger1
+          <CustomTabsTrigger
             value="delivery"
-            className="
-            flex flex-col items-start gap-2
-            px-4 py-2
-            rounded-md
-            font-medium
-            hover:opacity-90
-            focus:outline-none
-            border border-[#0F5D8F29]
-            data-[state=active]:primary-grad
-          data-[state=active]:text-white 
-            data-[state=active]:border-transparent
-          "
-          >
-            <span className="flex gap-2">
-              Offers delivery
-              <span className="secondary-grad-bg text-white size-6 px-2 py-0.5 rounded-full text-xs text-center flex items-center justify-center font-medium">
-                20
-              </span>
-            </span>
-            <FaCarSide size={20} />
-          </TabsTrigger1>
+            label="Offers delivery"
+            labelNum={20}
+            icon={<FaCarSide size={20} />}
+          />
         </TabsList>
 
         {/* 
         Content for the "recommended" tab 
       */}
-        <TabsContent value="recommended">
+        <TabsContent value="restaurants">
           <RestaurantList
             className="my-0"
             render={restaurants.map((restaurant) => (
