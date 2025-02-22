@@ -1,8 +1,11 @@
 import { TabsTrigger1 } from "../../ui/CustomTabsTrigger-1";
-import RestaurantCard from "../_components/ResturantCard";
-import RestaurantList from "../_components/ResturantList";
-import { restaurants } from "../data/resturants";
+import RestaurantCard from "../_components/RestaurantsCard";
+import RestaurantList from "../_components/RestaurantsList";
+import { restaurants } from "../data/restaurants";
 import { Tabs, TabsContent, TabsList } from "@/components/ui/tabs";
+import { IoRestaurant } from "react-icons/io5";
+import { LuShoppingBag } from "react-icons/lu";
+import { FaCarSide } from "react-icons/fa6";
 
 function Home() {
   return (
@@ -45,7 +48,7 @@ function Home() {
         ))}
       />
       <RestaurantList
-        title="Resturants Near You"
+        title="Restaurants Near You"
         render={restaurants.map((restaurant) => (
           <RestaurantCard key={restaurant.id} {...restaurant} />
         ))}
@@ -72,6 +75,123 @@ function Home() {
           <RestaurantList
             className="my-0"
             render={restaurants.reverse().map((restaurant) => (
+              <RestaurantCard key={restaurant.id} {...restaurant} />
+            ))}
+          />
+        </TabsContent>
+      </Tabs>
+
+      <Tabs defaultValue="recommended" className="w-full my-4">
+        {/* 
+        TabsList 
+        - Use flex and gap for spacing
+        - Remove default borders/background if needed 
+      */}
+        <TabsList className="flex flex-wrap justify-start h-fit gap-4 p-0 bg-transparent">
+          {/* 
+          First tab with an orange gradient background and teal badge 
+        */}
+          <TabsTrigger1
+            value="recommended"
+            className="
+            flex flex-col items-start gap-2
+            px-4 py-2
+            rounded-md
+            font-medium
+            hover:opacity-90
+            focus:outline-none
+            border border-[#0F5D8F29]
+            data-[state=active]:primary-grad
+          data-[state=active]:text-white 
+            data-[state=active]:border-transparent
+          "
+          >
+            <span className="flex gap-2">
+              Restaurants
+              <span className="secondary-grad-bg text-white size-6 px-2 py-0.5 rounded-full text-xs text-center flex items-center justify-center font-medium">
+                20
+              </span>
+            </span>
+            <IoRestaurant size={20} />
+          </TabsTrigger1>
+
+          <TabsTrigger1
+            value="eatIn"
+            className="
+            flex flex-col items-start gap-2
+            px-4 py-2
+            rounded-md
+            font-medium
+            hover:opacity-90
+            focus:outline-none
+            border border-[#0F5D8F29]
+            data-[state=active]:primary-grad
+          data-[state=active]:text-white 
+            data-[state=active]:border-transparent
+          "
+          >
+            <span className="flex gap-2">
+              Eat in/pick up
+              <span className="secondary-grad-bg text-white size-6 px-2 py-0.5 rounded-full text-xs text-center flex items-center justify-center font-medium">
+                20
+              </span>
+            </span>
+            <LuShoppingBag size={20} />
+          </TabsTrigger1>
+
+          <TabsTrigger1
+            value="delivery"
+            className="
+            flex flex-col items-start gap-2
+            px-4 py-2
+            rounded-md
+            font-medium
+            hover:opacity-90
+            focus:outline-none
+            border border-[#0F5D8F29]
+            data-[state=active]:primary-grad
+          data-[state=active]:text-white 
+            data-[state=active]:border-transparent
+          "
+          >
+            <span className="flex gap-2">
+              Offers delivery
+              <span className="secondary-grad-bg text-white size-6 px-2 py-0.5 rounded-full text-xs text-center flex items-center justify-center font-medium">
+                20
+              </span>
+            </span>
+            <FaCarSide size={20} />
+          </TabsTrigger1>
+        </TabsList>
+
+        {/* 
+        Content for the "recommended" tab 
+      */}
+        <TabsContent value="recommended">
+          <RestaurantList
+            className="my-0"
+            render={restaurants.map((restaurant) => (
+              <RestaurantCard key={restaurant.id} {...restaurant} />
+            ))}
+          />
+        </TabsContent>
+
+        <TabsContent value="eatIn">
+          <RestaurantList
+            className="my-0"
+            render={restaurants
+              .slice()
+              .reverse()
+              .map((restaurant) => (
+                <RestaurantCard key={restaurant.id} {...restaurant} />
+              ))}
+          />
+        </TabsContent>
+
+        <TabsContent value="delivery">
+          <RestaurantList
+            className="my-0"
+            render={restaurants.map((restaurant) => (
               <RestaurantCard key={restaurant.id} {...restaurant} />
             ))}
           />

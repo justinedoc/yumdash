@@ -177,9 +177,13 @@
 }
 
 @utility secondary-grad-bg {
-  background: linear-gradient(180deg, rgba(0, 103, 75, 0.8) 0%, #00674B 100%);
+  background: linear-gradient(180deg, rgba(0, 103, 75, 0.8) 0%, #00674b 100%);
 }
 
 @utility btn-glow {
-  box-shadow: 4px 4px 14px 0px #076B5040;
+  box-shadow: 4px 4px 14px 0px #076b5040;
+}
+
+@utility primary-grad {
+  background: linear-gradient(180deg, rgba(254, 152, 1, 0.8) 0%, #fe9801 100%);
 }
