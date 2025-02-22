@@ -1,111 +1,59 @@
-import React, { JSX, useEffect, useRef, useState } from "react";
-import { restaurants } from "../data/restaurants";
-import { useMotionValue, useAnimationFrame, motion } from "motion/react";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import React, { JSX, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ClassValue } from "clsx";
 import { cn } from "@/lib/utils";
+import ScrollButtons from "./ScrollButtons";
 
-type ResturantListProps = {
+type RestaurantListProps = {
   title?: string;
   icon?: React.ReactElement;
   actionLabel?: string;
   action?: () => void;
   render: JSX.Element[];
-  children?: React.ReactElement;
   className?: ClassValue;
 };
+
 function RestaurantList({
   title,
   icon,
   action,
   actionLabel,
   render,
-  children,
   className,
-}: ResturantListProps) {
-  const sliderRef = useRef<HTMLDivElement | null>(null);
-  const [sliderWidth, setSliderWidth] = useState<number>(0);
+}: RestaurantListProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-  const x = useMotionValue(0);
-  const [direction, setDirection] = useState<number>(1);
-
-  const speed = 50;
-
-  useEffect(() => {
-    if (sliderRef.current) {
-      setSliderWidth(sliderRef.current.scrollWidth / 2);
-    }
-  }, [restaurants]);
-
-  useAnimationFrame((_, delta) => {
-    const moveBy = (delta / 1000) * speed * direction;
-    const currentX = x.get();
-    const newX = currentX - moveBy;
-
-    if (newX <= -sliderWidth) {
-      x.set(0);
-    } else if (newX >= 0) {
-      x.set(-sliderWidth);
-    } else {
-      x.set(newX);
-    }
-  });
-
-  const handleScrollLeft = (): void => {
-    setDirection(-1);
+  const scrollLeft = () => {
+    scrollRef.current?.scrollBy({ left: -350, behavior: "smooth" });
   };
 
-  const handleScrollRight = (): void => {
-    setDirection(1);
+  const scrollRight = () => {
+    scrollRef.current?.scrollBy({ left: 350, behavior: "smooth" });
   };
+
   return (
-    <section className={cn("my-15", className)}>
-      {!children ? (
-        <header className="mb-5 flex justify-between">
-          <h1 className="inline-flex items-center gap-1">
-            {icon}
-            <span className="text-2xl font-bold">{title}</span>
-          </h1>
-          {action && (
-            <Button variant="outline" className="rounded-sm" onClick={action}>
-              {actionLabel}
-            </Button>
-          )}
-        </header>
-      ) : (
-        children && <div className="my-4">{children}</div>
-      )}
+    <section className={cn("md:my-15 my-7 relative", className)}>
+      <header className="mb-5 flex justify-between items-center">
+        <h1 className="inline-flex items-center gap-1 text-2xl font-bold">
+          {icon}
+          <span>{title}</span>
+        </h1>
+        {action && (
+          <Button variant="outline" className="rounded-sm" onClick={action}>
+            {actionLabel}
+          </Button>
+        )}
+      </header>
 
-      <div className="mx-auto  overflow-hidden relative">
-        {/* <div className="absolute top-1/2 left-0 z-10 transform -translate-y-1/2">
-          <button
-            onClick={handleScrollLeft}
-            className="bg-gray-200 rounded-full p-2 m-2 shadow hover:bg-gray-300"
-            aria-label="Scroll Left"
-          >
-            <FaArrowLeft />
-          </button>
-        </div> */}
-        {/* Right Arrow Button */}
-        {/* <div className="absolute top-1/2 right-0 z-10 transform -translate-y-1/2">
-          <button
-            onClick={handleScrollRight}
-            className="bg-gray-200 rounded-full p-2 m-2 shadow hover:bg-gray-300"
-            aria-label="Scroll Right"
-          >
-            <FaArrowRight />
-          </button>
-        </div> */}
+      <div className="relative">
+        <ScrollButtons scrollLeft={scrollLeft} scrollRight={scrollRight} />
 
-        <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 3xl:grid-cols-4 py-2">
-          {render}
+        {/* Scrollable container */}
+        <div ref={scrollRef} className="md:overflow-x-scroll scrollbar-hide">
+          <div className="flex gap-4 flex-wrap md:flex-nowrap justify-center py-2 w-fit">
+            {render}
+          </div>
         </div>
-
-        {/* The Sliding Container */}
-        {/* <motion.div ref={sliderRef} className="flex" style={{ x }}>
-          {render}
-        </motion.div> */}
       </div>
     </section>
   );

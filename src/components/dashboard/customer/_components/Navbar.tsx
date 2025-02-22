@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Moon, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import AddressManager from "./AddressManager";
@@ -63,8 +63,8 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Right cluster: Address (mobile), Cart, Profile, Dark mode */}
-            <div className="flex items-center space-x-2 md:hidden">
+            {/* Right cluster: Address (mobile), Cart, Profile, Notification */}
+            <div className="flex items-center space-x-1 md:hidden">
               {/* Address dropdown - visible on mobile, hidden on md+ */}
               <div className="flex md:hidden cursor-pointer">
                 <Dialog>
@@ -94,7 +94,10 @@ const Navbar = () => {
                 aria-label="Toggle dark mode"
                 className="p-2 focus:outline-none"
               >
-                <Moon className="stroke-1 text-gray-400" />
+                <img
+                  src="/src/assets/icons/notifications.svg"
+                  alt="notification icon"
+                />
               </button>
             </div>
           </div>
@@ -141,7 +144,10 @@ const Navbar = () => {
               aria-label="Toggle dark mode"
               className="p-2 focus:outline-none"
             >
-              <Moon className="stroke-1 text-gray-400" />
+              <img
+                src="/src/assets/icons/notifications.svg"
+                alt="notification icon"
+              />
             </button>
           </div>
         </div>

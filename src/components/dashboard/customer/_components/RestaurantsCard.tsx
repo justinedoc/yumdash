@@ -64,7 +64,7 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={cn(
-        "relative overflow-hidden rounded-xl p-4 shadow backdrop-blur-sm transition-shadow hover:shadow-md md:min-w-[20rem] max-w-[20rem] border border-[#0F5D8F29]",
+        "relative overflow-hidden rounded-xl p-4 shadow backdrop-blur-sm transition-shadow hover:shadow-md w-full min-w-[20rem] sm:w-1/2 md:w-1/3 lg:w-1/4 border border-[#0F5D8F29]",
         className
       )}
     >

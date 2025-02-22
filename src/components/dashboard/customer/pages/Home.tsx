@@ -10,9 +10,13 @@ import { TabsTrigger } from "../../ui/TabsTrigger";
 
 function Home() {
   return (
-    <section className="p-5 bg-[#fafafa]">
-      <h1 className="font-medium text-2xl">Hi Jane!</h1>
-      <p className="text-sm text-gray-500">We are ready to take your order!</p>
+    <section className="p-3 bg-[#fafafa]">
+      <header className="my-3">
+        <h1 className="font-medium text-2xl">Hi Jane!</h1>
+        <p className="text-sm text-gray-500">
+          We are ready to take your order!
+        </p>
+      </header>
       <RestaurantList
         icon={
           <svg
@@ -57,14 +61,14 @@ function Home() {
         action={() => console.log("see more clicked")}
       />
 
-      <Tabs defaultValue="recommended" className="w-full my-15">
+      <Tabs defaultValue="recommended" className="w-full my-7 md:my-15">
         <TabsList className="bg-transparent">
           <TabsTrigger value="recommended">Recommended Resturants</TabsTrigger>
           <TabsTrigger value="discounted">Discounted Resturants</TabsTrigger>
         </TabsList>
         <TabsContent value="recommended">
           <RestaurantList
-            className="my-0"
+            className="md:my-0 my-0"
             render={restaurants.map((restaurant) => (
               <RestaurantCard key={restaurant.id} {...restaurant} />
             ))}
@@ -72,7 +76,7 @@ function Home() {
         </TabsContent>
         <TabsContent value="discounted">
           <RestaurantList
-            className="my-0"
+            className="md:my-0 my-0"
             render={restaurants.reverse().map((restaurant) => (
               <RestaurantCard key={restaurant.id} {...restaurant} />
             ))}
@@ -109,7 +113,7 @@ function Home() {
       */}
         <TabsContent value="restaurants">
           <RestaurantList
-            className="my-0"
+            className="md:my-0 my-0"
             render={restaurants.map((restaurant) => (
               <RestaurantCard key={restaurant.id} {...restaurant} />
             ))}
@@ -118,7 +122,7 @@ function Home() {
 
         <TabsContent value="eatIn">
           <RestaurantList
-            className="my-0"
+            className="md:my-0 my-0"
             render={restaurants
               .slice()
               .reverse()
@@ -130,7 +134,7 @@ function Home() {
 
         <TabsContent value="delivery">
           <RestaurantList
-            className="my-0"
+            className="md:my-0 my-0"
             render={restaurants.map((restaurant) => (
               <RestaurantCard key={restaurant.id} {...restaurant} />
             ))}
