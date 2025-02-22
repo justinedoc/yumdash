@@ -43,9 +43,6 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
     }
   };
 
-  /**
-   * Simulates toggling the favorite status via an API.
-   */
   const handleFavorite = () => {
     if (isPending) return;
     startTransition(async () => {
@@ -67,12 +64,10 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={cn(
-        "relative overflow-hidden rounded-xl p-4 shadow backdrop-blur-sm transition-shadow hover:shadow-md max-w-[20rem] border border-[#0F5D8F29]",
+        "relative overflow-hidden rounded-xl p-4 shadow backdrop-blur-sm transition-shadow hover:shadow-md md:min-w-[20rem] max-w-[20rem] border border-[#0F5D8F29]",
         className
       )}
     >
-      {/* Background pattern */}
-
       <div className="relative z-10">
         {/* Header: Status & Favorite */}
         <div className="flex justify-between items-start mb-4">
