@@ -1,4 +1,4 @@
-import { RestaurantCardProps } from "@/types/resturantCardTypes";
+import { RestaurantCardProps } from "@/types/restaurantCardTypes";
 
 export const restaurants: RestaurantCardProps[] = [
   {
@@ -6,7 +6,7 @@ export const restaurants: RestaurantCardProps[] = [
     name: "KFC",
     description:
       "KFC is an American fast food restaurant chain that specializes in fried chicken.",
-    logoUrl: "/src/assets/images/temp/resturant.png",
+    logoUrl: "/src/assets/images/temp/restaurant.png",
     contact: {
       phone: "+234 906 4444 708",
       location: "Ipaja Lagos",
@@ -25,7 +25,7 @@ export const restaurants: RestaurantCardProps[] = [
     name: "McDonald's",
     description:
       "McDonald's is a global fast food chain known for its burgers and fries.",
-    logoUrl: "/src/assets/images/temp/resturant.png",
+    logoUrl: "/src/assets/images/temp/restaurant.png",
     contact: {
       phone: "+234 906 4444 709",
       location: "Ipaja Lagos",
@@ -49,7 +49,7 @@ export const restaurants: RestaurantCardProps[] = [
     name: "KFC",
     description:
       "KFC is an American fast food restaurant chain that specializes in fried chicken.",
-    logoUrl: "/src/assets/images/temp/resturant.png",
+    logoUrl: "/src/assets/images/temp/restaurant.png",
     contact: {
       phone: "+234 906 4444 708",
       location: "Ipaja Lagos",
@@ -68,7 +68,7 @@ export const restaurants: RestaurantCardProps[] = [
     name: "McDonald's",
     description:
       "McDonald's is a global fast food chain known for its burgers and fries.",
-    logoUrl: "/src/assets/images/temp/resturant.png",
+    logoUrl: "/src/assets/images/temp/restaurant.png",
     contact: {
       phone: "+234 906 4444 709",
       location: "Ipaja Lagos",
@@ -92,7 +92,7 @@ export const restaurants: RestaurantCardProps[] = [
     name: "KFC",
     description:
       "KFC is an American fast food restaurant chain that specializes in fried chicken.",
-    logoUrl: "/src/assets/images/temp/resturant.png",
+    logoUrl: "/src/assets/images/temp/restaurant.png",
     contact: {
       phone: "+234 906 4444 708",
       location: "Ipaja Lagos",
@@ -111,7 +111,7 @@ export const restaurants: RestaurantCardProps[] = [
     name: "McDonald's",
     description:
       "McDonald's is a global fast food chain known for its burgers and fries.",
-    logoUrl: "/src/assets/images/temp/resturant.png",
+    logoUrl: "/src/assets/images/temp/restaurant.png",
     contact: {
       phone: "+234 906 4444 709",
       location: "Ipaja Lagos",

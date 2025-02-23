@@ -10,13 +10,16 @@ import { TabsTrigger } from "../../ui/TabsTrigger";
 
 function Home() {
   return (
-    <section className="p-3 bg-[#fafafa]">
-      <header className="my-3">
+    <section className="p-4 md:p-6 bg-[#fafafa]">
+      <header>
+        <title>Home | Dashboard</title>
+        <meta name="description" content="Yumdash dashboard" />
         <h1 className="font-medium text-2xl">Hi Jane!</h1>
         <p className="text-sm text-gray-500">
           We are ready to take your order!
         </p>
       </header>
+
       <RestaurantList
         icon={
           <svg

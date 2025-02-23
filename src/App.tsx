@@ -7,6 +7,7 @@ import Login from "./components/auth/customer/page/Login";
 import DashboardLayout from "./components/dashboard/customer/_components/DashboardLayout";
 import Home from "./components/dashboard/customer/pages/Home";
 import FoodOrder from "./components/dashboard/customer/pages/FoodOrder";
+import SelectedFoodOrder from "./components/dashboard/customer/_components/SelectedFoodOrder";
 function App() {
   return (
     <Routes>
@@ -26,7 +27,10 @@ function App() {
       {/* Dashboard routes */}
       <Route path="/dashboard" element={<DashboardLayout />}>
         <Route index element={<Home />} />
-        <Route path="food-order" element={<FoodOrder />} />
+        <Route path="food-order">
+          <Route index element={<FoodOrder />} />
+          <Route path=":id" element={<SelectedFoodOrder />} />
+        </Route>
         <Route path="order-history" element={<Home />} />
         <Route path="favourites" element={<Home />} />
         <Route path="messages" element={<Home />} />
