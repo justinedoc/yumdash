@@ -32,7 +32,7 @@ function VerifyOtp() {
       handleLoading("start");
       // Simulate API call to verify OTP
       await sleep(2000);
-      navigate("/dashboard", { replace: true });
+      navigate("/dashboard/home", { replace: true });
     } catch (err) {
       console.error("Failed to verify OTP", err);
     } finally {

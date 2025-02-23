@@ -26,7 +26,7 @@ function App() {
 
       {/* Dashboard routes */}
       <Route path="/dashboard" element={<DashboardLayout />}>
-        <Route index element={<Home />} />
+        <Route path="home" element={<Home />} />
         <Route path="food-order">
           <Route index element={<FoodOrder />} />
           <Route path=":id" element={<SelectedFoodOrder />} />

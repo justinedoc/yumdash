@@ -1,5 +1,4 @@
 import { HandCoins, Send, Star } from "lucide-react";
-
 import {
   Sidebar,
   SidebarContent,
@@ -19,11 +18,16 @@ import { BsBookHalf } from "react-icons/bs";
 import { LuShoppingBag } from "react-icons/lu";
 import { BiSupport } from "react-icons/bi";
 
-// Menu items.
-const items = [
+interface MenuItem {
+  title: string;
+  url: string;
+  icon: React.ComponentType;
+}
+
+const menuItems: MenuItem[] = [
   {
     title: "Home",
-    url: "/dashboard",
+    url: "/dashboard/home",
     icon: GoHomeFill,
   },
   {
@@ -57,13 +61,18 @@ export function AppSidebar() {
   const location = useLocation();
   const { setOpenMobile } = useSidebar();
 
+  // Determines if the given URL matches the current location.
+  const isActive = (url: string): boolean => {
+    return location.pathname === url || location.pathname.startsWith(url + "/");
+  };
+
   return (
     <Sidebar>
       <SidebarHeader className="flex flex-row items-center justify-between py-5">
-        <img src="/logo.svg" alt="" className="-translate-x-3" />
+        <img src="/logo.svg" alt="Logo" className="-translate-x-3" />
         <SidebarTrigger>
           <svg
-            className="size-6"
+            className="h-6 w-6"
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -89,19 +98,16 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupContent className="text-md">
             <SidebarMenu>
-              {items.map((item) => (
+              {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton
                     className="border border-transparent data-[active=true]:border-secondary/60 rounded-sm px-4"
-                    isActive={
-                      location.pathname.split("/").at(-1) ===
-                      item.url.split("/").at(-1)
-                    }
+                    isActive={isActive(item.url)}
                     onClick={() => setOpenMobile(false)}
                     size="lg"
                     asChild
                   >
-                    <Link to={item.url}>
+                    <Link to={item.url} className="flex items-center space-x-2">
                       <item.icon />
                       <span>{item.title}</span>
                     </Link>
@@ -117,12 +123,15 @@ export function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton
-              className="data-[active=true]:border border-secondary/60 rounded-sm px-4"
-              isActive={location.pathname.split("/").at(-1) === "support"}
+              className="border border-transparent data-[active=true]:border-secondary/60 rounded-sm px-4"
+              isActive={isActive("/dashboard/support")}
               size="lg"
               asChild
             >
-              <Link to={"/dashboard/support"}>
+              <Link
+                to="/dashboard/support"
+                className="flex items-center space-x-2"
+              >
                 <BiSupport />
                 <span>Support</span>
               </Link>
