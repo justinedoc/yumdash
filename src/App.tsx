@@ -7,7 +7,10 @@ import Login from "./components/auth/customer/page/Login";
 import DashboardLayout from "./components/dashboard/customer/_components/DashboardLayout";
 import Home from "./components/dashboard/customer/pages/Home";
 import FoodOrder from "./components/dashboard/customer/pages/FoodOrder";
-import SelectedFoodOrder from "./components/dashboard/customer/_components/SelectedFoodOrder";
+import SelectedFoodOrder from "./components/dashboard/customer/pages/SelectedFoodOrder";
+import Favourites from "./components/dashboard/customer/pages/Favourites";
+
+
 function App() {
   return (
     <Routes>
@@ -32,9 +35,13 @@ function App() {
           <Route path=":id" element={<SelectedFoodOrder />} />
         </Route>
         <Route path="order-history" element={<Home />} />
-        <Route path="favourites" element={<Home />} />
+        <Route path="favourites" element={<Favourites />} />
         <Route path="messages" element={<Home />} />
         <Route path="payment-details" element={<Home />} />
+      </Route>
+
+      <Route path="/restaurants">
+        <Route index element={<Home isLoggedIn={false} />} />
       </Route>
 
       {/* non-existing paths */}

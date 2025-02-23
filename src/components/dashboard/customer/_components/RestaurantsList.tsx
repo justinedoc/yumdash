@@ -32,7 +32,7 @@ function RestaurantList({
   };
 
   return (
-    <section className={cn("md:my-13 my-7 relative", className)}>
+    <section className={cn("my-7 relative", className)}>
       <header className="mb-5 flex justify-between items-center">
         <h1 className="inline-flex items-center gap-1 text-2xl font-bold">
           {icon}

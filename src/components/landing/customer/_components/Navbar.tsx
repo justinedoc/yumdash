@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import Logo from "../../ui/Logo";
 import RoleSelector from "./RoleSelector";
 import { HiX } from "react-icons/hi";
+import { Link } from "react-router";
 
 type NavLink = {
   label?: string;
@@ -110,9 +111,11 @@ function Navbar() {
             </li>
           ))}
           <li>
-            <Button className="px-7 py-5 font-semibold rounded-full bg-white text-primary shadow-none hover:text-white">
-              Restaurants
-            </Button>
+            <Link to={"/restaurants"}>
+              <Button className="px-7 py-5 font-semibold rounded-full bg-white text-primary shadow-none hover:text-white">
+                Restaurants
+              </Button>
+            </Link>
           </li>
         </ul>
       </div>
@@ -141,9 +144,11 @@ function Navbar() {
             </li>
           ))}
           <li className="w-full">
-            <Button className="w-full px-7 py-5 font-semibold rounded-full bg-white text-primary shadow-none hover:text-white">
-              Restaurants
-            </Button>
+            <Link to={"/restaurants"}>
+              <Button className="w-full px-7 py-5 font-semibold rounded-full bg-white text-primary shadow-none hover:text-white">
+                Restaurants
+              </Button>
+            </Link>
           </li>
         </ul>
       </div>
