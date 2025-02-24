@@ -1,0 +1,98 @@
+import { OrderDetails } from "@/types/foodOrderTypes";
+
+export const orders: OrderDetails[] = [
+  {
+    id: "order_1",
+    orderCode: "ORD-1001",
+    restaurant: {
+      id: "rest_1",
+      name: "The Gourmet Kitchen",
+      imageUrl: "/src/assets/images/temp/restaurant.png",
+      address: {
+        street: "123 Main St",
+        city: "Springfield",
+      },
+      contact: {
+        phone: "555-0123",
+        email: "contact@gourmetkitchen.com",
+      },
+    },
+    customer: {
+      id: "cust_1",
+      name: "John Doe",
+      phone: "555-1234",
+      email: "john.doe@example.com",
+      address: {
+        street: "456 Elm St",
+        city: "Springfield",
+      },
+    },
+    items: [
+      {
+        id: "item_1",
+        name: "Pasta Carbonara",
+        quantity: 1,
+        unitPrice: 25.5,
+        totalPrice: 25.5,
+      },
+      {
+        id: "item_2",
+        name: "Garlic Bread",
+        quantity: 1,
+        unitPrice: 20.0,
+        totalPrice: 20.0,
+      },
+    ],
+    status: "confirmed",
+    payment: {
+      id: "pay_1",
+      method: "credit_card",
+      status: "paid",
+      transactionId: "txn_001",
+      amount: 45.5,
+      currency: "USD",
+      timestamp: "2025-01-15T12:30:00Z",
+    },
+    createdAt: "2025-01-15T12:30:00Z",
+    updatedAt: "2025-01-15T12:30:00Z",
+    subtotal: 45.5,
+    tax: 3.64,
+    totalAmount: 49.14,
+    fulfillmentType: "pickup",
+    events: [
+      {
+        id: "evt_1",
+        type: "order_created",
+        title: "Order received",
+        description:
+          "We've received your order and will get started on it shortly.",
+        timestamp: "2025-01-15T12:30:00Z",
+        status: "completed",
+      },
+      {
+        id: "evt_2",
+        type: "preparation_started",
+        title: "Preparing your order",
+        description: "Your order is being prepared by our kitchen staff.",
+        timestamp: "2025-01-15T12:35:00Z",
+        status: "in_progress",
+      },
+      {
+        id: "evt_3",
+        type: "preparation_completed",
+        title: "Order prepared",
+        description: "Your order has been prepared and is being packed.",
+        timestamp: "2025-01-15T12:50:00Z",
+        status: "completed",
+      },
+      {
+        id: "evt_4",
+        type: "ready_for_pickup",
+        title: "Ready for pickup",
+        description: "Your order is ready for pickup at the counter.",
+        timestamp: "2025-01-15T13:00:00Z",
+        status: "completed",
+      },
+    ],
+  },
+];
