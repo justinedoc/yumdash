@@ -11,29 +11,40 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowUpDown } from "lucide-react";
-import Status, { OrderStatus } from "./Status";
-import {
-  SortField,
-  type OrderDetails,
-  type TableHeaderType,
-} from "@/types/foodOrderTypes";
+import Status from "./Status";
 import { useNavigate } from "react-router";
+import { OrderDetails, OrderStatus, SortConfig, SortField } from "@/types/foodOrderTypes";
 
+// Enhanced table header type with more precise typing
+interface TableHeaderType {
+  label: string;
+  field?: SortField;
+  sortable?: boolean;
+  width?: string;
+  align?: "left" | "right" | "center";
+}
+
+// Updated table headers to match our new data structure
 const TABLE_HEADERS: TableHeaderType[] = [
-  { label: "Order Code", width: "w-[120px]" },
-  { label: "Food", width: "w-[200px]" },
+  {
+    label: "Order Code",
+    field: "orderCode",
+    sortable: true,
+    width: "w-[120px]",
+  },
+  { label: "Items", width: "w-[200px]" },
   { label: "Restaurant", width: "w-[150px]" },
-  { label: "Address", width: "w-[200px]" },
+  { label: "Delivery Address", width: "w-[200px]" },
   {
     label: "Order Date",
-    field: "orderDate",
+    field: "createdAt", // Updated from orderDate
     sortable: true,
     width: "w-[150px]",
   },
   { label: "Status", field: "status", sortable: true, width: "w-[120px]" },
   {
-    label: "Amount",
-    field: "amount",
+    label: "Total",
+    field: "totalAmount", // Updated from amount
     sortable: true,
     align: "right",
     width: "w-[120px]",
@@ -53,12 +64,9 @@ function FoodOrderTable({
   isLoading = false,
 }: FoodOrderTableProps) {
   const navigate = useNavigate();
+  const [sortConfig, setSortConfig] = useState<SortConfig | null>(null);
 
-  const [sortConfig, setSortConfig] = useState<{
-    field: SortField;
-    direction: "asc" | "desc";
-  } | null>(null);
-
+  // Enhanced sorting handler with type safety
   const handleSort = (field: SortField) => {
     setSortConfig((currentSort) => ({
       field,
@@ -69,28 +77,55 @@ function FoodOrderTable({
     }));
   };
 
+  // Improved sorting logic with type safety and proper comparisons
   const sortedOrders = React.useMemo(() => {
     if (!sortConfig) return orders;
 
     return [...orders].sort((a, b) => {
-      if (sortConfig.field === "orderDate") {
-        const dateA = new Date(a[sortConfig.field]).getTime();
-        const dateB = new Date(b[sortConfig.field]).getTime();
-        return sortConfig.direction === "asc" ? dateA - dateB : dateB - dateA;
+      const { field, direction } = sortConfig;
+      const multiplier = direction === "asc" ? 1 : -1;
+
+      // Handle date fields
+      if (
+        field === "createdAt" ||
+        field === "updatedAt" ||
+        field === "scheduledFor"
+      ) {
+        const dateA = new Date(a[field] || 0).getTime();
+        const dateB = new Date(b[field] || 0).getTime();
+        return (dateA - dateB) * multiplier;
       }
 
-      if (a[sortConfig.field] < b[sortConfig.field]) {
-        return sortConfig.direction === "asc" ? -1 : 1;
+      // Handle numeric fields
+      if (field === "totalAmount") {
+        return (a[field] - b[field]) * multiplier;
       }
-      if (a[sortConfig.field] > b[sortConfig.field]) {
-        return sortConfig.direction === "asc" ? 1 : -1;
-      }
-      return 0;
+
+      // Handle string fields
+      return String(a[field]).localeCompare(String(b[field])) * multiplier;
     });
   }, [orders, sortConfig]);
 
+  // Navigation handler with type safety
   const handleViewDetails = (order: OrderDetails) => {
     navigate(order.id);
+  };
+
+  // Helper function to format order items
+  const formatOrderItems = (items: OrderDetails["items"]) => {
+    return items.map((item) => `${item.name} (${item.quantity})`).join(", ");
+  };
+
+  // Helper function to format address
+  const formatAddress = (order: OrderDetails) => {
+    const address =
+      order.fulfillmentType === "delivery"
+        ? order.deliveryAddress
+        : order.pickupLocation;
+
+    return address
+      ? `${address.street}, ${address.city}`
+      : "Address not available";
   };
 
   return (
@@ -101,7 +136,6 @@ function FoodOrderTable({
             <TableHead
               key={index}
               className={cn(
-                "",
                 header.width,
                 header.align === "right" && "text-right",
                 "py-4 px-4 font-semibold text-gray-700"
@@ -109,12 +143,12 @@ function FoodOrderTable({
             >
               <div className="flex items-center justify-between">
                 {header.label}
-                {header.sortable && (
+                {header.sortable && header.field && (
                   <Button
                     variant="ghost"
                     size="sm"
                     className="ml-2 h-8 w-8 p-0"
-                    onClick={() => header.field && handleSort(header.field)}
+                    onClick={() => handleSort(header.field as SortField)}
                   >
                     <ArrowUpDown className="h-4 w-4" />
                   </Button>
@@ -132,7 +166,7 @@ function FoodOrderTable({
               className="h-24 text-center"
             >
               <div className="flex items-center justify-center">
-                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-900"></div>
+                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-900" />
               </div>
             </TableCell>
           </TableRow>
@@ -154,30 +188,30 @@ function FoodOrderTable({
               <TableCell className="font-medium py-4 px-4">
                 {order.orderCode}
               </TableCell>
-              <TableCell className="py-4 px-4 min-w-[8rem]">
-                {order.food}
+              <TableCell className="py-4 px-4 min-w-[12rem]">
+                {formatOrderItems(order.items)}
               </TableCell>
               <TableCell className="py-4 px-4 min-w-[12rem]">
                 <div className="flex items-center gap-2">
                   <img
-                    src={order.restaurantImg}
-                    alt={order.restaurantName}
+                    src={order.restaurant.imageUrl}
+                    alt={order.restaurant.name}
                     className="w-8 h-8 rounded-full object-cover"
                   />
-                  <span>{order.restaurantName}</span>
+                  <span>{order.restaurant.name}</span>
                 </div>
               </TableCell>
               <TableCell className="py-4 px-4 min-w-[12rem]">
-                {order.address}
+                {formatAddress(order)}
               </TableCell>
               <TableCell className="py-4 px-4">
-                {format(new Date(order.orderDate), "MMM dd, yyyy")}
+                {format(new Date(order.createdAt), "MMM dd, yyyy")}
               </TableCell>
               <TableCell className="py-4 px-4">
                 <Status status={order.status} />
               </TableCell>
               <TableCell className="text-right py-4 px-4">
-                ${order.amount.toFixed(2)}
+                ${order.totalAmount.toFixed(2)}
               </TableCell>
               <TableCell className="py-4 px-6">
                 <Button

@@ -22,19 +22,55 @@ import {
   Calendar,
   Store,
   Pizza,
+  CreditCard,
+  Truck,
 } from "lucide-react";
 import FoodOrderTable from "../_components/FoodOrderTable";
 import { OrderStatus } from "../_components/Status";
-import { OrderDetails } from "@/types/foodOrderTypes";
-import { orders } from "../data/orders";
+import { orders } from "../data/temp/orders";
+import { OrderDetails, OrderFilters } from "@/types/foodOrderTypes";
+import { useOrderFiltering } from "../hooks/useOrderFiltering";
 
-interface FilterState {
-  status: OrderStatus | "all";
-  restaurant: string;
-  food: string;
-  dateFrom: string;
-  dateTo: string;
-}
+// Define the complete set of order statuses based on our updated types
+const ORDER_STATUSES: { value: OrderStatus | "all"; label: string }[] = [
+  { value: "all", label: "All Orders" },
+  { value: "created", label: "Created" },
+  { value: "confirmed", label: "Confirmed" },
+  { value: "preparing", label: "Preparing" },
+  { value: "ready_for_pickup", label: "Ready for Pickup" },
+  { value: "out_for_delivery", label: "Out for Delivery" },
+  { value: "delivered", label: "Delivered" },
+  { value: "cancelled", label: "Cancelled" },
+  { value: "refunded", label: "Refunded" },
+];
+
+// Define delivery types with proper typing
+const FULFILLMENT_TYPES = [
+  { value: "all", label: "All Types" },
+  { value: "delivery", label: "Delivery" },
+  { value: "pickup", label: "Pickup" },
+] as const;
+
+// Define payment statuses with proper typing
+const PAYMENT_STATUSES = [
+  { value: "all", label: "All Statuses" },
+  { value: "pending", label: "Pending" },
+  { value: "processing", label: "Processing" },
+  { value: "paid", label: "Paid" },
+  { value: "failed", label: "Failed" },
+  { value: "refunded", label: "Refunded" },
+] as const;
+
+// Initial filter state matching our updated OrderFilters type
+const initialFilters: OrderFilters = {
+  status: "all",
+  restaurant: "",
+  dateFrom: "",
+  dateTo: "",
+  searchTerm: "",
+  fulfillmentType: "all",
+  paymentStatus: "all",
+};
 
 interface FoodOrderProps {
   initialOrders?: OrderDetails[];
@@ -45,57 +81,24 @@ interface FoodOrderProps {
   ) => Promise<void>;
 }
 
-const ORDER_STATUSES: { value: OrderStatus | "all"; label: string }[] = [
-  { value: "all", label: "All Orders" },
-  { value: "received", label: "Received" },
-  { value: "delivering", label: "In Delivery" },
-  { value: "completed", label: "Completed" },
-  { value: "canceled", label: "Canceled" },
-];
-
-const initialFilters: FilterState = {
-  status: "all",
-  restaurant: "",
-  food: "",
-  dateFrom: "",
-  dateTo: "",
-};
-
-const initialOrders = orders;
-
 function FoodOrder({ isLoading = false, onOrderStatusChange }: FoodOrderProps) {
   const [isPending, startTransition] = useTransition();
   const [isFilterOpen, setFilterOpen] = useState(false);
-  const [filters, setFilters] = useState<FilterState>(initialFilters);
-  const [tempFilters, setTempFilters] = useState<FilterState>(filters);
+  const [filters, setFilters] = useState<OrderFilters>(initialFilters);
+  const [tempFilters, setTempFilters] = useState<OrderFilters>(filters);
 
-  // Memoized filtered orders
-  const filteredOrders = useMemo(() => {
-    return initialOrders.filter((order) => {
-      const dateFrom = filters.dateFrom ? new Date(filters.dateFrom) : null;
-      const dateTo = filters.dateTo ? new Date(filters.dateTo) : null;
+  // Use our enhanced filtering hook
+  const filteredOrders = useOrderFiltering(orders, filters);
 
-      return (
-        (filters.status === "all" || order.status === filters.status) &&
-        (!filters.restaurant ||
-          order.restaurantName
-            .toLowerCase()
-            .includes(filters.restaurant.toLowerCase())) &&
-        (!filters.food ||
-          order.food.toLowerCase().includes(filters.food.toLowerCase())) &&
-        (!dateFrom || new Date(order.orderDate) >= dateFrom) &&
-        (!dateTo || new Date(order.orderDate) <= dateTo)
-      );
-    });
-  }, [initialOrders, filters]);
-
+  // Type-safe filter change handler
   const handleFilterChange = useCallback(
-    <K extends keyof FilterState>(key: K, value: FilterState[K]) => {
+    <K extends keyof OrderFilters>(key: K, value: string) => {
       setTempFilters((prev) => ({ ...prev, [key]: value }));
     },
     []
   );
 
+  // Filter application handler with transition
   const handleApplyFilters = useCallback(() => {
     startTransition(() => {
       setFilters(tempFilters);
@@ -103,6 +106,7 @@ function FoodOrder({ isLoading = false, onOrderStatusChange }: FoodOrderProps) {
     });
   }, [tempFilters]);
 
+  // Filter clearing handler
   const clearFilters = useCallback(() => {
     startTransition(() => {
       setFilters(initialFilters);
@@ -110,9 +114,19 @@ function FoodOrder({ isLoading = false, onOrderStatusChange }: FoodOrderProps) {
     });
   }, []);
 
+  // Enhanced active filters check
   const hasActiveFilters = useMemo(() => {
     return Object.entries(filters).some(([key, value]) => {
-      if (key === "status") return value !== "all";
+      if (
+        key === "status" ||
+        key === "fulfillmentType" ||
+        key === "paymentStatus"
+      ) {
+        return value !== "all";
+      }
+      if (key === "dateFrom" || key === "dateTo") {
+        return value !== null;
+      }
       return Boolean(value);
     });
   }, [filters]);
@@ -161,10 +175,11 @@ function FoodOrder({ isLoading = false, onOrderStatusChange }: FoodOrderProps) {
           </DialogHeader>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 py-4">
+            {/* Order Status Filter */}
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                 <Store className="w-4 h-4" />
-                Status
+                Order Status
               </label>
               <Select
                 value={tempFilters.status}
@@ -177,12 +192,65 @@ function FoodOrder({ isLoading = false, onOrderStatusChange }: FoodOrderProps) {
                 </SelectTrigger>
                 <SelectContent>
                   {ORDER_STATUSES.map((status) => (
-                    <SelectItem value={status.value}>{status.label}</SelectItem>
+                    <SelectItem key={status.value} value={status.value}>
+                      {status.label}
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
             </div>
 
+            {/* Fulfillment Type Filter */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                <Truck className="w-4 h-4" />
+                Delivery Type
+              </label>
+              <Select
+                value={tempFilters.fulfillmentType}
+                onValueChange={(value) =>
+                  handleFilterChange("fulfillmentType", value)
+                }
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select Type" />
+                </SelectTrigger>
+                <SelectContent>
+                  {FULFILLMENT_TYPES.map((type) => (
+                    <SelectItem key={type.value} value={type.value}>
+                      {type.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Payment Status Filter */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                <CreditCard className="w-4 h-4" />
+                Payment Status
+              </label>
+              <Select
+                value={tempFilters.paymentStatus}
+                onValueChange={(value) =>
+                  handleFilterChange("paymentStatus", value)
+                }
+              >
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select Payment Status" />
+                </SelectTrigger>
+                <SelectContent>
+                  {PAYMENT_STATUSES.map((status) => (
+                    <SelectItem key={status.value} value={status.value}>
+                      {status.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Restaurant Search */}
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                 <Store className="w-4 h-4" />
@@ -198,20 +266,24 @@ function FoodOrder({ isLoading = false, onOrderStatusChange }: FoodOrderProps) {
               />
             </div>
 
+            {/* General Search Term */}
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                 <Pizza className="w-4 h-4" />
-                Food Item
+                Search Items
               </label>
               <Input
-                value={tempFilters.food}
-                onChange={(e) => handleFilterChange("food", e.target.value)}
+                value={tempFilters.searchTerm}
+                onChange={(e) =>
+                  handleFilterChange("searchTerm", e.target.value)
+                }
                 placeholder="Search food items..."
                 className="w-full"
               />
             </div>
 
-            <div className="space-y-2">
+            {/* Date Range */}
+            <div className="space-y-2 sm:col-span-2">
               <label className="text-sm font-medium text-gray-700 flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
                 Date Range
@@ -219,7 +291,7 @@ function FoodOrder({ isLoading = false, onOrderStatusChange }: FoodOrderProps) {
               <div className="flex gap-2">
                 <Input
                   type="date"
-                  value={tempFilters.dateFrom}
+                  value={tempFilters.dateFrom || ""}
                   onChange={(e) =>
                     handleFilterChange("dateFrom", e.target.value)
                   }
@@ -227,7 +299,7 @@ function FoodOrder({ isLoading = false, onOrderStatusChange }: FoodOrderProps) {
                 />
                 <Input
                   type="date"
-                  value={tempFilters.dateTo}
+                  value={tempFilters.dateTo || ""}
                   onChange={(e) => handleFilterChange("dateTo", e.target.value)}
                   className="w-full"
                 />
@@ -273,6 +345,7 @@ function FoodOrder({ isLoading = false, onOrderStatusChange }: FoodOrderProps) {
           <FoodOrderTable
             orders={filteredOrders}
             onStatusChange={onOrderStatusChange}
+            isLoading={isPending}
           />
         )}
       </div>

@@ -72,7 +72,7 @@ export function AppSidebar() {
         <img src="/logo.svg" alt="Logo" className="-translate-x-3" />
         <SidebarTrigger>
           <svg
-            className="h-6 w-6"
+            className="size-5"
             width="24"
             height="24"
             viewBox="0 0 24 24"

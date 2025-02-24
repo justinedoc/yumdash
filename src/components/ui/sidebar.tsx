@@ -283,7 +283,7 @@ function SidebarTrigger({
     >
       {children || (
           <svg
-            className="rotate-180 size-6"
+            className="rotate-180 size-5"
             width="24"
             height="24"
             viewBox="0 0 24 24"

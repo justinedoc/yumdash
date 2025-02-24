@@ -1,6 +1,6 @@
 import { Star } from "lucide-react";
 import RestaurantList from "../_components/RestaurantsList";
-import { restaurants } from "../data/restaurants";
+import { restaurants } from "../data/temp/restaurants";
 import RestaurantCard from "../_components/RestaurantsCard";
 
 function Favourites() {

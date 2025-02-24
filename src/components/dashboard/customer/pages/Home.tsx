@@ -1,6 +1,6 @@
 import RestaurantCard from "../_components/RestaurantsCard";
 import RestaurantList from "../_components/RestaurantsList";
-import { restaurants } from "../data/restaurants";
+import { restaurants } from "../data/temp/restaurants";
 import { Tabs, TabsContent, TabsList } from "@/components/ui/tabs";
 import { IoRestaurant } from "react-icons/io5";
 import { LuShoppingBag } from "react-icons/lu";

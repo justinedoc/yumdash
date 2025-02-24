@@ -1,30 +1,10 @@
 import { useMemo } from "react";
 import { useNavigate, useParams } from "react-router";
-import { orders } from "../data/orders";
+import { orders } from "../data/temp/orders";
 import { format } from "date-fns";
 import { ArrowLeft, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TimeLine } from "../../ui/TimeLine";
-
-const events = [
-  {
-    action: "Order Received",
-    note: "We have received your order",
-    completed: true,
-  },
-  {
-    action: "Preparing",
-    note: "Your food is being prepared",
-  },
-  {
-    action: "On The Way",
-    note: "Your order is out for delivery",
-  },
-  {
-    action: "Delivered",
-    note: "Enjoy your meal!",
-  },
-];
+import Timeline from "../../ui/TimeLine";
 
 function SelectedFoodOrder() {
   const { id } = useParams();
@@ -46,7 +26,7 @@ function SelectedFoodOrder() {
 
   return (
     <section className="p-4 md:p-6 bg-[#fafafa]">
-      <header className="space-y-3">
+      <header className="space-y-5">
         <Button
           onClick={() => navigate(-1)}
           variant={"outline"}
@@ -57,10 +37,10 @@ function SelectedFoodOrder() {
         </Button>
 
         <h1 className="text-xl font-medium">
-          {format(new Date(selectedOrder.orderDate), "PPPp")}
+          {format(new Date(selectedOrder.createdAt), "PPPp")}
         </h1>
       </header>
-      <TimeLine events={events} />
+      <Timeline events={selectedOrder.events} />
     </section>
   );
 }
