@@ -4,7 +4,7 @@ import { orders } from "../data/temp/orders";
 import { format } from "date-fns";
 import { ArrowLeft, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Timeline from "../../ui/TimeLine";
+import Timeline from "../_components/TimeLine";
 
 function SelectedFoodOrder() {
   const { id } = useParams();
@@ -40,7 +40,7 @@ function SelectedFoodOrder() {
           {format(new Date(selectedOrder.createdAt), "PPPp")}
         </h1>
       </header>
-      <Timeline events={selectedOrder.events} />
+      <Timeline order={selectedOrder} />
     </section>
   );
 }

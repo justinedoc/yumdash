@@ -22,9 +22,13 @@ export const orders: OrderDetails[] = [
       name: "John Doe",
       phone: "555-1234",
       email: "john.doe@example.com",
-      address: {
+      deliveryAddress: {
         street: "456 Elm St",
         city: "Springfield",
+      },
+      pickupLocation: {
+        street: "458 Elm St",
+        city: "Springfield reserve",
       },
     },
     items: [
@@ -83,7 +87,7 @@ export const orders: OrderDetails[] = [
         title: "Order prepared",
         description: "Your order has been prepared and is being packed.",
         timestamp: "2025-01-15T12:50:00Z",
-        status: "completed",
+        status: "pending",
       },
       {
         id: "evt_4",
@@ -91,7 +95,7 @@ export const orders: OrderDetails[] = [
         title: "Ready for pickup",
         description: "Your order is ready for pickup at the counter.",
         timestamp: "2025-01-15T13:00:00Z",
-        status: "completed",
+        status: "pending",
       },
     ],
   },

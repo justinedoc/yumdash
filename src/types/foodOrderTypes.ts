@@ -14,7 +14,8 @@ interface Customer {
   name: string;
   phone: string;
   email: string;
-  address: Address;
+  deliveryAddress?: Address;
+  pickupLocation?: Address;
   preferences?: {
     dietaryRestrictions?: string[];
     allergies?: string[];
@@ -141,8 +142,6 @@ export interface OrderDetails {
 
   // Delivery/pickup details
   fulfillmentType: "delivery" | "pickup";
-  deliveryAddress?: Address;
-  pickupLocation?: Address;
 
   // Event tracking
   events: OrderEvent[];

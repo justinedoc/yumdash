@@ -14,6 +14,7 @@ import { ArrowUpDown } from "lucide-react";
 import Status from "./Status";
 import { useNavigate } from "react-router";
 import { OrderDetails, OrderStatus, SortConfig, SortField } from "@/types/foodOrderTypes";
+import { formatAddress } from "../../utils/formatAddress";
 
 // Enhanced table header type with more precise typing
 interface TableHeaderType {
@@ -114,18 +115,6 @@ function FoodOrderTable({
   // Helper function to format order items
   const formatOrderItems = (items: OrderDetails["items"]) => {
     return items.map((item) => `${item.name} (${item.quantity})`).join(", ");
-  };
-
-  // Helper function to format address
-  const formatAddress = (order: OrderDetails) => {
-    const address =
-      order.fulfillmentType === "delivery"
-        ? order.deliveryAddress
-        : order.pickupLocation;
-
-    return address
-      ? `${address.street}, ${address.city}`
-      : "Address not available";
   };
 
   return (
