@@ -7,11 +7,11 @@ import { getLocationFromCoordinates } from "../../utils/getLocation";
 function getCurrentPositionAsync(): Promise<GeolocationPosition> {
 const options = {
   enableHighAccuracy: true,
-  timeout: 5000, // 5 seconds
+  timeout: 5000,
   maximumAge: 0,
 };
-  return new Promise((resolve, reject, options) => {
-    navigator.geolocation.getCurrentPosition(resolve, reject);
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject, options);
   });
 }
 
