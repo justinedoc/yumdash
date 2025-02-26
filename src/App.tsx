@@ -9,7 +9,7 @@ import Home from "./components/dashboard/customer/pages/Home";
 import FoodOrder from "./components/dashboard/customer/pages/FoodOrder";
 import SelectedFoodOrder from "./components/dashboard/customer/pages/SelectedFoodOrder";
 import Favourites from "./components/dashboard/customer/pages/Favourites";
-
+import FoodOrderLayout from "./components/dashboard/customer/_components/FoodOrderLayout";
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
       {/* Dashboard routes */}
       <Route path="/dashboard" element={<DashboardLayout />}>
         <Route path="home" element={<Home />} />
-        <Route path="food-order">
+        <Route path="food-order" element={<FoodOrderLayout />}>
           <Route index element={<FoodOrder />} />
           <Route path=":id" element={<SelectedFoodOrder />} />
         </Route>

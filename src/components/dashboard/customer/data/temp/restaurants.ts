@@ -1,4 +1,4 @@
-import { RestaurantCardProps } from "@/types/restaurantCardTypes";
+import { RestaurantCardProps } from "@/types/resturantCardTypes";
 
 export const restaurants: RestaurantCardProps[] = [
   {
