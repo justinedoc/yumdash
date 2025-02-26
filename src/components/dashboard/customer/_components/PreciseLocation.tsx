@@ -37,7 +37,7 @@ function PreciseLocation(): JSX.Element {
       if (formattedAddress) {
         handleLocationChange(formattedAddress);
       } else {
-        toast.error("Unable to fetch address from location.");
+        toast.error("We couldn't determine your address");
       }
     } catch (error) {
       toast.error(
