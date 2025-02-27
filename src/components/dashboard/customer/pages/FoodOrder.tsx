@@ -75,13 +75,9 @@ const initialFilters: OrderFilters = {
 interface FoodOrderProps {
   initialOrders?: OrderDetails[];
   isLoading?: boolean;
-  onOrderStatusChange?: (
-    orderId: string,
-    newStatus: OrderStatus
-  ) => Promise<void>;
 }
 
-function FoodOrder({ isLoading = false, onOrderStatusChange }: FoodOrderProps) {
+function FoodOrder({ isLoading = false }: FoodOrderProps) {
   const [isPending, startTransition] = useTransition();
   const [isFilterOpen, setFilterOpen] = useState(false);
   const [filters, setFilters] = useState<OrderFilters>(initialFilters);
@@ -344,7 +340,6 @@ function FoodOrder({ isLoading = false, onOrderStatusChange }: FoodOrderProps) {
         ) : (
           <FoodOrderTable
             orders={filteredOrders}
-            onStatusChange={onOrderStatusChange}
             isLoading={isPending}
           />
         )}

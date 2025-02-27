@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 import { ArrowUpDown } from "lucide-react";
 import Status from "./Status";
 import { useNavigate } from "react-router";
-import { OrderDetails, OrderStatus, SortConfig, SortField } from "@/types/foodOrderTypes";
+import { OrderDetails, SortConfig, SortField } from "@/types/foodOrderTypes";
 import { formatAddress } from "../../utils/formatAddress";
 
 // Enhanced table header type with more precise typing
@@ -55,13 +55,11 @@ const TABLE_HEADERS: TableHeaderType[] = [
 
 interface FoodOrderTableProps {
   orders: OrderDetails[];
-  onStatusChange?: (orderId: string, newStatus: OrderStatus) => Promise<void>;
   isLoading?: boolean;
 }
 
 function FoodOrderTable({
   orders,
-  onStatusChange,
   isLoading = false,
 }: FoodOrderTableProps) {
   const navigate = useNavigate();
