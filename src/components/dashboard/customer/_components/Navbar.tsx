@@ -9,6 +9,11 @@ import { IoIosArrowDown } from "react-icons/io";
 import AddressManager from "./AddressManager";
 import { createContext, useState } from "react";
 
+// Import SVG icons directly
+import cartIcon from "@/assets/icons/cart.svg";
+import profileIcon from "@/assets/icons/profile.svg";
+import notificationsIcon from "@/assets/icons/notifications.svg";
+
 export const LocationContext = createContext<
   | {
       location: string;
@@ -54,7 +59,7 @@ const Navbar = () => {
                     <h3 className="text-sm text-left font-medium">
                       {!location
                         ? "Enter Address"
-                        : location?.slice(0, 20) + "..."}
+                        : location.slice(0, 20) + "..."}
                     </h3>
                   </DialogTrigger>
                   <IoIosArrowDown aria-hidden="true" />
@@ -80,24 +85,21 @@ const Navbar = () => {
                 aria-label="View cart"
                 className="p-2 focus:outline-none"
               >
-                <img src="/src/assets/icons/cart.svg" alt="Cart icon" />
+                <img src={cartIcon} alt="Cart icon" />
               </button>
               <button
                 type="button"
                 aria-label="View profile"
                 className="p-2 focus:outline-none"
               >
-                <img src="/src/assets/icons/profile.svg" alt="Profile icon" />
+                <img src={profileIcon} alt="Profile icon" />
               </button>
               <button
                 type="button"
                 aria-label="Toggle dark mode"
                 className="p-2 focus:outline-none"
               >
-                <img
-                  src="/src/assets/icons/notifications.svg"
-                  alt="notification icon"
-                />
+                <img src={notificationsIcon} alt="Notification icon" />
               </button>
             </div>
           </div>
@@ -130,24 +132,21 @@ const Navbar = () => {
               aria-label="View cart"
               className="p-2 focus:outline-none"
             >
-              <img src="/src/assets/icons/cart.svg" alt="Cart icon" />
+              <img src={cartIcon} alt="Cart icon" />
             </button>
             <button
               type="button"
               aria-label="View profile"
               className="p-2 focus:outline-none"
             >
-              <img src="/src/assets/icons/profile.svg" alt="Profile icon" />
+              <img src={profileIcon} alt="Profile icon" />
             </button>
             <button
               type="button"
               aria-label="Toggle dark mode"
               className="p-2 focus:outline-none"
             >
-              <img
-                src="/src/assets/icons/notifications.svg"
-                alt="notification icon"
-              />
+              <img src={notificationsIcon} alt="Notification icon" />
             </button>
           </div>
         </div>

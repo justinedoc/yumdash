@@ -87,11 +87,13 @@ function Footer() {
         className="absolute top-0 right-0 -z-[2] w-[50%]"
         src={footerVector1}
         alt="Decorative footer background"
+        loading="lazy"
       />
       <img
         className="absolute bottom-0 left-0 -z-[2] w-[50%]"
         src={footerVector2}
         alt="Decorative footer background"
+        loading="lazy"
       />
     </footer>
   );

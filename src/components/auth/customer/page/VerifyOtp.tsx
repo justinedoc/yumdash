@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router";
 import AuthContainer from "../_components/AuthContainer";
+import lock from "/src/assets/images/lock-img.png";
 
 import { Button } from "@/components/ui/button";
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
@@ -44,11 +45,7 @@ function VerifyOtp() {
     <AuthContainer>
       <section className="flex flex-1 justify-center items-center p-4 md:p-10">
         <main className="max-w-[20rem] w-fit border border-[#0F5D8F29] p-5 md:p-6 rounded-md flex flex-col items-center gap-1">
-          <img
-            src="/src/assets/images/lock-img.png"
-            alt="lock image"
-            width={50}
-          />
+          <img src={lock} alt="lock image" width={50} />
           <h1 className="text-xl font-semibold">Email verification</h1>
           <p className="text-xs text-[#535353] font-light text-center">
             Input 4 digit pin that was sent to your email

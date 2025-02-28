@@ -48,6 +48,7 @@ function EarnWithUs() {
             src={activeTab === "rider" ? carImg : vendorCookImg}
             alt="car image"
             className="w-[30rem]"
+
           />
         </div>
 
@@ -90,7 +91,7 @@ function EarnWithUsArticle({
   isVendorActive = true,
 }: EarnWithUsArticleType) {
   return (
-    <article className="space-y-3 w-full md:max-w-[25rem] h-full md:mt-24 px-4 md:px-0">
+    <article className="space-y-3 w-full md:max-w-[25rem] h-full md:mt-26 md:ml-15 px-4 md:px-0">
       <h1
         className={cn(
           "text-hero text-2xl font-semibold text-primary",

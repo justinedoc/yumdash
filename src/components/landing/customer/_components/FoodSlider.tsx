@@ -71,6 +71,7 @@ const FoodSlider = () => {
                   src={food.image}
                   alt={food.name}
                   className={cn("h-[15rem] mx-auto", food.color)}
+                  loading="lazy"
                 />
                 <div className="p-2">
                   <div>

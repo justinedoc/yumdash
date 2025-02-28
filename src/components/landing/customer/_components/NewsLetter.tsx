@@ -30,8 +30,18 @@ function NewsLetter() {
       </form>
 
       <div className="justify-between w-full absolute bottom-0 hidden md:flex">
-        <img className="md:w-[25rem]" src={newsletterLeft} alt="leaf" />
-        <img className="md:w-[25rem]" src={newsletterRight} alt="leaf" />
+        <img
+          className="md:w-[25rem]"
+          src={newsletterLeft}
+          alt="leaf"
+          loading="lazy"
+        />
+        <img
+          className="md:w-[25rem]"
+          src={newsletterRight}
+          alt="leaf"
+          loading="lazy"
+        />
       </div>
     </section>
   );

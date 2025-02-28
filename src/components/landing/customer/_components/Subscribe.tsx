@@ -25,7 +25,6 @@ const Subscribe = () => {
             src={delivery}
             className="md:w-[25rem] w-[23rem]"
             alt="delivery"
-            loading="lazy"
           />
         </div>
       </div>

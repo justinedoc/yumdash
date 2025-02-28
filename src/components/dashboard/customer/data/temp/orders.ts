@@ -1,4 +1,5 @@
 import { OrderDetails } from "@/types/foodOrderTypes";
+import restaurantImg from "@/assets/images/temp/restaurant.png";
 
 export const orders: OrderDetails[] = [
   {
@@ -7,7 +8,7 @@ export const orders: OrderDetails[] = [
     restaurant: {
       id: "kfc-ipaja",
       name: "The Gourmet Kitchen",
-      imageUrl: "/src/assets/images/temp/restaurant.png",
+      imageUrl: restaurantImg,
       address: {
         street: "123 Main St",
         city: "Springfield",
@@ -105,7 +106,7 @@ export const orders: OrderDetails[] = [
     restaurant: {
       id: "kfc-ipaja2",
       name: "The Gourmet Kitchen",
-      imageUrl: "/src/assets/images/temp/restaurant.png",
+      imageUrl: restaurantImg,
       address: {
         street: "123 Main St",
         city: "Springfield",
@@ -203,7 +204,7 @@ export const orders: OrderDetails[] = [
     restaurant: {
       id: "kfc-ipaja3",
       name: "The Gourmet Kitchen",
-      imageUrl: "/src/assets/images/temp/restaurant.png",
+      imageUrl: restaurantImg,
       address: {
         street: "123 Main St",
         city: "Springfield",
@@ -301,7 +302,7 @@ export const orders: OrderDetails[] = [
     restaurant: {
       id: "mcdonalds-ipaja",
       name: "The Gourmet Kitchen",
-      imageUrl: "/src/assets/images/temp/restaurant.png",
+      imageUrl: restaurantImg,
       address: {
         street: "123 Main St",
         city: "Springfield",
@@ -399,7 +400,7 @@ export const orders: OrderDetails[] = [
     restaurant: {
       id: "mcdonalds-ipaja2",
       name: "The Gourmet Kitchen",
-      imageUrl: "/src/assets/images/temp/restaurant.png",
+      imageUrl: restaurantImg,
       address: {
         street: "123 Main St",
         city: "Springfield",

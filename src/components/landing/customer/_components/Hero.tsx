@@ -11,7 +11,12 @@ function Hero() {
           <span className="text-wrap">Discover & Order </span>
           <span>
             <span>Fr</span>
-            <img src={food} alt="o" className="md:w-10 w-7 inline-block" />
+            <img
+              src={food}
+              alt="o"
+              className="md:w-10 w-7 inline-block"
+              loading="lazy"
+            />
             <span>m The Best</span>
           </span>
         </h1>
