@@ -54,7 +54,7 @@ function AddressManager() {
 
       <section
         id="search"
-        className="relative bg-gray-100 w-full max-w-xl rounded-md mt-3 shadow-sm"
+        className="relative bg-gray-100 w-full max-w-xl rounded-md mt-3 border"
       >
         <input
           onKeyDown={handleKeyDown}
