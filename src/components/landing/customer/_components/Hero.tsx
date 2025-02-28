@@ -1,5 +1,6 @@
 import FoodSlider from "./FoodSlider";
 import Navbar from "./Navbar";
+import food from "@/assets/icons/food.svg";
 
 function Hero() {
   return (
@@ -10,11 +11,7 @@ function Hero() {
           <span className="text-wrap">Discover & Order </span>
           <span>
             <span>Fr</span>
-            <img
-              src={"/src/assets/icons/food.svg"}
-              alt=""
-              className="md:w-10 w-7 inline-block"
-            />
+            <img src={food} alt="o" className="md:w-10 w-7 inline-block" />
             <span>m The Best</span>
           </span>
         </h1>

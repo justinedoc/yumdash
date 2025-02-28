@@ -21,7 +21,12 @@ const Subscribe = () => {
           </Button>
         </div>
         <div className="md:w-1/3 md:mt-0 mt-7 mb-[40px] md:mb-0">
-          <img src={delivery} className="md:w-[25rem] w-[23rem]" alt="" />
+          <img
+            src={delivery}
+            className="md:w-[25rem] w-[23rem]"
+            alt="delivery"
+            loading="lazy"
+          />
         </div>
       </div>
     </div>

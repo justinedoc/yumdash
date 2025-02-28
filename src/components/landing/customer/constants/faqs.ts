@@ -1,3 +1,7 @@
+import rocket from "@/assets/icons/rocket.svg";
+import message from "@/assets/icons/message.svg";
+import subscription from "@/assets/icons/subscription.svg";
+
 export type FAQItem = {
   question: string;
   answer: string;
@@ -10,7 +14,7 @@ export type FAQGroup = {
 
 export const faqData: FAQGroup[] = [
   {
-    image: "/src/assets/icons/rocket.svg",
+    image: rocket,
     items: [
       {
         question: "Getting started?",
@@ -33,7 +37,7 @@ export const faqData: FAQGroup[] = [
     ],
   },
   {
-    image: "/src/assets/icons/message.svg",
+    image: message,
     items: [
       {
         question: "Special order notes?",
@@ -55,7 +59,7 @@ export const faqData: FAQGroup[] = [
     ],
   },
   {
-    image: "/src/assets/icons/subscription.svg",
+    image: subscription,
     items: [
       {
         question: "Feedback/complaint?",

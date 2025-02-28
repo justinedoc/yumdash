@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import Logo from "../../ui/Logo";
 import { footerNavs } from "../constants/footerNavs";
 import { footerSocials } from "../constants/footerSocials";
+import footerVector1 from "@/assets/images/footer-vector-1.png";
+import footerVector2 from "@/assets/images/footer-vector-2.png";
 
 import {
   Select,
@@ -83,12 +85,12 @@ function Footer() {
       {/* Decorative Footer Overlays */}
       <img
         className="absolute top-0 right-0 -z-[2] w-[50%]"
-        src="/src/assets/images/footer-vector-1.png"
+        src={footerVector1}
         alt="Decorative footer background"
       />
       <img
         className="absolute bottom-0 left-0 -z-[2] w-[50%]"
-        src="/src/assets/images/footer-vector-2.png"
+        src={footerVector2}
         alt="Decorative footer background"
       />
     </footer>

@@ -2,11 +2,18 @@ import { MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Star } from "../../ui/DisplayRating";
 
+// Import your images from the assets folder
+import mimisPlaceImg from "@/assets/images/temp/food-1.png";
+import femisCourtImg from "@/assets/images/temp/food-2.png";
+import sunicFoodImg from "@/assets/images/temp/food-3.png";
+import wideplainsImg from "@/assets/images/temp/food-4.png";
+import theHiveImg from "@/assets/images/temp/food-5.png";
+
 const foodItems = [
   {
     name: "Mimi’s place",
     address: "107 Wetheral Rd, Owerri 460211 Nigeria.",
-    image: "mimis-place.jpg",
+    image: mimisPlaceImg,
     rating: 4.5,
     reviews: 23,
     color: "bg-pink-200",
@@ -14,7 +21,7 @@ const foodItems = [
   {
     name: "Femi’s court",
     address: "107 Wetheral Rd, Owerri 460211 Nigeria.",
-    image: "femis-court.jpg",
+    image: femisCourtImg,
     rating: 4.5,
     reviews: 23,
     color: "bg-blue-200",
@@ -22,7 +29,7 @@ const foodItems = [
   {
     name: "Sunic food",
     address: "107 Wetheral Rd, Owerri 460211 Nigeria.",
-    image: "sunic-food.jpg",
+    image: sunicFoodImg,
     rating: 4.5,
     reviews: 23,
     color: "bg-yellow-200",
@@ -30,7 +37,7 @@ const foodItems = [
   {
     name: "Wideplains",
     address: "107 Wetheral Rd, Owerri 460211 Nigeria.",
-    image: "wideplains.jpg",
+    image: wideplainsImg,
     rating: 4.5,
     reviews: 23,
     color: "bg-purple-200",
@@ -38,7 +45,7 @@ const foodItems = [
   {
     name: "The Hive",
     address: "107 Wetheral Rd, Owerri 460211 Nigeria.",
-    image: "the-hive.jpg",
+    image: theHiveImg,
     rating: 4.5,
     reviews: 23,
     color: "bg-green-200",
@@ -61,7 +68,7 @@ const FoodSlider = () => {
             >
               <div className="slide">
                 <img
-                  src={`/src/assets/images/temp/food-${i + 1}.png`}
+                  src={food.image}
                   alt={food.name}
                   className={cn("h-[15rem] mx-auto", food.color)}
                 />
@@ -70,7 +77,6 @@ const FoodSlider = () => {
                     <h1 className="text-hero text-2xl font-bold">
                       {food.name}
                     </h1>
-
                     <p className="text-sm mt-3 flex items-center justify-center gap-3 font-bold">
                       <span className="bg-white p-1 rounded-full">
                         <MapPin size={18} />
@@ -91,7 +97,7 @@ const FoodSlider = () => {
                         {food.rating}/{" "}
                         <span className="underline">
                           {food.reviews} reviews
-                        </span>{" "}
+                        </span>
                       </p>
                     </div>
                   </div>

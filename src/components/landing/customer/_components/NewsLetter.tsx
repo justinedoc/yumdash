@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import newsletterLeft from "@/assets/images/newsletter-left.png";
+import newsletterRight from "@/assets/images/newsletter-right.png";
 
 function NewsLetter() {
-  const imgPath = (side: "left" | "right"): string =>
-    `/src/assets/images/newsletter-${side}.png`;
   return (
     <section className="min-h-96 w-[90%] relative mx-auto bg-[#004834] rounded-b-[3.5rem] pt-6 md:pt-10 md:mb-15 mb-7">
       <form className="text-white p-7 md:p-12 w-full flex flex-col items-center gap-4">
@@ -30,8 +30,8 @@ function NewsLetter() {
       </form>
 
       <div className="justify-between w-full absolute bottom-0 hidden md:flex">
-        <img className="md:w-[25rem]" src={imgPath("left")} alt="leaf" />
-        <img className="md:w-[25rem]" src={imgPath("right")} alt="leaf" />
+        <img className="md:w-[25rem]" src={newsletterLeft} alt="leaf" />
+        <img className="md:w-[25rem]" src={newsletterRight} alt="leaf" />
       </div>
     </section>
   );

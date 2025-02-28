@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import SectionHeader from "../../ui/SectionHeader";
+import mobileApp from "@/assets/images/mobile-app.png";
 
 function DownloadApp() {
   return (
@@ -25,7 +26,7 @@ function DownloadApp() {
       <div className="w-full mt-10 md:mt-0 md:w-1/2">
         <img
           className="w-full md:w-[90%] md:ml-12 mx-auto"
-          src={"/src/assets/images/mobile-app.png"}
+          src={mobileApp}
           alt="Our mobile number"
         />
       </div>
