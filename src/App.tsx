@@ -28,7 +28,7 @@ function App() {
       <Route path="/login" element={<AnimateLoad element={<Login />} />} />
 
       {/* Dashboard routes */}
-      <Route path="/dashboard" element={<DashboardLayout />}>
+      <Route path="/dashboard" element={<DashboardLayout isLoggedIn />}>
         <Route path="home" element={<Home />} />
         <Route path="food-order" element={<FoodOrderLayout />}>
           <Route index element={<FoodOrder />} />
@@ -40,8 +40,8 @@ function App() {
         <Route path="payment-details" element={<Home />} />
       </Route>
 
-      <Route path="/restaurants">
-        <Route index element={<Home isLoggedIn={false} />} />
+      <Route path="/restaurants" element={<DashboardLayout />}>
+        <Route index element={<Home />} />
       </Route>
 
       {/* non-existing paths */}

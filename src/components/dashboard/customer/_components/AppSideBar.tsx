@@ -17,6 +17,9 @@ import { GoHomeFill } from "react-icons/go";
 import { BsBookHalf } from "react-icons/bs";
 import { LuShoppingBag } from "react-icons/lu";
 import { BiSupport } from "react-icons/bi";
+import { useAuthStateContext } from "../hooks/useAuthStateContext";
+import AuthDivider from "@/components/auth/ui/AuthDivider";
+import SidebarAuthPromptButton from "../../ui/SidebarAuthPromptButton";
 
 interface MenuItem {
   title: string;
@@ -60,6 +63,7 @@ const menuItems: MenuItem[] = [
 export function AppSidebar() {
   const location = useLocation();
   const { setOpenMobile } = useSidebar();
+  const { isLoggedIn } = useAuthStateContext();
 
   // Determines if the given URL matches the current location.
   const isActive = (url: string): boolean => {
@@ -97,24 +101,47 @@ export function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent className="text-md">
-            <SidebarMenu>
-              {menuItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    className="border border-transparent data-[active=true]:border-secondary/60 rounded-sm px-4"
-                    isActive={isActive(item.url)}
-                    onClick={() => setOpenMobile(false)}
-                    size="lg"
-                    asChild
-                  >
-                    <Link to={item.url} className="flex items-center space-x-2">
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
+            {isLoggedIn ? (
+              <SidebarMenu>
+                {menuItems.map((item) => (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton
+                      className="border border-transparent data-[active=true]:border-secondary/60 rounded-sm px-4"
+                      isActive={isActive(item.url)}
+                      onClick={() => setOpenMobile(false)}
+                      size="lg"
+                      asChild
+                    >
+                      <Link
+                        to={item.url}
+                        className="flex items-center space-x-2"
+                      >
+                        <item.icon />
+                        <span>{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            ) : (
+              <SidebarMenu>
+                <SidebarMenuItem className="mx-auto mt-20 space-y-5">
+                  <SidebarAuthPromptButton
+                    label="Register For An Account"
+                    link="signup"
+                    className="hover:text-white secondary-grad-bg"
+                  />
+
+                  <AuthDivider />
+
+                  <SidebarAuthPromptButton
+                    label="Log In To Your Account"
+                    link="login"
+                    className="border border-secondary bg-[#D6E6E2] text-secondary"
+                  />
                 </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
+              </SidebarMenu>
+            )}
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>

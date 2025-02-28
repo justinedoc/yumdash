@@ -2,16 +2,26 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { Outlet } from "react-router";
 import Navbar from "./Navbar";
 import { AppSidebar } from "./AppSideBar";
+import { createContext } from "react";
 
-function DashboardLayout() {
+export const AuthStateContext = createContext<
+  | {
+      isLoggedIn: boolean;
+    }
+  | undefined
+>(undefined);
+
+function DashboardLayout({ isLoggedIn = false }) {
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <main className="w-full overflow-x-hidden">
-        <Navbar />
-        <Outlet />
-      </main>
-    </SidebarProvider>
+    <AuthStateContext.Provider value={{ isLoggedIn }}>
+      <SidebarProvider>
+        <AppSidebar />
+        <main className="w-full overflow-x-hidden">
+          <Navbar />
+          <Outlet />
+        </main>
+      </SidebarProvider>
+    </AuthStateContext.Provider>
   );
 }
 

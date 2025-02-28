@@ -14,6 +14,7 @@ import {
 import FormHeader from "../../ui/FormHeader";
 import GoogleSignInButton from "../../ui/GoogleSignInBtn";
 import { CustomLink } from "../../ui/CustomLink";
+import AuthDivider from "../../ui/AuthDivider";
 
 export default function SignUpForm({
   onNext,
@@ -85,12 +86,7 @@ export default function SignUpForm({
           </Button>
 
           {/* Divider */}
-          <div className="relative my-3">
-            <div className="h-[0.1rem] bg-[#5799E333]" />
-            <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white w-1/3 font-medium text-center text-sm text-[#011933CC] h-fit">
-              OR
-            </span>
-          </div>
+          <AuthDivider />
 
           {/* Google Sign-In */}
           <GoogleSignInButton />

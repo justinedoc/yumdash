@@ -13,6 +13,8 @@ import { createContext, useState } from "react";
 import cartIcon from "@/assets/icons/cart.svg";
 import profileIcon from "@/assets/icons/profile.svg";
 import notificationsIcon from "@/assets/icons/notifications.svg";
+import { useAuthStateContext } from "../hooks/useAuthStateContext";
+import { cn } from "@/lib/utils";
 
 export const LocationContext = createContext<
   | {
@@ -25,13 +27,15 @@ export const LocationContext = createContext<
 const Navbar = () => {
   const [location, setLocation] = useState("");
 
+  const { state } = useSidebar();
+  const isMobile = useIsMobile();
+  const { isLoggedIn } = useAuthStateContext();
+
+  const shouldShowSidebarTrigger = state === "collapsed" || isMobile;
+
   const handleLocationChange = (location: string) => {
     setLocation(location);
   };
-
-  const { state } = useSidebar();
-  const isMobile = useIsMobile();
-  const shouldShowSidebarTrigger = state === "collapsed" || isMobile;
 
   return (
     <LocationContext.Provider value={{ location, handleLocationChange }}>
@@ -80,27 +84,7 @@ const Navbar = () => {
                 </Dialog>
               </div>
 
-              <button
-                type="button"
-                aria-label="View cart"
-                className="p-2 focus:outline-none"
-              >
-                <img src={cartIcon} alt="Cart icon" />
-              </button>
-              <button
-                type="button"
-                aria-label="View profile"
-                className="p-2 focus:outline-none"
-              >
-                <img src={profileIcon} alt="Profile icon" />
-              </button>
-              <button
-                type="button"
-                aria-label="Toggle dark mode"
-                className="p-2 focus:outline-none"
-              >
-                <img src={notificationsIcon} alt="Notification icon" />
-              </button>
+              <NavActions isLoggedIn={isLoggedIn} />
             </div>
           </div>
 
@@ -127,32 +111,40 @@ const Navbar = () => {
 
           {/* ============ Right Side (Desktop) ============ */}
           <div className="hidden md:flex items-center">
-            <button
-              type="button"
-              aria-label="View cart"
-              className="p-2 focus:outline-none"
-            >
-              <img src={cartIcon} alt="Cart icon" />
-            </button>
-            <button
-              type="button"
-              aria-label="View profile"
-              className="p-2 focus:outline-none"
-            >
-              <img src={profileIcon} alt="Profile icon" />
-            </button>
-            <button
-              type="button"
-              aria-label="Toggle dark mode"
-              className="p-2 focus:outline-none"
-            >
-              <img src={notificationsIcon} alt="Notification icon" />
-            </button>
+            <NavActions isLoggedIn={isLoggedIn} />
           </div>
         </div>
       </nav>
     </LocationContext.Provider>
   );
 };
+
+function NavActions({ isLoggedIn }: { isLoggedIn: boolean }) {
+  return (
+    <>
+      <button
+        type="button"
+        aria-label="View cart"
+        className="p-2 focus:outline-none"
+      >
+        <img src={cartIcon} alt="Cart icon" />
+      </button>
+      <button
+        type="button"
+        aria-label="View profile"
+        className={cn("p-2 focus:outline-none", !isLoggedIn && "hidden")}
+      >
+        <img src={profileIcon} alt="Profile icon" />
+      </button>
+      <button
+        type="button"
+        aria-label="Toggle dark mode"
+        className={cn("p-2 focus:outline-none", !isLoggedIn && "hidden")}
+      >
+        <img src={notificationsIcon} alt="Notification icon" />
+      </button>
+    </>
+  );
+}
 
 export default Navbar;
