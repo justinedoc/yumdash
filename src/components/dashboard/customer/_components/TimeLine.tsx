@@ -4,6 +4,7 @@ import { format } from "date-fns";
 import { MapPin, Store } from "lucide-react";
 import { formatAddress } from "../../utils/formatAddress";
 import { Button } from "@/components/ui/button";
+import mapImage from "@/assets/images/map-img.png";
 
 type TimelineProps = {
   order: OrderDetails;
@@ -88,7 +89,10 @@ export function Timeline({ order }: TimelineProps) {
       {/* Location details & Map Placeholder */}
       <div className="mt-8">
         <div className="mb-4 text-sm text-gray-600">{formatAddress(order)}</div>
-        <div className="relative h-48 w-full bg-[url('/src/assets/images/map-img.png')] rounded-xl bg-no-repeat bg-cover">
+        <div
+          style={{ backgroundImage: `url(${mapImage})` }}
+          className="relative h-48 w-full rounded-xl bg-no-repeat bg-cover"
+        >
           <div className="absolute inset-0 flex items-center justify-center backdrop-blur-xs">
             <Button className="secondary-grad-bg text-white px-4 py-2 rounded-md flex items-center gap-2">
               <MapPin size={16} />
