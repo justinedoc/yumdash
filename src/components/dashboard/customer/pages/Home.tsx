@@ -32,7 +32,7 @@ function Home() {
           </>
         ) : (
           <>
-            <title>Restaurants</title>
+            <title>Yumadash | Restaurants</title>
             <meta name="description" content="Restaurants on yumdash" />
           </>
         )}

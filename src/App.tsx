@@ -10,6 +10,7 @@ import FoodOrder from "./components/dashboard/customer/pages/FoodOrder";
 import SelectedFoodOrder from "./components/dashboard/customer/pages/SelectedFoodOrder";
 import Favourites from "./components/dashboard/customer/pages/Favourites";
 import FoodOrderLayout from "./components/dashboard/customer/_components/FoodOrderLayout";
+import Restaurant from "./components/dashboard/customer/pages/restaurant/_components/Restaurant";
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
       {/* Landing page route */}
       <Route path="/" element={<Customer />} />
 
-      {/* <Route path="/:id" element={} /> */}
+      <Route path="/" element={<DashboardLayout isLoggedIn />}>
+        <Route path=":id" element={<Restaurant />} />
+      </Route>
       {/* Auth routes */}
       <Route path="/signup">
         <Route index element={<AnimateLoad element={<Signup />} />} />

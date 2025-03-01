@@ -195,7 +195,7 @@
 }
 
 @utility main_wavy {
-  @apply md:h-[100%] h-[50dvh];
+  height: 100%;
   background-image: url("/src/assets/images/hero-wavy-bg.png");
   background-repeat: no-repeat;
   background-size: cover;

@@ -6,7 +6,7 @@ function HeroCallToAction() {
   return (
     <>
       <div className="md:main_wavy items-center justify-center bg-primary md:bg-transparent">
-        <div className="md:px-[8rem] text-center pt-[10rem] md:pt-[5rem] flex justify-center">
+        <div className="md:px-[8rem] pt-10 text-center flex justify-center">
           <h1 className="mx-5 md:mx-0 md:mt-[7rem] md:max-w-[50%]">
             we've curated an exceptional selection of restaurants that are
             guaranteed to delight your taste buds. From savory to sweet, from
@@ -18,7 +18,7 @@ function HeroCallToAction() {
             onClick={() => {
               navigate("/restaurants");
             }}
-            className="bg-secondary w-fit py-5 px-10 text-md md:font-semibold text-white rounded-full cursor-pointer hover:bg-white hover:text-black"
+            className="bg-secondary w-fit py-5 px-10 text-md md:font-semibold text-white rounded-full cursor-pointer hover:bg-secondary/90"
           >
             Order Now
           </Button>
