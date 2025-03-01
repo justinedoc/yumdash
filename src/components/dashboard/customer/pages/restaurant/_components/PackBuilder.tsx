@@ -2,6 +2,7 @@ import React from "react";
 import SecondaryButton from "./SecondaryButton";
 import { Plus } from "lucide-react";
 import { PackItem } from "./DeliveryTab";
+import { formatMoney } from "@/lib/formatMoney";
 
 type PackBuilderProps = {
   items: PackItem[];
@@ -28,7 +29,9 @@ const PackBuilder: React.FC<PackBuilderProps> = ({
         <div key={item.id} className="flex items-center justify-between my-4">
           <div className="text-sm">
             <div className="font-medium">{item.name}</div>
-            <p className="text-[#A5A5A5]">₦{item.price}</p>
+            <p className="text-[#A5A5A5]">
+              {formatMoney(item.price, { decimals: 0 })}
+            </p>
           </div>
 
           {/* Quantity controls */}

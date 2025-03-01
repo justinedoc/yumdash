@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { PackItem } from "./DeliveryTab";
 import { ClassValue } from "clsx";
 import { cn } from "@/lib/utils";
+import { formatMoney } from "@/lib/formatMoney";
 
 type DeliveryItemsSummaryProps = {
   items: PackItem[];
@@ -42,7 +43,7 @@ function Summary({ label, price, className }: SummaryProps) {
   return (
     <div className="flex justify-between items-center">
       <h2 className={cn(className)}>{label}</h2>
-      <span>₦{price}</span>
+      <span>{formatMoney(price, { decimals: 0 })}</span>
     </div>
   );
 }
