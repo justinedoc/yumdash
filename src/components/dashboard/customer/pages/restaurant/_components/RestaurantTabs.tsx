@@ -1,28 +1,33 @@
 import { TabsTrigger } from "@/components/dashboard/ui/TabsTrigger";
 import { Tabs, TabsContent, TabsList } from "@/components/ui/tabs";
+import All from "./tabs/All";
+import Offer from "./tabs/Offer";
+import Featured from "./tabs/Featured";
+import SoftDrinks from "./tabs/SoftDrinks";
+import CheckoutBox from "./CheckoutBox";
 
 const TABS = [
   {
     value: "all",
-    content: "All tabs",
+    content: <All />,
   },
   {
     value: "Offer",
-    content: "Offers",
+    content: <Offer />,
   },
   {
     value: "Featured",
-    content: "features",
+    content: <Featured />,
   },
   {
     value: "soft-drinks",
-    content: "soft drinks",
+    content: <SoftDrinks />,
   },
 ] as const;
 
 function RestaurantTabs() {
   return (
-    <Tabs defaultValue="all" className="w-[400px]">
+    <Tabs defaultValue="all">
       <TabsList className="bg-transparent gap-3">
         {TABS.map((tab) => (
           <TabsTrigger
@@ -34,11 +39,16 @@ function RestaurantTabs() {
           </TabsTrigger>
         ))}
       </TabsList>
-      {TABS.map((tab) => (
-        <TabsContent key={tab.value} value={tab.value}>
-          {tab.content}
-        </TabsContent>
-      ))}
+
+      <div className="px-2 grid grid-cols-3">
+        {TABS.map((tab) => (
+          <TabsContent className="col-span-2" key={tab.value} value={tab.value}>
+            {tab.content}
+          </TabsContent>
+        ))}
+
+        <CheckoutBox />
+      </div>
     </Tabs>
   );
 }
