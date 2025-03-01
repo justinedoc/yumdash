@@ -1,25 +1,24 @@
 import restaurantBanner from "@/assets/images/temp/restaurant-banner.jpg";
-
 import BannerBio from "./BannerBio";
-import RestaurantTabs from "./RestaurantTabs";
 
 function Banner() {
   return (
     <header>
-      <title>Alessio_Fiore on Yumdash</title>
-      <meta name="description" content="Alessio_Fiore on yumdash" />
+      <head>
+        <title>Alessio_Fiore on Yumdash</title>
+        <meta name="description" content="Alessio_Fiore on yumdash" />
+      </head>
       <div className="relative bg-[#014921]">
-        {/* Backgroung image  */}
+        {/* Background image */}
         <div
-          className="h-45 w-full overflow-hidden bg-center bg-cover bg-no-repeat"
+          className="w-full h-80 md:h-60 overflow-hidden bg-center bg-cover bg-no-repeat"
           style={{ backgroundImage: `url(${restaurantBanner})` }}
         />
-
-        {/* Header content  */}
+        {/* Optional overlay to improve text readability */}
+        <div className="absolute inset-0 bg-black opacity-25 md:opacity-0"></div>
+        {/* Banner content */}
         <BannerBio />
       </div>
-      {/* Tabs  */}
-      <RestaurantTabs />
     </header>
   );
 }

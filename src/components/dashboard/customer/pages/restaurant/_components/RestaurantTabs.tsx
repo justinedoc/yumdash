@@ -40,7 +40,7 @@ function RestaurantTabs() {
         ))}
       </TabsList>
 
-      <div className="px-2 grid grid-cols-3">
+      <div className="md:px-2 grid grid-cols-1 md:gap-0 gap-y-6 md:grid-cols-3">
         {TABS.map((tab) => (
           <TabsContent className="col-span-2" key={tab.value} value={tab.value}>
             {tab.content}

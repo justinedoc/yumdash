@@ -7,7 +7,7 @@ function CheckoutBox() {
     "data-[state=active]:bg-secondary data-[state=active]:text-white rounded-sm";
 
   return (
-    <div className="col-span-1 px-3">
+    <div className="mx-auto md:col-span-1 px-3">
       <Tabs
         defaultValue="delivery"
         className="border border-[#0F5D8F29] p-2 rounded-sm"

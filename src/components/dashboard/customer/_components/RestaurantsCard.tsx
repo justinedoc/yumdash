@@ -5,11 +5,12 @@ import {
   PhoneIcon,
   MapPinIcon,
   ClockIcon,
-  Loader2Icon,
 } from "lucide-react";
 import { RestaurantCardProps } from "@/types/resturantCardTypes";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router";
+import { slugify } from "@/lib/slugify";
 
 const RestaurantCard: React.FC<RestaurantCardProps> = ({
   id,
@@ -23,24 +24,14 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
   isFavorite = false,
   className = "",
 }) => {
-  const [isOrdering, setIsOrdering] = useState(false);
   const [favorite, setFavorite] = useState(isFavorite);
   const [isPending, startTransition] = useTransition();
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleOrder = async () => {
-    if (isOrdering) return;
-    setIsOrdering(true);
-    try {
-      // Simulate network delay
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      console.log("Order placed for restaurant:", id);
-      // Optionally, trigger a success notification here
-    } catch (error) {
-      console.error("Error during ordering:", error);
-    } finally {
-      setIsOrdering(false);
-    }
+  const navigate = useNavigate();
+
+  const handleOrder = () => {
+    navigate(`/${slugify(name)}`);
   };
 
   const handleFavorite = () => {
@@ -194,19 +185,8 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
             </div>
           </div>
           {/* Order Button */}
-          <Button
-            onClick={handleOrder}
-            disabled={isOrdering}
-            className="secondary-grad-bg"
-          >
-            {isOrdering ? (
-              <span className="flex items-center gap-2">
-                <Loader2Icon className="w-5 h-5 animate-spin" />
-                Ordering...
-              </span>
-            ) : (
-              <span>Go to Restaurant</span>
-            )}
+          <Button onClick={handleOrder} className="secondary-grad-bg">
+            Go to Restaurant
           </Button>
         </div>
       </div>
