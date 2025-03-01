@@ -70,6 +70,10 @@ export function AppSidebar() {
     return location.pathname === url || location.pathname.startsWith(url + "/");
   };
 
+  const anyOtherActive = menuItems
+    .filter((item) => item.title !== "Home")
+    .some((item) => isActive(item.url));
+
   return (
     <Sidebar>
       <SidebarHeader className="flex flex-row items-center justify-between py-5">
@@ -103,25 +107,31 @@ export function AppSidebar() {
           <SidebarGroupContent className="text-md">
             {isLoggedIn ? (
               <SidebarMenu>
-                {menuItems.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton
-                      className="border border-transparent data-[active=true]:border-secondary/60 rounded-sm px-4"
-                      isActive={isActive(item.url)}
-                      onClick={() => setOpenMobile(false)}
-                      size="lg"
-                      asChild
-                    >
-                      <Link
-                        to={item.url}
-                        className="flex items-center space-x-2"
+                {menuItems.map((item) => {
+                  const active =
+                    item.title === "Home"
+                      ? isActive(item.url) || !anyOtherActive
+                      : isActive(item.url);
+                  return (
+                    <SidebarMenuItem key={item.title}>
+                      <SidebarMenuButton
+                        className="border border-transparent data-[active=true]:border-secondary/60 rounded-sm px-4"
+                        isActive={active}
+                        onClick={() => setOpenMobile(false)}
+                        size="lg"
+                        asChild
                       >
-                        <item.icon />
-                        <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
+                        <Link
+                          to={item.url}
+                          className="flex items-center space-x-2"
+                        >
+                          <item.icon />
+                          <span>{item.title}</span>
+                        </Link>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  );
+                })}
               </SidebarMenu>
             ) : (
               <SidebarMenu>
