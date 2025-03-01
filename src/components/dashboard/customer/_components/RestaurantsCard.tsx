@@ -205,7 +205,7 @@ const RestaurantCard: React.FC<RestaurantCardProps> = ({
                 Ordering...
               </span>
             ) : (
-              <span>Order Now</span>
+              <span>Go to Restaurant</span>
             )}
           </Button>
         </div>

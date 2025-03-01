@@ -17,6 +17,7 @@ function App() {
       {/* Landing page route */}
       <Route path="/" element={<Customer />} />
 
+      {/* <Route path="/:id" element={} /> */}
       {/* Auth routes */}
       <Route path="/signup">
         <Route index element={<AnimateLoad element={<Signup />} />} />

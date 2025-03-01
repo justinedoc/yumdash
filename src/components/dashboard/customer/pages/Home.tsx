@@ -9,8 +9,10 @@ import CustomTabsTrigger from "../../ui/CustomTabsTrigger";
 import { TabsTrigger } from "../../ui/TabsTrigger";
 import { Star } from "lucide-react";
 import { useNavigate } from "react-router";
+import { useAuthStateContext } from "../hooks/useAuthStateContext";
 
-function Home({ isLoggedIn = true }: { isLoggedIn?: boolean }) {
+function Home() {
+  const { isLoggedIn } = useAuthStateContext();
   const handleNavigate = (location: string) => {
     return () => location && navigate(location);
   };

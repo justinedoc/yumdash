@@ -7,6 +7,7 @@ import { sleep } from "../../utils/sleep";
 import { useLoadingContext } from "../../hooks/useLoadingContext";
 import { useNavigate } from "react-router";
 import LoginForm from "../_components/LoginForm";
+import { toast } from "sonner";
 
 const LoginFormSchema = z.object({
   email: z.string().email({
@@ -34,7 +35,8 @@ function Login() {
       handleLoading("start");
       await sleep(2000);
       console.log("Final Data:", data);
-      navigate("/dashboard", {
+      toast.success("Login successful");
+      navigate("/dashboard/home", {
         replace: true,
       });
       // TODO: Add api call here
