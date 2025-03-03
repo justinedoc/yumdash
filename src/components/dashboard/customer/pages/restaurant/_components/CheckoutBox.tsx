@@ -1,6 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
-import DeliveryTab from "./DeliveryTab";
+import Delivery from "./Delivery";
 
 function CheckoutBox() {
   const tabsTriggerStyle =
@@ -20,8 +20,9 @@ function CheckoutBox() {
             Eat In/Pick Up
           </TabsTrigger>
         </TabsList>
+
         <TabsContent value="delivery">
-          <DeliveryTab />
+          <Delivery />
         </TabsContent>
         <TabsContent value="eat-in/pick-up">Eat In/Pick Up here</TabsContent>
       </Tabs>

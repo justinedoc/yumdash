@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { PackItem } from "./DeliveryTab";
+import { PackItem } from "./Delivery";
 import { ClassValue } from "clsx";
 import { cn } from "@/lib/utils";
 import { formatMoney } from "@/lib/formatMoney";

@@ -1,15 +1,17 @@
+import { cn } from "@/lib/utils";
 import React, { useState, useRef, useEffect } from "react";
 
+type Role = "Customer" | "Vendor";
+
 interface RoleSelectorProps {
-  onSelect?: (role: string) => void;
+  onSelect?: (role: Role) => void;
 }
 
 const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [currentRole, setCurrentRole] = useState<string>("Customer");
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentRole, setCurrentRole] = useState<Role>("Customer");
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close the dropdown if a user clicks outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -25,12 +27,10 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
     };
   }, []);
 
-  function handleSelectRole(role: string) {
+  function handleSelectRole(role: Role) {
     setCurrentRole(role);
+    onSelect?.(role);
     setIsOpen(false);
-    if (onSelect) {
-      onSelect(role);
-    }
   }
 
   return (
@@ -64,7 +64,11 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
       {isOpen && (
         <div className="absolute left-0 mt-2 w-40 rounded-md bg-transparent ring-opacity-5 z-10 font-meduim">
           <ul className="py-2 bg-transparent text-black space-y-2">
-            <li>
+            <li
+              className={cn({
+                hidden: currentRole === "Customer",
+              })}
+            >
               <button
                 onClick={() => handleSelectRole("Customer")}
                 className="w-fit text-left px-4 py-2 bg-[#EFFFFB] hover:bg-emerald-50 transition-colors rounded-lg cursor-pointer"
@@ -72,12 +76,16 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
                 Customer
               </button>
             </li>
-            <li>
+            <li
+              className={cn({
+                hidden: currentRole === "Vendor",
+              })}
+            >
               <button
-                onClick={() => handleSelectRole("Vendors")}
+                onClick={() => handleSelectRole("Vendor")}
                 className="w-fit text-left px-4 py-2 bg-[#EFFFFB] hover:bg-emerald-50 transition-colors rounded-lg cursor-pointer"
               >
-                Vendors
+                Vendor
               </button>
             </li>
             <li className="w-fit px-4 py-2 text-gray-600 flex gap-2 items-baseline justify-between cursor-not-allowed bg-[#EFFFFB]/90 rounded-lg">

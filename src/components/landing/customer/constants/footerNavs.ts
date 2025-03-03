@@ -38,4 +38,4 @@ export const footerNavs: FooterNavCategory[] = [
       { text: "Help center", href: "#help-center" },
     ],
   },
-] as const;
+];

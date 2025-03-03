@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router";
-import Customer from "./components/landing/customer/pages/Customer";
+import Customer from "./components/landing/customer";
 import Signup from "./components/auth/customer/page/Signup";
 import { AnimateLoad } from "./components/auth/utils/LoadingSetUp";
 import VerifyOtp from "./components/auth/customer/page/VerifyOtp";
@@ -38,17 +38,16 @@ function App() {
           <Route index element={<FoodOrder />} />
           <Route path=":id" element={<SelectedFoodOrder />} />
         </Route>
-        <Route path="order-history" element={<Home />} />
+        <Route path="order-history" element={<h1>Order history here</h1>} />
         <Route path="favourites" element={<Favourites />} />
-        <Route path="messages" element={<Home />} />
-        <Route path="payment-details" element={<Home />} />
+        <Route path="messages" element={<h1>Messages here</h1>} />
+        <Route path="payment-details" element={<h1>Payment details here</h1>} />
       </Route>
 
       <Route path="/restaurants" element={<DashboardLayout />}>
         <Route index element={<Home />} />
       </Route>
 
-      {/* non-existing paths */}
       <Route path="*" element={<h1>Page Not Found</h1>} />
     </Routes>
   );

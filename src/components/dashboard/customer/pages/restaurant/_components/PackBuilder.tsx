@@ -1,7 +1,7 @@
 import React from "react";
 import SecondaryButton from "./SecondaryButton";
 import { Plus } from "lucide-react";
-import { PackItem } from "./DeliveryTab";
+import { PackItem } from "./Delivery";
 import { formatMoney } from "@/lib/formatMoney";
 
 type PackBuilderProps = {
