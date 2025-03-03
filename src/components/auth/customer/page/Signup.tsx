@@ -75,7 +75,7 @@ function Signup() {
 
   return (
     <AuthContainer>
-      <AuthPromptBanner className="absolute top-3 right-3 text-xs" to="login">
+      <AuthPromptBanner to="login">
         Already on Yumdash?
       </AuthPromptBanner>
       {step > 1 && (

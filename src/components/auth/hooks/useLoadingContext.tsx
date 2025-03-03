@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { LoadingContext } from "../utils/LoadingSetUp";
+import { LoadingContext } from "../utils/AnimateLoad";
 
 export function useLoadingContext() {
   const context = useContext(LoadingContext);

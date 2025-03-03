@@ -18,6 +18,7 @@ const LoginFormSchema = z.object({
   }),
   rememberMe: z.boolean().optional(),
 });
+
 function Login() {
   const { handleLoading } = useLoadingContext();
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ function Login() {
   };
   return (
     <AuthContainer>
-      <AuthPromptBanner className="absolute top-3 right-3 text-xs" to="signup">
+      <AuthPromptBanner to="signup">
         Don’t have an account?
       </AuthPromptBanner>
       <FormProvider {...methods}>

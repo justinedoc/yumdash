@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { FaCheck } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
 
@@ -16,9 +17,10 @@ export function PasswordChecks({ password, checks }: PasswordChecksType) {
       {checks(password).map(({ message, isChecked }) => (
         <div
           key={message}
-          className={`flex items-center gap-3 ${
-            isChecked ? "text-green-500" : "text-red-500"
-          }`}
+          className={cn("flex items-center gap-3", {
+            "text-green-500": isChecked,
+            "text-red-500": !isChecked,
+          })}
         >
           {isChecked ? <FaCheck /> : <FaXmark />}
           <span>{message}</span>

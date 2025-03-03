@@ -13,14 +13,15 @@ import { useAuthStateContext } from "../hooks/useAuthStateContext";
 
 function Home() {
   const { isLoggedIn } = useAuthStateContext();
+  const navigate = useNavigate();
+
   const handleNavigate = (location: string) => {
     return () => location && navigate(location);
   };
 
-  const navigate = useNavigate();
   return (
     <section className="p-4 md:p-6 bg-[#fafafa]">
-      <header>
+      <head>
         {isLoggedIn ? (
           <>
             <title>Home | Dashboard</title>
@@ -36,7 +37,7 @@ function Home() {
             <meta name="description" content="Restaurants on yumdash" />
           </>
         )}
-      </header>
+      </head>
 
       {isLoggedIn && (
         <>

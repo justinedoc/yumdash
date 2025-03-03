@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router";
 import Customer from "./components/landing/customer";
 import Signup from "./components/auth/customer/page/Signup";
-import { AnimateLoad } from "./components/auth/utils/LoadingSetUp";
+import { AnimateLoad } from "./components/auth/utils/AnimateLoad";
 import VerifyOtp from "./components/auth/customer/page/VerifyOtp";
 import Login from "./components/auth/customer/page/Login";
 import DashboardLayout from "./components/dashboard/customer/_components/DashboardLayout";
