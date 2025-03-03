@@ -33,7 +33,7 @@ function RestaurantTabs() {
           <TabsTrigger
             key={tab.value}
             value={tab.value}
-            className="capitalize px-3 font-medium text-[#A5A5A5]"
+            className="md:text-base text-sm capitalize px-3 font-medium text-[#A5A5A5]"
           >
             {tab.value.split("-").join(" ")}
           </TabsTrigger>
@@ -42,7 +42,7 @@ function RestaurantTabs() {
 
       <div className="md:px-2 grid grid-cols-1 md:gap-0 gap-y-6 md:grid-cols-3">
         {TABS.map((tab) => (
-          <TabsContent className="col-span-2" key={tab.value} value={tab.value}>
+          <TabsContent className="col-span-2 p-3 md:p-0" key={tab.value} value={tab.value}>
             {tab.content}
           </TabsContent>
         ))}

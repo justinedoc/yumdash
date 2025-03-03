@@ -16,7 +16,7 @@ function DashboardLayout({ isLoggedIn = false }) {
     <AuthStateContext.Provider value={{ isLoggedIn }}>
       <SidebarProvider>
         <AppSidebar />
-        <main className="w-full overflow-x-hidden">
+        <main className="w-full overflow-x-hidden h-screen overflow-y-scroll">
           <Navbar />
           <Outlet />
         </main>

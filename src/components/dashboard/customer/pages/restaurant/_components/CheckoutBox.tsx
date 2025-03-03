@@ -23,9 +23,7 @@ function CheckoutBox() {
         <TabsContent value="delivery">
           <DeliveryTab />
         </TabsContent>
-        <TabsContent value="eat-in/pick-up">
-          Change your password here.
-        </TabsContent>
+        <TabsContent value="eat-in/pick-up">Eat In/Pick Up here</TabsContent>
       </Tabs>
     </div>
   );
