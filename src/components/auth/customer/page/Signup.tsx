@@ -1,6 +1,5 @@
 import { useState } from "react";
 import AuthPromptBanner from "../../ui/AuthPromptBanner";
-import AuthContainer from "../_components/AuthContainer";
 import SignUpDetailsForm from "../_components/SignupDetailsForm";
 import SignUpForm from "../_components/SignupForm";
 import { ArrowLeft } from "lucide-react";
@@ -74,7 +73,7 @@ function Signup() {
   };
 
   return (
-    <AuthContainer>
+    <>
       <AuthPromptBanner to="login">
         Already on Yumdash?
       </AuthPromptBanner>
@@ -97,7 +96,7 @@ function Signup() {
           <SignUpDetailsForm onSubmit={onSubmitSecondStep} />
         </FormProvider>
       )}
-    </AuthContainer>
+    </>
   );
 }
 

@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router";
 import Customer from "./components/landing/customer";
 import Signup from "./components/auth/customer/page/Signup";
-import { AnimateLoad } from "./components/auth/utils/AnimateLoad";
+import { AnimateLoad } from "./components/auth/customer/_components/AnimateLoad";
 import VerifyOtp from "./components/auth/customer/page/VerifyOtp";
 import Login from "./components/auth/customer/page/Login";
 import DashboardLayout from "./components/dashboard/customer/_components/DashboardLayout";
@@ -11,6 +11,7 @@ import SelectedFoodOrder from "./components/dashboard/customer/pages/SelectedFoo
 import Favourites from "./components/dashboard/customer/pages/Favourites";
 import FoodOrderLayout from "./components/dashboard/customer/_components/FoodOrderLayout";
 import Restaurant from "./components/dashboard/customer/pages/restaurant/_components/Restaurant";
+import AuthContainer from "./components/auth/customer/_components/AuthContainer";
 
 function App() {
   return (
@@ -21,15 +22,36 @@ function App() {
       <Route path="/" element={<DashboardLayout isLoggedIn />}>
         <Route path=":id" element={<Restaurant />} />
       </Route>
+
       {/* Auth routes */}
-      <Route path="/signup">
-        <Route index element={<AnimateLoad element={<Signup />} />} />
+      <Route path="/" element={<AuthContainer />}>
+        <Route path="signup">
+          <Route
+            index
+            element={
+              <AnimateLoad>
+                <Signup />
+              </AnimateLoad>
+            }
+          />
+          <Route
+            path="verify-otp"
+            element={
+              <AnimateLoad>
+                <VerifyOtp />
+              </AnimateLoad>
+            }
+          />
+        </Route>
         <Route
-          path="verify-otp"
-          element={<AnimateLoad element={<VerifyOtp />} />}
+          path="login"
+          element={
+            <AnimateLoad>
+              <Login />
+            </AnimateLoad>
+          }
         />
       </Route>
-      <Route path="/login" element={<AnimateLoad element={<Login />} />} />
 
       {/* Dashboard routes */}
       <Route path="/dashboard" element={<DashboardLayout isLoggedIn />}>

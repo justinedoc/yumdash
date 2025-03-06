@@ -1,5 +1,4 @@
 import { z } from "zod";
-import AuthContainer from "../_components/AuthContainer";
 import { FieldValues, FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import AuthPromptBanner from "../../ui/AuthPromptBanner";
@@ -48,14 +47,14 @@ function Login() {
     }
   };
   return (
-    <AuthContainer>
+    <>
       <AuthPromptBanner to="signup">
         Don’t have an account?
       </AuthPromptBanner>
       <FormProvider {...methods}>
         <LoginForm onSubmit={onSubmit} />
       </FormProvider>
-    </AuthContainer>
+    </>
   );
 }
 
