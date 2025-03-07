@@ -1,12 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 function DeliveryActions() {
   return (
@@ -19,14 +20,22 @@ function DeliveryActions() {
         />
       </DeliveryAction>
       <DeliveryAction label="Deliver to">
-        <Select>
-          <SelectTrigger className="rounded-sm">
-            <SelectValue placeholder="Address" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="address1">Your address</SelectItem>
-          </SelectContent>
-        </Select>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button variant={"ghost"} className="text-secondary">
+              {"Choose"}
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Are you absolutely sure?</DialogTitle>
+              <DialogDescription>
+                This action cannot be undone. This will permanently delete your
+                account and remove your data from our servers.
+              </DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
       </DeliveryAction>
       <DeliveryAction label="Delivery Instructions">
         <Button variant={"ghost"} className="text-secondary">

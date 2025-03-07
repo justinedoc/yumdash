@@ -17,7 +17,6 @@ const navLinks: NavLink[] = [
     href: "/about",
   },
   {
-    // RoleSelector element – clicking this should NOT close the mobile menu.
     element: <RoleSelector key="role-selector" />,
   },
   {
@@ -68,7 +67,7 @@ function Navbar() {
     <nav className="bg-[#F5E6BD] fixed top-0 w-[95%] left-1/2 transform -translate-x-1/2 z-50 shadow-md rounded-b-4xl">
       <div className="max-w-7xl mx-auto px-4 md:px-8 md:py-6 py-5 flex items-center justify-between">
         {/* Logo */}
-        <Logo className="w-28" />
+        <Logo className="w-28 -z-10 relative" />
 
         {/* Mobile menu toggle */}
         <div className="md:hidden">
@@ -78,7 +77,7 @@ function Navbar() {
             className="text-black focus:outline-none"
           >
             {mobileMenuOpen ? (
-              <HiX size={10} className="text-secondary w-7 h-10 z-10" />
+              <HiX size={10} className="text-secondary w-7 h-10 z-20" />
             ) : (
               <svg
                 className="w-13 h-10"
@@ -123,7 +122,7 @@ function Navbar() {
       {/* Mobile Menu – slides in from the right */}
       <div
         ref={mobileMenuRef}
-        className={`fixed z-[1] top-0 right-0 h-fit w-3/4 bg-[#F5E6BD] shadow-lg transform transition-transform duration-300 md:hidden rounded-2xl py-8 texe-lg ${
+        className={`fixed -z-[2] top-0 right-0 h-fit w-3/4 bg-[#F5E6BD] shadow-lg transform transition-transform duration-300 md:hidden rounded-2xl py-8 texe-lg ${
           mobileMenuOpen ? "translate-x-4" : "translate-x-[30rem]"
         }`}
       >

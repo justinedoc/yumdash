@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthStateContext } from "../_components/DashboardLayout";
+import { AuthStateContext } from "../Layout";
 
 export function useAuthStateContext() {
   const context = useContext(AuthStateContext);

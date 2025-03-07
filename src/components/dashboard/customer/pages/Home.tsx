@@ -21,23 +21,21 @@ function Home() {
 
   return (
     <section className="p-4 md:p-6 bg-[#fafafa]">
-      <head>
-        {isLoggedIn ? (
-          <>
-            <title>Home | Dashboard</title>
-            <meta name="description" content="Yumdash dashboard" />
-            <h1 className="font-medium text-2xl">Hi Jane!</h1>
-            <p className="text-sm text-gray-500">
-              We are ready to take your order!
-            </p>
-          </>
-        ) : (
-          <>
-            <title>Yumadash | Restaurants</title>
-            <meta name="description" content="Restaurants on yumdash" />
-          </>
-        )}
-      </head>
+      {isLoggedIn ? (
+        <>
+          <title>Home | Dashboard</title>
+          <meta name="description" content="Yumdash dashboard" />
+          <h1 className="font-medium text-2xl">Hi Jane!</h1>
+          <p className="text-sm text-gray-500">
+            We are ready to take your order!
+          </p>
+        </>
+      ) : (
+        <>
+          <title>Yumadash | Restaurants</title>
+          <meta name="description" content="Restaurants on yumdash" />
+        </>
+      )}
 
       {isLoggedIn && (
         <>

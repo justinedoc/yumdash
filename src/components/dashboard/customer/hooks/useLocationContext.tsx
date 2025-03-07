@@ -1,5 +1,12 @@
-import { useContext } from "react";
-import { LocationContext } from "../_components/Navbar";
+import { createContext, useContext } from "react";
+
+export const LocationContext = createContext<
+  | {
+      location: string;
+      handleLocationChange: (location: string) => void;
+    }
+  | undefined
+>(undefined);
 
 function useLocationContext() {
   const context = useContext(LocationContext);

@@ -22,7 +22,7 @@ const initialItems: PackItem[] = [
   { id: 4, name: "Pack", price: 150, quantity: 1 },
 ];
 
-function DeliveryTab() {
+function Delivery() {
   const [items, setItems] = useState<PackItem[]>(initialItems);
 
   const handleIncrementQuantity = (id: number) => {
@@ -91,4 +91,4 @@ function DeliveryTab() {
   );
 }
 
-export default DeliveryTab;
+export default Delivery;

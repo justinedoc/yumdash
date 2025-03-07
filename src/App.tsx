@@ -4,7 +4,7 @@ import Signup from "./components/auth/customer/page/Signup";
 import { AnimateLoad } from "./components/auth/customer/_components/AnimateLoad";
 import VerifyOtp from "./components/auth/customer/page/VerifyOtp";
 import Login from "./components/auth/customer/page/Login";
-import DashboardLayout from "./components/dashboard/customer/_components/DashboardLayout";
+import DashboardLayout from "./components/dashboard/customer/Layout";
 import Home from "./components/dashboard/customer/pages/Home";
 import FoodOrder from "./components/dashboard/customer/pages/FoodOrder";
 import SelectedFoodOrder from "./components/dashboard/customer/pages/SelectedFoodOrder";

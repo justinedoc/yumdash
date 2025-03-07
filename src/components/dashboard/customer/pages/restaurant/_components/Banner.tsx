@@ -4,10 +4,10 @@ import BannerBio from "./BannerBio";
 function Banner() {
   return (
     <header>
-      <head>
+      <>
         <title>Alessio_Fiore on Yumdash</title>
         <meta name="description" content="Alessio_Fiore on yumdash" />
-      </head>
+      </>
       <div className="relative bg-[#014921]">
         {/* Background image */}
         <div
