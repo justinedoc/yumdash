@@ -54,8 +54,8 @@ const foodItems = [
 
 const FoodSlider = () => {
   return (
-    <div className="py-6 mt-4 absolute overflow-x-hidden w-full">
-      <div className="min-h-[450px] py-3 m-auto relative w-full grid place-items-center">
+    <div className="py-6 mt-4 overflow-x-hidden w-full">
+      <div className="min-h-[450px] py-3 m-auto w-full grid place-items-center">
         <div className="slider-track gap-4">
           {[...foodItems, ...foodItems].map((food, i) => (
             <div

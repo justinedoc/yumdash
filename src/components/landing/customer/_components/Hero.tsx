@@ -6,7 +6,9 @@ function Hero() {
   return (
     <section className="bg-secondary">
       <Navbar />
-      <div className="pt-[8rem] md:pt-[10rem] py-6 md:px-0 px-2 text-center text-hero relative min-h-screen">
+      <div className="pt-[8rem] md:pt-[10rem] py-6 md:px-0 px-2 text-center text-hero relative">
+        <div className="bg-primary h-70 w-full absolute bottom-0 left-0" />
+
         <h1 className="flex justify-center gap-x-3 flex-wrap items-center md:text-5xl text-[2rem] text-white md:w-full mx-auto w-[18rem]">
           <span className="text-wrap">Discover & Order </span>
           <span>
