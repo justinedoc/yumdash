@@ -1,5 +1,11 @@
-import { useContext } from "react";
-import { AuthStateContext } from "../Layout";
+import { createContext, useContext } from "react";
+
+export const AuthStateContext = createContext<
+  | {
+      isLoggedIn: boolean;
+    }
+  | undefined
+>(undefined);
 
 export function useAuthStateContext() {
   const context = useContext(AuthStateContext);

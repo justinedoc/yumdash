@@ -2,8 +2,8 @@ import { createContext, useContext } from "react";
 
 export const LocationContext = createContext<
   | {
-      location: string;
-      handleLocationChange: (location: string) => void;
+      addresses: string[];
+      handleAddressChange: (location: string) => void;
     }
   | undefined
 >(undefined);

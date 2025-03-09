@@ -14,18 +14,18 @@ import { KeyboardEvent, useState } from "react";
 import { toast } from "sonner";
 
 function AddressManager() {
-  const [address, setAddress] = useState<string>("");
-  const { location, handleLocationChange } = useLocationContext();
+  const [address, setAddress] = useState("");
+  const { addresses, handleAddressChange } = useLocationContext();
 
   /**
    * Performs validation and saves the address.
    */
   const saveAddress = () => {
-    if (!address && !location) {
+    if (!address && !addresses) {
       toast.error("Please enter a valid address");
       return;
     }
-    handleLocationChange(address || location);
+    handleAddressChange(address || addresses[0]);
     toast.success("Address saved successfully");
     setAddress("");
   };
@@ -79,7 +79,7 @@ function AddressManager() {
       </DialogDescription>
 
       <div className="space-y-2">
-        <h3 className="text-lg font-medium">{location}</h3>
+        <h3 className="text-sm font-medium">{addresses.at(0)}</h3>
         <PreciseLocation />
       </div>
 

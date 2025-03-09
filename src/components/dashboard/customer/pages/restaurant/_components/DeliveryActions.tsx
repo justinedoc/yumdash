@@ -4,12 +4,27 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 
+import { Plus } from "lucide-react";
+import { useState } from "react";
+
+import AddressSelector from "../../../_components/AddressSelector";
+import AddressManager from "../../../_components/AddressManager";
+import { IoIosArrowDown } from "react-icons/io";
+
 function DeliveryActions() {
+  const [selectedAddress, setSelectedAddress] = useState("");
+
+  function handleSelectAddress(addr: string) {
+    setSelectedAddress(addr);
+  }
+
+  const addressSelectProps = { selectedAddress, handleSelectAddress };
   return (
     <div className="space-y-2 font-medium text-sm my-3">
       <DeliveryAction label="Promo Code">
@@ -21,22 +36,50 @@ function DeliveryActions() {
       </DeliveryAction>
       <DeliveryAction label="Deliver to">
         <Dialog>
+          {/* Choose delivery address trigger  */}
           <DialogTrigger asChild>
             <Button variant={"ghost"} className="text-secondary">
-              {"Choose"}
+              {selectedAddress
+                ? selectedAddress.slice(0, 15) + " ..."
+                : "Choose"}
+              {selectedAddress && <IoIosArrowDown aria-hidden="true" />}
             </Button>
           </DialogTrigger>
+
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Are you absolutely sure?</DialogTitle>
-              <DialogDescription>
-                This action cannot be undone. This will permanently delete your
-                account and remove your data from our servers.
-              </DialogDescription>
+              <DialogTitle className="text-center py-5">
+                Delivery Address
+              </DialogTitle>
+              <DialogDescription>Select an address</DialogDescription>
             </DialogHeader>
+
+            {/* Delivery address comp  */}
+            <AddressSelector {...addressSelectProps} />
+
+            <DialogFooter className="w-full flex-col sm:flex-col justify-center">
+              {/* Choose location and close dialog  */}
+              <DialogTrigger asChild>
+                <Button className="secondary-grad-bg py-5">
+                  Choose location
+                </Button>
+              </DialogTrigger>
+
+              {/* Add new address  */}
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="ghost" className="text-secondary text-sm">
+                    Add new address <Plus />
+                  </Button>
+                </DialogTrigger>
+                <AddressManager />
+              </Dialog>
+              {/*  */}
+            </DialogFooter>
           </DialogContent>
         </Dialog>
       </DeliveryAction>
+
       <DeliveryAction label="Delivery Instructions">
         <Button variant={"ghost"} className="text-secondary">
           Add

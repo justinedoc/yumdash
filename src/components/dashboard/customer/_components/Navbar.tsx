@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 import useLocationContext from "../hooks/useLocationContext";
 
 const Navbar = () => {
-  const { location } = useLocationContext();
+  const { addresses } = useLocationContext();
 
   const { state } = useSidebar();
   const isMobile = useIsMobile();
@@ -45,9 +45,9 @@ const Navbar = () => {
                 <FaMapMarkerAlt className="text-secondary" aria-hidden="true" />
                 <DialogTrigger className="cursor-pointer">
                   <h3 className="text-sm text-left font-medium">
-                    {!location
+                    {!addresses
                       ? "Enter Address"
-                      : location.slice(0, 20) + "..."}
+                      : addresses.at(0)?.slice(0, 20) + "..."}
                   </h3>
                 </DialogTrigger>
                 <IoIosArrowDown aria-hidden="true" />

@@ -2,21 +2,31 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 import { Outlet } from "react-router";
 import Navbar from "./_components/Navbar";
 import { AppSidebar } from "./_components/AppSideBar";
-import { createContext, useState } from "react";
+import { useState } from "react";
 import { LocationContext } from "./hooks/useLocationContext";
+import { AuthStateContext } from "./hooks/useAuthStateContext";
 
-export const AuthStateContext = createContext<
-  | {
-      isLoggedIn: boolean;
+const tempAddresses = [
+  "Command Road, Alimosho, Lagos",
+  "Ipaja, Lagos",
+  "25 Hortico Way, Command Rd, Ipaja Lagos",
+];
+
+interface DashboardLayoutProps {
+  isLoggedIn?: boolean;
+}
+
+function DashboardLayout({ isLoggedIn = false }: DashboardLayoutProps) {
+  const [addresses, setAddresses] = useState<string[]>(tempAddresses);
+
+  const handleAddressChange = (location: string) => {
+    if (
+      addresses.some((addr) => addr.toLowerCase() === location.toLowerCase())
+    ) {
+      console.warn("address already stored");
+      return;
     }
-  | undefined
->(undefined);
-
-function DashboardLayout({ isLoggedIn = false }) {
-  const [location, setLocation] = useState("");
-
-  const handleLocationChange = (location: string) => {
-    setLocation(location);
+    setAddresses((prevAddresses) => [location, ...prevAddresses]);
   };
 
   return (
@@ -24,7 +34,7 @@ function DashboardLayout({ isLoggedIn = false }) {
       <SidebarProvider>
         <AppSidebar />
         <main className="w-full overflow-x-hidden h-screen overflow-y-scroll">
-          <LocationContext.Provider value={{ location, handleLocationChange }}>
+          <LocationContext.Provider value={{ addresses, handleAddressChange }}>
             <Navbar />
             <Outlet />
           </LocationContext.Provider>
