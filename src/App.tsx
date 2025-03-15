@@ -12,12 +12,15 @@ import Favourites from "./components/dashboard/customer/pages/Favourites";
 import FoodOrderLayout from "./components/dashboard/customer/_components/FoodOrderLayout";
 import Restaurant from "./components/dashboard/customer/pages/restaurant/_components/Restaurant";
 import AuthContainer from "./components/auth/customer/_components/AuthContainer";
+import Vendor from "./components/landing/vendor";
 
 function App() {
   return (
     <Routes>
       {/* Landing page route */}
-      <Route path="/" element={<Customer />} />
+      <Route path="/customer" element={<Customer />} />
+      <Route path="/vendor" element={<Vendor />} />
+
 
       <Route path="/" element={<DashboardLayout isLoggedIn />}>
         <Route path=":id" element={<Restaurant />} />

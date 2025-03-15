@@ -1,5 +1,7 @@
 import { cn } from "@/lib/utils";
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router";
+
 
 type Role = "Customer" | "Vendor";
 
@@ -11,6 +13,7 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentRole, setCurrentRole] = useState<Role>("Customer");
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -31,6 +34,12 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
     setCurrentRole(role);
     onSelect?.(role);
     setIsOpen(false);
+
+    if (role === "Customer") {
+      navigate("/customer");
+    } else if (role === "Vendor") {
+      navigate("/vendor");
+    }
   }
 
   return (
