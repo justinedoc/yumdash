@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router";
 
 type Role = "Customer" | "Vendor";
 
@@ -11,6 +12,17 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentRole, setCurrentRole] = useState<Role>("Customer");
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+
+  useEffect(() => {
+    if (location.pathname.includes("/vendor")) {
+      setCurrentRole("Vendor");
+    } else if (location.pathname.includes("/customer")) {
+      setCurrentRole("Customer");
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -31,6 +43,12 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
     setCurrentRole(role);
     onSelect?.(role);
     setIsOpen(false);
+
+    if (role === "Customer") {
+      navigate("/customer");
+    } else if (role === "Vendor") {
+      navigate("/vendor");
+    }
   }
 
   return (
@@ -39,7 +57,12 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="bg-[#EFFFFB] text-black text-base py-2 px-4 rounded-lg hover:bg-emerald-100 transition-colors duration-200 inline-flex items-center gap-2 cursor-pointer"
+        className={cn(
+          "text-base py-2 px-4 rounded-lg hover:bg-opacity-90 transition-colors duration-200 inline-flex items-center gap-2 cursor-pointer",
+          currentRole === "Vendor" 
+            ? "bg-[#00674B] text-white" 
+            : "bg-[#EFFFFB] text-black"
+        )}
       >
         <span>{currentRole}</span>
         <svg
