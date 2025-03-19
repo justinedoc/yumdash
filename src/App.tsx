@@ -18,13 +18,8 @@ function App() {
   return (
     <Routes>
       {/* Landing page route */}
-      <Route path="/customer" element={<Customer />} />
+      <Route path="/" element={<Customer />} />
       <Route path="/vendor" element={<Vendor />} />
-
-
-      <Route path="/" element={<DashboardLayout isLoggedIn />}>
-        <Route path=":id" element={<Restaurant />} />
-      </Route>
 
       {/* Auth routes */}
       <Route path="/" element={<AuthContainer />}>
@@ -71,6 +66,10 @@ function App() {
 
       <Route path="/restaurants" element={<DashboardLayout />}>
         <Route index element={<Home />} />
+      </Route>
+
+      <Route path="/" element={<DashboardLayout isLoggedIn />}>
+        <Route path=":id" element={<Restaurant />} />
       </Route>
 
       <Route path="*" element={<h1>Page Not Found</h1>} />

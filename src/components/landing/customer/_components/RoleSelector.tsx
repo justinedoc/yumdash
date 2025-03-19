@@ -19,7 +19,7 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
   useEffect(() => {
     if (location.pathname.includes("/vendor")) {
       setCurrentRole("Vendor");
-    } else if (location.pathname.includes("/customer")) {
+    } else if (location.pathname.includes("/")) {
       setCurrentRole("Customer");
     }
   }, [location.pathname]);
@@ -45,7 +45,7 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
     setIsOpen(false);
 
     if (role === "Customer") {
-      navigate("/customer");
+      navigate("/");
     } else if (role === "Vendor") {
       navigate("/vendor");
     }

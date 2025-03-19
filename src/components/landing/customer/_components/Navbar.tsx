@@ -21,7 +21,7 @@ const navLinks: NavLink[] = [
   },
   {
     label: "Blogs",
-    href: "/blogs",
+    href: "https://medium.com/@Yumdash",
   },
   {
     label: "FAQs",
