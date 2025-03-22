@@ -7,6 +7,8 @@ import { Separator } from "@/components/ui/separator";
 import DeliveryActions from "./DeliveryActions";
 import DeliveryItemsSummary from "./DeliveryItemsSummary";
 import { useState } from "react";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import PackModal from "./pack/PackModal";
 
 export type PackItem = {
   id: number;
@@ -45,12 +47,17 @@ function Delivery() {
 
   return (
     <div>
-      <SecondaryButton
-        className="ml-auto"
-        icon={<Plus size={14} />}
-        label="Add another pack"
-        onClick={() => console.log("add another pack clicked")}
-      />
+      <Dialog>
+        <DialogTrigger asChild>
+          <SecondaryButton
+            className="ml-auto"
+            icon={<Plus size={14} />}
+            label="Add another pack"
+            onClick={() => console.log("add another pack clicked")}
+          />
+        </DialogTrigger>
+        <PackModal />
+      </Dialog>
 
       <div className="border border-dashed border-[#A5A5A5] py-3 px-2 rounded-sm my-2">
         {/* Pack Box header  */}
