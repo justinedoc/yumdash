@@ -13,7 +13,7 @@ import FoodOrderLayout from "./components/dashboard/customer/_components/FoodOrd
 import Restaurant from "./components/dashboard/customer/pages/restaurant/_components/Restaurant";
 import AuthContainer from "./components/auth/customer/_components/AuthContainer";
 import Vendor from "./components/landing/vendor";
-import Settings from "./components/dashboard/customer/pages/settings";
+import Settings from "./components/dashboard/customer/pages/settings/Index";
 
 function App() {
   return (
