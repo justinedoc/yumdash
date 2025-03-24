@@ -4,7 +4,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import PackForm from "./packForm";
+import PackForm from "./PackForm";
 
 function PackModal() {
   return (

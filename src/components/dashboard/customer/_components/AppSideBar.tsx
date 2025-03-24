@@ -1,4 +1,4 @@
-import { HandCoins, Send, Star } from "lucide-react";
+import { HandCoins, Send, Settings, Star } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -57,6 +57,11 @@ const menuItems: MenuItem[] = [
     title: "Payment Details",
     url: "/dashboard/payment-details",
     icon: HandCoins,
+  },
+  {
+    title: "Settings",
+    url: "/dashboard/settings",
+    icon: Settings,
   },
 ];
 
