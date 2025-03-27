@@ -1,8 +1,8 @@
-import Camera from "@/assets/icons/camera.svg?react";
 import Email from "@/assets/icons/email.svg?react";
 import Phone from "@/assets/icons/phone-settings.svg?react";
 import UserProfileDetails from "./_components/UserProfileDetails";
 import UserPersonalIntegrations from "./_components/UserPersonalIntegrations";
+import ImageCropper from "./_components/ImageCropper";
 
 function Settings() {
   function handleEdit(label: "email" | "fullname") {
@@ -50,21 +50,10 @@ function Settings() {
           <h2 className="text-xs text-[#535353f2]">Display Picture</h2>
 
           <div className="relative size-52 rounded-full mx-auto overflow-hidden">
-            {/* Initial image (user initials) */}
-            <div className="w-full h-full bg-[#2D68FF] flex items-center justify-center">
-              <span className="text-8xl font-medium text-white">JS</span>
-            </div>
-
-            {/* upload section */}
-            <div className="bg-white/70 absolute left-0 bottom-0 flex items-center justify-center w-full">
-              {/* Camera Upload Button */}
-              <label className="p-2.5 cursor-pointer">
-                <Camera className="size-8 text-[#1A1A1A]" />
-                <input type="file" className="hidden" />
-              </label>
-            </div>
+            <ImageCropper />
           </div>
         </div>
+
 
         {/* Account Details */}
         <div className="bg-white rounded-b-md border border-[#00674B29] border-t-0 p-6">
