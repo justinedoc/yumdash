@@ -6,23 +6,23 @@ function Hero() {
   return (
     <section className="bg-secondary">
       <Navbar />
-      <div className="pt-[8rem] md:pt-[10rem] py-6 md:px-0 px-2 text-center text-hero relative">
-        <div className="bg-primary h-70 w-full absolute bottom-0 left-0" />
+      <div className="text-hero relative px-2 py-6 pt-[8rem] text-center md:px-0 md:pt-[10rem]">
+        <div className="bg-primary absolute bottom-0 left-0 h-70 w-full" />
 
-        <h1 className="flex justify-center gap-x-3 flex-wrap items-center md:text-5xl text-[2rem] text-white md:w-full mx-auto w-[18rem]">
+        <h1 className="mx-auto flex w-[18rem] flex-wrap items-center justify-center gap-x-3 text-[2rem] text-white md:w-full md:text-5xl">
           <span className="text-wrap">Discover & Order </span>
           <span>
             <span>Fr</span>
             <img
               src={food}
               alt="o"
-              className="md:w-10 w-7 inline-block"
+              className="inline-block w-7 md:w-10"
               loading="lazy"
             />
             <span>m The Best</span>
           </span>
         </h1>
-        <h1 className="flex justify-center items-center md:text-5xl text-3xl text-white">
+        <h1 className="flex items-center justify-center text-3xl text-white md:text-5xl">
           Restaurants At Your Convenience.
         </h1>
         <FoodSlider />

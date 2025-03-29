@@ -15,7 +15,6 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-
   useEffect(() => {
     if (location.pathname.includes("/vendor")) {
       setCurrentRole("Vendor");
@@ -58,10 +57,10 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
         className={cn(
-          "text-base py-2 px-4 rounded-lg hover:bg-opacity-90 transition-colors duration-200 inline-flex items-center gap-2 cursor-pointer",
-          currentRole === "Vendor" 
-            ? "bg-[#00674B] text-white" 
-            : "bg-[#EFFFFB] text-black"
+          "hover:bg-opacity-90 inline-flex cursor-pointer items-center gap-2 rounded-lg px-4 py-2 text-base transition-colors duration-200",
+          currentRole === "Vendor"
+            ? "bg-[#00674B] text-white"
+            : "bg-[#EFFFFB] text-black",
         )}
       >
         <span>{currentRole}</span>
@@ -85,8 +84,8 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute left-0 mt-2 w-40 rounded-md bg-transparent ring-opacity-5 z-10 font-meduim">
-          <ul className="py-2 bg-transparent text-black space-y-2">
+        <div className="ring-opacity-5 font-meduim absolute left-0 z-10 mt-2 w-40 rounded-md bg-transparent">
+          <ul className="space-y-2 bg-transparent py-2 text-black">
             <li
               className={cn({
                 hidden: currentRole === "Customer",
@@ -94,7 +93,7 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
             >
               <button
                 onClick={() => handleSelectRole("Customer")}
-                className="w-fit text-left px-4 py-2 bg-[#EFFFFB] hover:bg-emerald-50 transition-colors rounded-lg cursor-pointer"
+                className="w-fit cursor-pointer rounded-lg bg-[#EFFFFB] px-4 py-2 text-left transition-colors hover:bg-emerald-50"
               >
                 Customer
               </button>
@@ -106,12 +105,12 @@ const RoleSelector: React.FC<RoleSelectorProps> = ({ onSelect }) => {
             >
               <button
                 onClick={() => handleSelectRole("Vendor")}
-                className="w-fit text-left px-4 py-2 bg-[#EFFFFB] hover:bg-emerald-50 transition-colors rounded-lg cursor-pointer"
+                className="w-fit cursor-pointer rounded-lg bg-[#EFFFFB] px-4 py-2 text-left transition-colors hover:bg-emerald-50"
               >
                 Vendor
               </button>
             </li>
-            <li className="w-fit px-4 py-2 text-gray-600 flex gap-2 items-baseline justify-between cursor-not-allowed bg-[#EFFFFB]/90 rounded-lg">
+            <li className="flex w-fit cursor-not-allowed items-baseline justify-between gap-2 rounded-lg bg-[#EFFFFB]/90 px-4 py-2 text-gray-600">
               <span>Rider</span>
               <span className="text-xs text-orange-500">Coming soon</span>
             </li>

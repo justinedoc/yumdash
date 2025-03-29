@@ -16,26 +16,26 @@ const faqOrder = [
 
 function Faq() {
   return (
-    <section className="bg-secondary py-10 md:px-12 space-y-6">
-      <header className="space-y-3 w-full flex flex-col items-center">
+    <section id="faqs" className="bg-secondary space-y-6 py-10 md:px-12">
+      <header className="flex w-full flex-col items-center space-y-3">
         <SectionHeader
           text="FAQS"
-          className="text-[#FF5791] text-sm"
+          className="text-sm text-[#FF5791]"
           color="#FF5791"
         />
-        <h1 className="text-4xl font-bold text-hero text-white text-center">
+        <h1 className="text-hero text-center text-4xl font-bold text-white">
           Your Questions, Answered.
         </h1>
-        <p className="text-gray-400 text-sm">
+        <p className="text-sm text-gray-400">
           Find the answer to your questions below
         </p>
       </header>
 
-      <main className="bg-white rounded-4xl p-4 md:p-7 grid grid-cols-1 md:grid-cols-3 gap-10 justify-items-center w-[88%] mx-auto">
+      <main className="mx-auto grid w-[88%] grid-cols-1 justify-items-center gap-10 rounded-4xl bg-white p-4 md:grid-cols-3 md:p-7">
         {faqData.map(({ image, items }, i) => (
           <article
             key={i}
-            className="text-sm text-pretty max-h-[70vh] space-y-3 overflow-y-scroll w-full"
+            className="max-h-[70vh] w-full space-y-3 overflow-y-scroll text-sm text-pretty"
           >
             <div>
               <div className="size-14">

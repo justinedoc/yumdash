@@ -54,8 +54,8 @@ const foodItems = [
 
 const FoodSlider = () => {
   return (
-    <div className="py-6 mt-4 overflow-x-hidden w-full">
-      <div className="min-h-[450px] py-3 m-auto w-full grid place-items-center">
+    <div className="mt-4 w-full overflow-x-hidden py-6">
+      <div className="m-auto grid min-h-[450px] w-full place-items-center py-3">
         <div className="slider-track gap-4">
           {[...foodItems, ...foodItems].map((food, i) => (
             <div
@@ -63,14 +63,14 @@ const FoodSlider = () => {
               className={cn(
                 "h-[25rem]",
                 (i + 1) % 2 === 0 && "mt-[4rem]",
-                food.color
+                food.color,
               )}
             >
               <div className="slide">
                 <img
                   src={food.image}
                   alt={food.name}
-                  className={cn("h-[15rem] mx-auto", food.color)}
+                  className={cn("mx-auto h-[15rem]", food.color)}
                   loading="lazy"
                 />
                 <div className="p-2">
@@ -78,14 +78,14 @@ const FoodSlider = () => {
                     <h1 className="text-hero text-2xl font-bold">
                       {food.name}
                     </h1>
-                    <p className="text-sm mt-3 flex items-center justify-center gap-3 font-bold">
-                      <span className="bg-white p-1 rounded-full">
+                    <p className="mt-3 flex items-center justify-center gap-3 text-sm font-bold">
+                      <span className="rounded-full bg-white p-1">
                         <MapPin size={18} />
                       </span>
                       <span className="text-xs">{food.address}</span>
                     </p>
                   </div>
-                  <div className="text-sm flex items-center justify-center gap-1 mt-3">
+                  <div className="mt-3 flex items-center justify-center gap-1 text-sm">
                     <div className="flex">
                       <Star />
                       <Star />

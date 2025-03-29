@@ -7,7 +7,10 @@ interface ScrollButtonsProps {
   scrollRight: () => void;
 }
 
-const ScrollButtons: React.FC<ScrollButtonsProps> = ({ scrollLeft, scrollRight }) => {
+const ScrollButtons: React.FC<ScrollButtonsProps> = ({
+  scrollLeft,
+  scrollRight,
+}) => {
   return (
     <>
       <IconButton

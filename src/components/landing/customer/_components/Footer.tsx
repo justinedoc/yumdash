@@ -12,22 +12,26 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Link } from "react-router";
 
 function Footer() {
   return (
-    <footer className="relative z-[3] bg-[#FCE3B0] pt-5 px-5 md:pt-15 md:px-15">
+    <footer className="relative z-[3] bg-[#FCE3B0] px-5 pt-5 md:px-15 md:pt-15">
       {/* Footer Inner Container */}
-      <div className="mx-auto z-10 rounded-t-4xl md:rounded-t-[4rem] bg-[#191104]">
+      <div className="z-10 mx-auto rounded-t-4xl bg-[#191104] md:rounded-t-[4rem]">
         {/* Top Section: Logo & Intro */}
-        <div className="flex flex-col gap-5 md:flex-row md:justify-between py-15 px-7 md:pt-20 md:px-20">
-          <div className="w-full md:max-w-[18rem] flex flex-col gap-5">
+        <div className="flex flex-col gap-5 px-7 py-15 md:flex-row md:justify-between md:px-20 md:pt-20">
+          <div className="flex w-full flex-col gap-5 md:max-w-[18rem]">
             <Logo className="w-28" />
-            <p className="text-lg text-hero font-extralight text-white">
+            <p className="text-hero text-lg font-extralight text-white">
               Satisfy Your Cravings With Just A Tap!
             </p>
-            <Button className="w-32 rounded-full bg-secondary py-5 text-white">
-              Order Now
-            </Button>
+
+            <Link to="/restaurants">
+              <Button className="bg-secondary w-32 rounded-full py-5 text-white">
+                Order Now
+              </Button>
+            </Link>
           </div>
 
           {/* Navigation Section */}
@@ -58,14 +62,14 @@ function Footer() {
           </nav>
         </div>
 
-        <div className="flex md:flex-row flex-col justify-between items-center text-sm p-7 border-t gap-6 md:gap-0">
+        <div className="flex flex-col items-center justify-between gap-6 border-t p-7 text-sm md:flex-row md:gap-0">
           <p className="text-white">
             &copy; 2023 Yumdash. All rights reserved.
           </p>
 
           <ul className="flex gap-4">
             {footerSocials.map(({ name, href }, i) => (
-              <li key={i} className="p-2 border-b uppercase text-white">
+              <li key={i} className="border-b p-2 text-white uppercase">
                 <a href={href}>{name}</a>
               </li>
             ))}

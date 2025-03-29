@@ -3,15 +3,15 @@ import { Link } from "react-router";
 
 function GettingStarted() {
   return (
-    <section className="bg-[#EDFCF8] pb-44 relative overflow-hidden px-4 md:px-8 lg:px-16">
-      <div className="py-16 relative z-10 text-center">
-        <h2 className="text-2xl md:text-4xl font-bold text-[#02402F] leading-tight">
+    <section className="relative overflow-hidden bg-[#EDFCF8] px-4 pb-44 md:px-8 lg:px-16">
+      <div className="relative z-10 py-16 text-center">
+        <h2 className="text-2xl leading-tight font-bold text-[#02402F] md:text-4xl">
           Getting Started is Easy
         </h2>
       </div>
-      <section className="relative bg-[#00674B] w-full max-w-[1440px] mx-auto overflow-hidden">
+      <section className="relative mx-auto w-full max-w-[1440px] overflow-hidden bg-[#00674B]">
         <svg
-          className="absolute bottom-[-40px] right-163 max-w-[80%] md:w-[806px] h-[30%]"
+          className="absolute right-163 bottom-[-40px] h-[30%] max-w-[80%] md:w-[806px]"
           viewBox="0 0 806 108"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -24,16 +24,22 @@ function GettingStarted() {
             fill="url(#leftGradient)"
           />
           <defs>
-            <linearGradient id="leftGradient" x1="403" y1="30" x2="403" y2="250" gradientUnits="userSpaceOnUse">
+            <linearGradient
+              id="leftGradient"
+              x1="403"
+              y1="30"
+              x2="403"
+              y2="250"
+              gradientUnits="userSpaceOnUse"
+            >
               <stop stopColor="#0AE7AA" />
               <stop offset="1" stopColor="rgba(10, 231, 170, 0)" />
             </linearGradient>
           </defs>
         </svg>
 
-    
         <svg
-          className="absolute bottom-[-40px] left-163 max-w-[80%] md:w-[806px] h-[30%]"
+          className="absolute bottom-[-40px] left-163 h-[30%] max-w-[80%] md:w-[806px]"
           viewBox="0 0 806 108"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -43,18 +49,24 @@ function GettingStarted() {
             fill="url(#rightGradient)"
           />
           <defs>
-            <linearGradient id="rightGradient" x1="403" y1="30" x2="403" y2="250" gradientUnits="userSpaceOnUse">
+            <linearGradient
+              id="rightGradient"
+              x1="403"
+              y1="30"
+              x2="403"
+              y2="250"
+              gradientUnits="userSpaceOnUse"
+            >
               <stop stopColor="#0AE7AA" />
               <stop offset="1" stopColor="rgba(10, 231, 170, 0)" />
             </linearGradient>
           </defs>
         </svg>
 
-        
-        <div className="relative z-10 px-6 md:px-12 lg:px-16 py-12 md:py-16 lg:py-20">
-          <div className="flex flex-col items-center w-full sm:gap-10 gap-18">
+        <div className="relative z-10 px-6 py-12 md:px-12 md:py-16 lg:px-16 lg:py-20">
+          <div className="flex w-full flex-col items-center gap-18 sm:gap-10">
             {/* Content Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-10 w-full">
+            <div className="grid w-full grid-cols-1 gap-16 md:grid-cols-2 md:gap-10">
               {[
                 {
                   number: "1",
@@ -79,15 +91,13 @@ function GettingStarted() {
               ].map((box, index) => (
                 <div
                   key={index}
-                  className="w-full h-auto min-h-[164px] bg-transparent rounded-[16px] px-4 sm:px-10 py-6 flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-4"
+                  className="flex h-auto min-h-[164px] w-full flex-col items-center gap-4 rounded-[16px] bg-transparent px-4 py-6 text-center sm:flex-row sm:items-start sm:px-10 sm:text-left"
                 >
-                
-                  <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-[#F49200] bg-transparent flex items-center justify-center text-[#F49200] font-bold text-xl sm:text-2xl mb-2 sm:mb-0 sm:mt-1">
+                  <div className="mb-2 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border-2 border-[#F49200] bg-transparent text-xl font-bold text-[#F49200] sm:mt-1 sm:mb-0 sm:h-14 sm:w-14 sm:text-2xl">
                     {box.number}
                   </div>
-                  
-           
-                  <div className="flex flex-col text-white gap-2 sm:gap-4">
+
+                  <div className="flex flex-col gap-2 text-white sm:gap-4">
                     <h3 className="text-lg font-semibold">{box.title}</h3>
                     <p className="text-sm opacity-80">{box.desc}</p>
                   </div>
@@ -96,7 +106,7 @@ function GettingStarted() {
             </div>
 
             <Link to={"/login"} className="mt-10">
-              <Button className="px-7 py-5 font-bold rounded-full text-white bg-amber-500 shadow-none hover:text-white">
+              <Button className="rounded-full bg-amber-500 px-7 py-5 font-bold text-white shadow-none hover:text-white">
                 Join us today
               </Button>
             </Link>

@@ -14,7 +14,7 @@ type NavLink = {
 const navLinks: NavLink[] = [
   {
     label: "About us",
-    href: "/about",
+    href: "/about-us",
   },
   {
     element: <RoleSelector key="role-selector" />,
@@ -25,7 +25,7 @@ const navLinks: NavLink[] = [
   },
   {
     label: "FAQs",
-    href: "/faqs",
+    href: "#faqs",
   },
   {
     label: "Contact",
@@ -64,10 +64,10 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-[#F5E6BD] fixed top-0 w-[95%] left-1/2 transform -translate-x-1/2 z-50 shadow-md rounded-b-4xl">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 md:py-6 py-5 flex items-center justify-between">
+    <nav className="fixed top-0 left-1/2 z-50 w-[95%] -translate-x-1/2 transform rounded-b-4xl bg-[#F5E6BD] shadow-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 md:px-8 md:py-6">
         {/* Logo */}
-        <Logo className="w-28 -z-10 relative" />
+        <Logo className="relative -z-10 w-28" />
 
         {/* Mobile menu toggle */}
         <div className="md:hidden">
@@ -77,10 +77,10 @@ function Navbar() {
             className="text-black focus:outline-none"
           >
             {mobileMenuOpen ? (
-              <HiX size={10} className="text-secondary w-7 h-10 z-20" />
+              <HiX size={10} className="text-secondary z-20 h-10 w-7" />
             ) : (
               <svg
-                className="w-13 h-10"
+                className="h-10 w-13"
                 width="26"
                 height="25"
                 viewBox="0 0 26 25"
@@ -97,7 +97,7 @@ function Navbar() {
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center space-x-6">
+        <ul className="hidden items-center space-x-6 md:flex">
           {navLinks.map((link, index) => (
             <li key={index}>
               {link.href ? (
@@ -111,7 +111,7 @@ function Navbar() {
           ))}
           <li>
             <Link to={"/restaurants"}>
-              <Button className="px-7 py-5 font-semibold rounded-full bg-white text-primary shadow-none hover:text-white">
+              <Button className="text-primary rounded-full bg-white px-7 py-5 font-semibold shadow-none hover:text-white">
                 Restaurants
               </Button>
             </Link>
@@ -122,11 +122,11 @@ function Navbar() {
       {/* Mobile Menu – slides in from the right */}
       <div
         ref={mobileMenuRef}
-        className={`fixed -z-[2] top-0 right-0 h-fit w-3/4 bg-[#F5E6BD] shadow-lg transform transition-transform duration-300 md:hidden rounded-2xl py-8 texe-lg ${
+        className={`text-lg fixed top-0 right-0 -z-[2] h-fit w-3/4 transform rounded-2xl bg-[#F5E6BD] py-8 shadow-lg transition-transform duration-300 md:hidden ${
           mobileMenuOpen ? "translate-x-4" : "translate-x-[30rem]"
         }`}
       >
-        <ul className="flex flex-col items-start space-y-4 py-8 px-6">
+        <ul className="flex flex-col items-start space-y-4 px-6 py-8">
           {navLinks.map((link, index) => (
             <li key={index}>
               {link.href ? (
@@ -144,7 +144,7 @@ function Navbar() {
           ))}
           <li className="w-full">
             <Link to={"/restaurants"}>
-              <Button className="w-full px-7 py-5 font-semibold rounded-full bg-white text-primary shadow-none hover:text-white">
+              <Button className="text-primary w-full rounded-full bg-white px-7 py-5 font-semibold shadow-none hover:text-white">
                 Restaurants
               </Button>
             </Link>

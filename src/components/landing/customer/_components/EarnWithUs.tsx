@@ -6,46 +6,48 @@ import vendorCookImg from "@/assets/images/cook.png";
 import { useNavigate } from "react-router";
 
 // Background images for each tab
-const VENDOR_BG_IMAGE = "/src/assets/images/vendor-earn-with-us-bg.png";
-const RIDER_BG_IMAGE = "/src/assets/images/earn-with-us-bg.png";
+import VENDOR_BG_IMAGE from "@/assets/images/vendor-earn-with-us-bg.png";
+import RIDER_BG_IMAGE from "@/assets/images/earn-with-us-bg.png";
 
 type ActiveTab = "vendor" | "rider";
 
-function EarnWithUs() {
-  const [activeTab, setActiveTab] = useState<ActiveTab>("vendor");
+function EarnWithUs({ viewAs = "vendor" }: { viewAs?: ActiveTab }) {
+  const [activeTab, setActiveTab] = useState<ActiveTab>(viewAs);
   const isVendorActive = activeTab === "vendor";
   const navigate = useNavigate();
 
-  // Common button styling for tab selectors
   const buttonStyles =
     "rounded-full border-secondary border-2 bg-white/40 text-black text-md p-5 cursor-pointer hover:text-white";
 
-  // Determine the background image based on the active tab
   const backgroundImage = isVendorActive ? VENDOR_BG_IMAGE : RIDER_BG_IMAGE;
 
   // Navigation callback for the article button based on the active tab.
   const handleArticleButtonClick = () => {
-    isVendorActive ? navigate("/vendor/signup") : navigate("/rider/signup");
+    if (isVendorActive) {
+      navigate("/vendor/signup");
+      return;
+    }
+    navigate("/");
   };
 
   return (
     <section
       className={cn(
-        "bg-center bg-cover pt-10 relative",
-        `bg-[url('${backgroundImage}')]`
+        "relative bg-cover bg-center pt-10",
+        `bg-[url('${backgroundImage}')]`,
       )}
     >
       {/* Header section with title and tab buttons */}
-      <header className="text-hero w-full flex flex-col items-center gap-5 absolute">
+      <header className="text-hero absolute flex w-full flex-col items-center gap-5">
         <h1
           className={cn(
             "text-3xl",
-            isVendorActive ? "text-primary" : "text-[#013929]"
+            isVendorActive ? "text-primary" : "text-[#013929]",
           )}
         >
           Earn With Yumdash
         </h1>
-        <div className="font-sans space-x-2">
+        <div className="space-x-2 font-sans">
           <Button
             onClick={() => setActiveTab("vendor")}
             className={cn(buttonStyles, isVendorActive && "bg-white")}
@@ -62,7 +64,7 @@ function EarnWithUs() {
       </header>
 
       {/* Main content area displaying an image and article */}
-      <main className="flex md:gap-44 items-center flex-col-reverse md:flex-row pt-[9rem] md:pt-0">
+      <main className="flex flex-col-reverse items-center justify-between pt-[9rem] md:flex-row md:pt-0 md:pr-20">
         <div>
           <img
             src={activeTab === "rider" ? carImg : vendorCookImg}
@@ -71,7 +73,7 @@ function EarnWithUs() {
                 ? "Rider on the road"
                 : "Vendor preparing food"
             }
-            className="w-[30rem]"
+            className="w-[35rem] 2xl:w-[40rem]"
           />
         </div>
 
@@ -110,23 +112,23 @@ function EarnWithUsArticle({
   onButtonClick,
 }: EarnWithUsArticleProps) {
   return (
-    <article className="space-y-3 w-full md:max-w-[25rem] h-full md:mt-26 md:ml-15 px-4 md:px-0">
+    <article className="h-full w-full space-y-3 px-4 md:mt-26 md:max-w-[40%] md:px-0 2xl:max-w-[30%]">
       <h1
         className={cn(
           "text-hero text-2xl font-semibold",
-          isVendorActive ? "text-primary" : "text-[#003324]"
+          isVendorActive ? "text-primary" : "text-[#003324]",
         )}
       >
         {title}
       </h1>
-      <p className="text-white font-light">{children}</p>
+      <p className="font-light text-white">{children}</p>
       <Button
+        disabled={!isVendorActive}
         onClick={onButtonClick}
-        className={cn(
-          "rounded-full w-full md:w-[70%] p-5",
-          !isVendorActive &&
-            "bg-emerald-50 border border-secondary text-secondary p-4"
-        )}
+        className={cn("w-full rounded-full p-5 md:w-48", {
+          "border-secondary text-secondary border bg-emerald-50 p-4":
+            !isVendorActive,
+        })}
       >
         {btnText}
       </Button>

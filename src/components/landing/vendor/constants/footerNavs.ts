@@ -5,10 +5,8 @@ export const footerNavs: FooterNavCategory[] = [
     category: "Company",
     items: [
       { text: "Blogs", href: "#blogs" },
-      { text: "Rider", href: "#rider" },
-      { text: "Restaurants", href: "#restaurants" },
+      { text: "Restaurants", href: "/restaurants" },
       { text: "FAQs", href: "#faqs" },
-      { text: "Delivery areas", href: "#delivery-areas" },
       { text: "Career", href: "#career" },
     ],
   },
@@ -18,7 +16,6 @@ export const footerNavs: FooterNavCategory[] = [
       { text: "Terms of service", href: "#terms-of-service" },
       { text: "Privacy policy", href: "#privacy-policy" },
       { text: "Cookies", href: "#cookies" },
-      { text: "Legal", href: "#legal" },
     ],
   },
   {
