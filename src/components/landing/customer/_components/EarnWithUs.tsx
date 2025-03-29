@@ -32,10 +32,8 @@ function EarnWithUs({ viewAs = "vendor" }: { viewAs?: ActiveTab }) {
 
   return (
     <section
-      className={cn(
-        "relative bg-cover bg-center pt-10",
-        `bg-[url('${backgroundImage}')]`,
-      )}
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+      className={cn("relative bg-cover bg-center pt-10")}
     >
       {/* Header section with title and tab buttons */}
       <header className="text-hero absolute flex w-full flex-col items-center gap-5">
