@@ -28,28 +28,28 @@ export default function LoginForm({
   const form = useFormContext();
 
   return (
-    <section className="flex flex-1 flex-col justify-center md:mt-15 p-4 md:p-10">
-      <Logo className="w-35 md:hidden my-7 mt-12" />
+    <section className="flex flex-1 flex-col justify-center p-4 md:mt-15 md:p-10">
+      <Logo className="my-7 mt-12 w-35 md:hidden" />
       <FormHeader title="Welcome Back!">
         Please Enter Your Details To Start Ordering
       </FormHeader>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3 mt-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="mt-8 space-y-3">
           {/* Email Field */}
           <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-[#2D2D2D] text-sm font-light">
+                <FormLabel className="text-sm font-light text-[#2D2D2D]">
                   Email
                 </FormLabel>
                 <FormControl>
                   <Input
                     type="email"
                     placeholder="Enter your email address"
-                    className="py-6 md:py-5 rounded-sm border-[#00674B52] ring-[#00674B52]/30"
+                    className="rounded-sm border-[#00674B52] py-6 ring-[#00674B52]/30 md:py-5"
                     {...field}
                   />
                 </FormControl>
@@ -65,21 +65,21 @@ export default function LoginForm({
             name="password"
             render={({ field }) => (
               <FormItem className="relative">
-                <FormLabel className="text-[#2D2D2D] text-sm font-light">
+                <FormLabel className="text-sm font-light text-[#2D2D2D]">
                   Password
                 </FormLabel>
                 <FormControl>
                   <Input
                     type={isPasswordHidden ? "password" : "text"}
                     placeholder="Enter your password"
-                    className="py-6 md:py-5 rounded-sm border-[#00674B52] ring-[#00674B52]/30"
+                    className="rounded-sm border-[#00674B52] py-6 ring-[#00674B52]/30 md:py-5"
                     {...field}
                   />
                 </FormControl>
 
                 {/* Toggle Password Visibility */}
                 <aside
-                  className="absolute top-0 right-0 cursor-pointer flex items-center gap-2 text-md"
+                  className="text-md absolute top-0 right-0 flex cursor-pointer items-center gap-2"
                   onClick={() => setIsPasswordHidden((prev) => !prev)}
                 >
                   <span className="font-semibold text-gray-500">
@@ -120,7 +120,7 @@ export default function LoginForm({
           <Button
             disabled={form.formState.isSubmitting}
             type="submit"
-            className="text-base py-6 md:py-5 w-full secondary-grad-bg my-3 rounded-sm"
+            className="secondary-grad-bg my-3 w-full rounded-sm py-6 text-base md:py-5"
           >
             {form.formState.isSubmitting ? "Authenticating..." : "Login"}
           </Button>
@@ -128,7 +128,7 @@ export default function LoginForm({
           {/* Divider */}
           <div className="relative my-3">
             <div className="h-[0.1rem] bg-[#5799E333]" />
-            <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white w-1/3 font-medium text-center text-sm text-[#011933CC] h-fit">
+            <span className="absolute -top-3 left-1/2 h-fit w-1/3 -translate-x-1/2 bg-white text-center text-sm font-medium text-[#011933CC]">
               OR
             </span>
           </div>

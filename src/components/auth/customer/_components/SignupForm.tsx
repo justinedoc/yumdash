@@ -67,6 +67,7 @@ export default function SignUpForm({
                 <FormControl>
                   <Input
                     placeholder="Enter your phone number"
+                    type="tel"
                     className="py-6 md:py-5 rounded-sm border-[#00674B52] ring-[#00674B52]/30"
                     {...field}
                   />
