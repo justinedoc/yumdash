@@ -26,7 +26,7 @@ const PackBuilder: React.FC<PackBuilderProps> = ({
   return (
     <>
       {items.map((item) => (
-        <div key={item.id} className="flex items-center justify-between my-4">
+        <div key={item.id} className="my-4 flex items-center justify-between">
           <div className="text-sm">
             <div className="font-medium">{item.name}</div>
             <p className="text-[#A5A5A5]">
@@ -35,11 +35,11 @@ const PackBuilder: React.FC<PackBuilderProps> = ({
           </div>
 
           {/* Quantity controls */}
-          <div className="flex items-center bg-gray-200 rounded-full">
+          <div className="flex items-center rounded-full bg-gray-200">
             <button
-              className="bg-gray-200 px-2 rounded-l-full hover:bg-gray-300"
+              className="rounded-l-full bg-gray-200 px-2 hover:bg-gray-300"
               onClick={() => {
-                item.quantity > 1 && onHandleDecrementQuantity(item.id);
+                if (item.quantity > 1) onHandleDecrementQuantity(item.id);
               }}
             >
               -
@@ -48,7 +48,7 @@ const PackBuilder: React.FC<PackBuilderProps> = ({
               {item.quantity}
             </span>
             <button
-              className="bg-gray-200 px-2 rounded-r-full hover:bg-gray-300"
+              className="rounded-r-full bg-gray-200 px-2 hover:bg-gray-300"
               onClick={() => onHandleIncrementQuantity(item.id)}
             >
               +
@@ -60,14 +60,14 @@ const PackBuilder: React.FC<PackBuilderProps> = ({
       {/* Action buttons */}
       <div className="flex justify-between">
         <SecondaryButton
-          className="bg-transparent border text-black text-xs"
+          className="border bg-transparent text-xs text-black"
           onClick={handleAddToPack}
           icon={<Plus size={14} />}
           label="Add to this pack"
         />
 
         <SecondaryButton
-          className="bg-transparent border text-black text-xs"
+          className="border bg-transparent text-xs text-black"
           onClick={handleDuplicatePack}
           label="Duplicate pack"
         />
