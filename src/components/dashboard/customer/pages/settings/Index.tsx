@@ -36,27 +36,26 @@ function Settings() {
   ];
 
   return (
-    <section className="w-full p-4 bg-[#F6F6F6] min-h-screen">
-      <main className="max-w-3xl mx-auto mt-7">
+    <section className="min-h-screen w-full bg-[#F6F6F6] p-4">
+      <main className="mx-auto mt-7 max-w-3xl">
         <header className="mb-3">
           <h1 className="text-2xl font-semibold text-[#1A1A1A]">Profile</h1>
-          <p className="text-sm text-[#535353] mt-1">
+          <p className="mt-1 text-sm text-[#535353]">
             Manage your Yumdash profile
           </p>
         </header>
 
         {/* Display Picture Section */}
-        <div className="bg-[#00674B29] border border-[#00674B29] border-b-transparent rounded-t-md p-6">
+        <div className="rounded-t-md border border-[#00674B29] border-b-transparent bg-[#00674B29] p-6">
           <h2 className="text-xs text-[#535353f2]">Display Picture</h2>
 
-          <div className="relative size-52 rounded-full mx-auto overflow-hidden">
+          <div className="relative mx-auto size-52 overflow-hidden rounded-full">
             <ImageCropper />
           </div>
         </div>
 
-
         {/* Account Details */}
-        <div className="bg-white rounded-b-md border border-[#00674B29] border-t-0 p-6">
+        <div className="rounded-b-md border border-t-0 border-[#00674B29] bg-white p-6">
           {[
             {
               label: "email",
@@ -75,9 +74,9 @@ function Settings() {
 
         {/* Integrations */}
 
-        <div className="bg-white rounded-md border border-[#00674B29] mt-4 overflow-hidden">
-          <div className="w-full bg-[#00674B29] py-3 px-6">
-            <h2 className="text-xs text-[#535353f2] ">Personal Integrations</h2>
+        <div className="mt-4 overflow-hidden rounded-md border border-[#00674B29] bg-white">
+          <div className="w-full bg-[#00674B29] px-6 py-3">
+            <h2 className="text-xs text-[#535353f2]">Personal Integrations</h2>
           </div>
 
           <div className="px-4">
@@ -86,6 +85,7 @@ function Settings() {
                 label={label}
                 onClick={onClick}
                 icon={icon}
+                key={label}
               />
             ))}
           </div>

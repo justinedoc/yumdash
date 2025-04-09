@@ -1,9 +1,6 @@
 import React, { useRef, useState } from "react";
 import Cropper, { ReactCropperElement } from "react-cropper";
-import "cropperjs/dist/cropper.css";
 import Camera from "@/assets/icons/camera.svg?react";
-
-
 
 const ImageCropper = () => {
   const [image, setImage] = useState<string>("");
@@ -36,14 +33,14 @@ const ImageCropper = () => {
   return (
     <>
       {/* Initial image (user initials) */}
-      <div className="w-full h-full bg-[#2D68FF] flex items-center justify-center">
+      <div className="flex h-full w-full items-center justify-center bg-[#2D68FF]">
         <span className="text-8xl font-medium text-white">JS</span>
       </div>
 
       {/* upload section */}
-      <div className="bg-white/70 absolute left-0 bottom-0 flex items-center justify-center w-full">
+      <div className="absolute bottom-0 left-0 flex w-full items-center justify-center bg-white/70">
         {/* Camera Upload Button */}
-        <label className="p-2.5 cursor-pointer">
+        <label className="cursor-pointer p-2.5">
           <Camera className="size-8 text-[#1A1A1A]" />
           <input type="file" className="hidden" onChange={onFileChange} />
         </label>
@@ -51,12 +48,12 @@ const ImageCropper = () => {
 
       {/* Cropper only appears once an image is loaded */}
       {image && (
-        <div className="w-full overflow-hidden rounded-full max-w-lg mb-4 absolute top-0">
+        <div className="absolute top-0 z-50 mb-4 w-full rounded-full">
           <Cropper
             src={image}
             style={{ height: 400, width: "100%" }}
             // Cropper.js options:
-            initialAspectRatio={1} // Keep a square by default
+            initialAspectRatio={1}
             guides={true}
             // More config options: https://github.com/fengyuanchen/cropperjs#options
             ref={cropperRef}
@@ -68,7 +65,7 @@ const ImageCropper = () => {
       {image && (
         <button
           onClick={handleCrop}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
         >
           Crop Image
         </button>
