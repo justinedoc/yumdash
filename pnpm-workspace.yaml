@@ -1,2 +1,4 @@
-ignoredBuiltDependencies:
+packages:
+  - /*
+onlyBuiltDependencies:
   - esbuild
