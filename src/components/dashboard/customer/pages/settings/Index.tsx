@@ -2,7 +2,7 @@ import Email from "@/assets/icons/email.svg?react";
 import Phone from "@/assets/icons/phone-settings.svg?react";
 import UserProfileDetails from "./_components/UserProfileDetails";
 import UserPersonalIntegrations from "./_components/UserPersonalIntegrations";
-import ImageCropper from "./_components/ImageCropper";
+import ImageCropperWrapper from "./_components/AvatarCropperWrapper";
 
 function Settings() {
   function handleEdit(label: "email" | "fullname") {
@@ -48,9 +48,8 @@ function Settings() {
         {/* Display Picture Section */}
         <div className="rounded-t-md border border-[#00674B29] border-b-transparent bg-[#00674B29] p-6">
           <h2 className="text-xs text-[#535353f2]">Display Picture</h2>
-
           <div className="relative mx-auto size-52 overflow-hidden rounded-full">
-            <ImageCropper />
+            <ImageCropperWrapper />
           </div>
         </div>
 
@@ -68,12 +67,16 @@ function Settings() {
               onClick: () => handleEdit("fullname"),
             },
           ].map(({ label, value, onClick }) => (
-            <UserProfileDetails label={label} value={value} onClick={onClick} />
+            <UserProfileDetails
+              key={label}
+              label={label}
+              value={value}
+              onClick={onClick}
+            />
           ))}
         </div>
 
         {/* Integrations */}
-
         <div className="mt-4 overflow-hidden rounded-md border border-[#00674B29] bg-white">
           <div className="w-full bg-[#00674B29] px-6 py-3">
             <h2 className="text-xs text-[#535353f2]">Personal Integrations</h2>
