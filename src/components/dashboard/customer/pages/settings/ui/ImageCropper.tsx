@@ -7,7 +7,7 @@ import ReactCrop, {
   type PercentCrop,
   type PixelCrop,
 } from "react-image-crop";
-import setCanvasPreview from "./setCanvasPreview";
+import setCanvasPreview from "../_components/SetCanvasPreview";
 
 const ASPECT_RATIO = 1;
 const MIN_DIMENSION = 150;
@@ -18,7 +18,11 @@ type ImageCropperProps = {
   closeModal: () => void;
 };
 
-const ImageCropper = ({ imgSrc, updateAvatar, closeModal }: ImageCropperProps) => {
+const ImageCropper = ({
+  imgSrc,
+  updateAvatar,
+  closeModal,
+}: ImageCropperProps) => {
   const imgRef = useRef<HTMLImageElement | null>(null);
   const previewCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const [crop, setCrop] = useState<PercentCrop>();
@@ -31,7 +35,7 @@ const ImageCropper = ({ imgSrc, updateAvatar, closeModal }: ImageCropperProps) =
       { unit: "%", width: cropWidthInPercent },
       ASPECT_RATIO,
       width,
-      height
+      height,
     );
     const centeredCrop = centerCrop(crop, width, height);
     setCrop(centeredCrop);
@@ -43,7 +47,7 @@ const ImageCropper = ({ imgSrc, updateAvatar, closeModal }: ImageCropperProps) =
     const pixelCrop: PixelCrop = convertToPixelCrop(
       crop,
       imgRef.current.naturalWidth,
-      imgRef.current.naturalHeight
+      imgRef.current.naturalHeight,
     );
 
     setCanvasPreview(imgRef.current, previewCanvasRef.current, pixelCrop);

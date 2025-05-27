@@ -14,6 +14,7 @@ import Restaurant from "./components/dashboard/customer/pages/restaurant/_compon
 import AuthContainer from "./components/auth/customer/_components/AuthContainer";
 import Vendor from "./components/landing/vendor";
 import Settings from "./components/dashboard/customer/pages/settings/Index";
+import DeliveryInfo from "./components/dashboard/customer/pages/settings/_components/DeliveryInfo";
 
 function App() {
   return (
@@ -63,7 +64,10 @@ function App() {
         <Route path="favourites" element={<Favourites />} />
         <Route path="messages" element={<h1>Messages here</h1>} />
         <Route path="payment-details" element={<h1>Payment details here</h1>} />
-        <Route path="settings" element={<Settings />} />
+        <Route path="settings">
+          <Route index element={<Settings />} />
+          <Route path="delivery-info" element={<DeliveryInfo />} />
+        </Route>
       </Route>
 
       <Route path="/restaurants" element={<DashboardLayout />}>
