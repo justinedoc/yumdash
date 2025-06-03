@@ -17,8 +17,8 @@ function SidebarAuthPromptButton({
   return (
     <SidebarMenuButton
       className={cn(
-        "text-white  rounded-sm px-6 transition duration-500 hover:-translate-y-0.5",
-        className
+        "rounded-sm px-6 text-white transition duration-500",
+        className,
       )}
       size="lg"
       asChild

@@ -8,7 +8,7 @@ import PackForm from "./PackForm";
 
 function PackModal() {
   return (
-    <DialogContent className="sm:max-w-4xl">
+    <DialogContent className="sm:max-w-3xl">
       <DialogHeader>
         <DialogTitle>Pack 2</DialogTitle>
         <DialogDescription>

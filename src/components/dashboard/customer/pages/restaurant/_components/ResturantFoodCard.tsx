@@ -23,7 +23,7 @@ function RestaurantFoodCard({ food }: RestaurantFoodCardProps) {
         console.log(
           "Favorite toggled for restaurant:",
           food.id,
-          newFavoriteState
+          newFavoriteState,
         );
       } catch (error) {
         console.error("Error toggling favorite:", error);
@@ -32,41 +32,39 @@ function RestaurantFoodCard({ food }: RestaurantFoodCardProps) {
   };
 
   return (
-    <div className="flex items-center border border-[#0F5D8F29] rounded-sm relative p-2">
+    <div className="relative flex cursor-pointer items-center rounded-sm border border-[#0F5D8F29] p-2 hover:-translate-y-0.5 transition-transform duration-200 ease-in-out hover:shadow-sm">
       <div className="flex flex-1 flex-col pr-3">
         <Button
           onClick={() => handleFavorite(food)}
           size={"icon"}
           className={cn(
-            "mb-1 rounded-full bg-white p-2 shadow-sm transition-colors",
-            isPending ? "opacity-50" : "hover:bg-gray-50"
+            "mb-1 rounded-full bg-white shadow-sm transition-colors",
+            isPending ? "opacity-50" : "hover:bg-gray-50",
           )}
         >
           <HeartIcon
             className={cn(
-              "w-5 h-5 transition-colors",
+              "size-5 transition-colors",
               food.favourite
                 ? "fill-orange-400 text-orange-400"
-                : "text-gray-400"
+                : "text-gray-400",
             )}
           />
         </Button>
-        <h1 className="font-semibold text-lg">{food.name}</h1>
-        <p className="text-gray-400 text-xs my-2">{food.description}</p>
-        <span className="font-light text-secondary">
+        <h1 className="text-lg font-semibold">{food.name}</h1>
+        <p className="my-2 text-xs text-gray-400">
+          {food.description.slice(0, 100)}...
+        </p>
+        <span className="text-secondary font-light">
           {formatMoney(food.price, { decimals: 0 })}
         </span>
-
-        <Button className="w-fit secondary-grad-bg mt-2" size={"sm"}>
-          Buy Now
-        </Button>
       </div>
       {/* Food image  */}
-      <div className="w-26 h-28 overflow-hidden rounded-md">
+      <div className="size-30 overflow-hidden rounded-md">
         <img
           src={food.image}
           alt={food.name}
-          className="w-full h-full object-cover"
+          className="h-full w-full object-cover"
         />
       </div>
     </div>

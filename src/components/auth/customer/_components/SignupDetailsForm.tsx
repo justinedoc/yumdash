@@ -53,28 +53,28 @@ export default function SignUpDetailsForm({
   const passwordValue = form.watch("password");
 
   return (
-    <section className="flex flex-1 flex-col justify-center md:mt-15 p-4 md:p-10">
-      <Logo className="w-35 md:hidden my-7 mt-12" />
+    <section className="flex flex-1 flex-col justify-center p-4 md:mt-15 md:p-10">
+      <Logo className="my-7 mt-12 w-35 md:hidden" />
       <FormHeader title="Let's Know More About You">
         Secure Your Account
       </FormHeader>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="mt-8 space-y-4">
           {/* First & Last Name Fields */}
-          <div className="w-full flex flex-col md:flex-row gap-3">
+          <div className="flex w-full flex-col gap-3 md:flex-row">
             <FormField
               control={form.control}
               name="firstName"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel className="text-[#2D2D2D] text-sm font-light">
+                  <FormLabel className="text-sm font-light text-[#2D2D2D]">
                     First Name
                   </FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Enter your first name"
-                      className="py-6 md:py-5 rounded-sm border-[#00674B52] ring-[#00674B52]/30"
+                      className="rounded-sm border-[#00674B52] py-6 ring-[#00674B52]/30 md:py-5"
                       {...field}
                     />
                   </FormControl>
@@ -87,13 +87,13 @@ export default function SignUpDetailsForm({
               name="lastName"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel className="text-[#2D2D2D] text-sm font-light">
+                  <FormLabel className="text-sm font-light text-[#2D2D2D]">
                     Last Name
                   </FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Enter your last name"
-                      className="py-6 md:py-5 rounded-sm border-[#00674B52] ring-[#00674B52]/30"
+                      className="rounded-sm border-[#00674B52] py-6 ring-[#00674B52]/30 md:py-5"
                       {...field}
                     />
                   </FormControl>
@@ -109,21 +109,21 @@ export default function SignUpDetailsForm({
             name="password"
             render={({ field }) => (
               <FormItem className="relative">
-                <FormLabel className="text-[#2D2D2D] text-sm font-light">
+                <FormLabel className="text-sm font-light text-[#2D2D2D]">
                   Password
                 </FormLabel>
                 <FormControl>
                   <Input
                     type={isPasswordHidden ? "password" : "text"}
                     placeholder="Enter your password"
-                    className="py-6 md:py-5 rounded-sm border-[#00674B52] ring-[#00674B52]/30"
+                    className="rounded-sm border-[#00674B52] py-6 ring-[#00674B52]/30 md:py-5"
                     {...field}
                   />
                 </FormControl>
 
                 {/* Toggle Password Visibility */}
                 <aside
-                  className="absolute top-0 right-0 cursor-pointer flex items-center gap-2 text-md"
+                  className="text-md absolute top-0 right-0 flex cursor-pointer items-center gap-2"
                   onClick={() => setIsPasswordHidden((prev) => !prev)}
                 >
                   <span className="font-semibold text-gray-500">
@@ -148,13 +148,13 @@ export default function SignUpDetailsForm({
           {/* Submit Button */}
           <Button
             type="submit"
-            className="py-6 md:py-5 w-full secondary-grad-bg my-3 rounded-sm text-base"
+            className="secondary-grad-bg my-3 w-full rounded-sm py-6 text-base md:py-5"
           >
             Signup
           </Button>
 
           {/* Terms & Policy */}
-          <p className="text-xs text-center md:max-w-[90%] mx-auto text-gray-700">
+          <p className="mx-auto text-center text-xs text-gray-700 md:max-w-[90%]">
             By clicking “Sign Up,” you agree to YumDash{" "}
             <CustomLink>Terms of Service</CustomLink> and acknowledge that Ray’s
             resort <CustomLink>Privacy Policy</CustomLink> applies to you.
