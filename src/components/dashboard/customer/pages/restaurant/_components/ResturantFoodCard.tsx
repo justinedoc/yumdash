@@ -4,6 +4,8 @@ import { HeartIcon } from "lucide-react";
 import { Food } from "../../../data/temp/foods";
 import { useTransition } from "react";
 import { formatMoney } from "@/lib/formatMoney";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import PackModal from "./pack/PackModal";
 
 type RestaurantFoodCardProps = {
   food: Food;
@@ -32,42 +34,47 @@ function RestaurantFoodCard({ food }: RestaurantFoodCardProps) {
   };
 
   return (
-    <div className="relative flex cursor-pointer items-center rounded-sm border border-[#0F5D8F29] p-2 hover:-translate-y-0.5 transition-transform duration-200 ease-in-out hover:shadow-sm">
-      <div className="flex flex-1 flex-col pr-3">
-        <Button
-          onClick={() => handleFavorite(food)}
-          size={"icon"}
-          className={cn(
-            "mb-1 rounded-full bg-white shadow-sm transition-colors",
-            isPending ? "opacity-50" : "hover:bg-gray-50",
-          )}
-        >
-          <HeartIcon
-            className={cn(
-              "size-5 transition-colors",
-              food.favourite
-                ? "fill-orange-400 text-orange-400"
-                : "text-gray-400",
-            )}
-          />
-        </Button>
-        <h1 className="text-lg font-semibold">{food.name}</h1>
-        <p className="my-2 text-xs text-gray-400">
-          {food.description.slice(0, 100)}...
-        </p>
-        <span className="text-secondary font-light">
-          {formatMoney(food.price, { decimals: 0 })}
-        </span>
-      </div>
-      {/* Food image  */}
-      <div className="size-30 overflow-hidden rounded-md">
-        <img
-          src={food.image}
-          alt={food.name}
-          className="h-full w-full object-cover"
-        />
-      </div>
-    </div>
+    <Dialog>
+      <DialogTrigger asChild>
+        <div className="relative flex cursor-pointer items-center rounded-sm border border-[#0F5D8F29] p-2 transition-transform duration-200 ease-in-out hover:-translate-y-0.5 hover:shadow-sm">
+          <div className="flex flex-1 flex-col pr-3">
+            <Button
+              onClick={() => handleFavorite(food)}
+              size={"icon"}
+              className={cn(
+                "mb-1 rounded-full bg-white shadow-sm transition-colors",
+                isPending ? "opacity-50" : "hover:bg-gray-50",
+              )}
+            >
+              <HeartIcon
+                className={cn(
+                  "size-5 transition-colors",
+                  food.favourite
+                    ? "fill-orange-400 text-orange-400"
+                    : "text-gray-400",
+                )}
+              />
+            </Button>
+            <h1 className="text-lg font-semibold">{food.name}</h1>
+            <p className="my-2 text-xs text-gray-400">
+              {food.description.slice(0, 100)}...
+            </p>
+            <span className="text-secondary font-light">
+              {formatMoney(food.price, { decimals: 0 })}
+            </span>
+          </div>
+          {/* Food image  */}
+          <div className="size-30 overflow-hidden rounded-md">
+            <img
+              src={food.image}
+              alt={food.name}
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      </DialogTrigger>
+      <PackModal />
+    </Dialog>
   );
 }
 

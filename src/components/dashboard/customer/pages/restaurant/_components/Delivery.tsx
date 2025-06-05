@@ -1,14 +1,10 @@
-import { Plus, Trash2 } from "lucide-react";
-import SecondaryButton from "./SecondaryButton";
+import { Trash2 } from "lucide-react";
 import PackBuilder from "./PackBuilder";
-
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import DeliveryActions from "./DeliveryActions";
 import DeliveryItemsSummary from "./DeliveryItemsSummary";
 import { useState } from "react";
-import { Dialog, DialogTrigger } from "@/components/ui/dialog";
-import PackModal from "./pack/PackModal";
 
 export type PackItem = {
   id: number;
@@ -30,8 +26,8 @@ function Delivery() {
   const handleIncrementQuantity = (id: number) => {
     setItems((prevItems) =>
       prevItems.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
+      ),
     );
   };
 
@@ -40,32 +36,20 @@ function Delivery() {
       prevItems.map((item) =>
         item.id === id
           ? { ...item, quantity: Math.max(item.quantity - 1, 1) }
-          : item
-      )
+          : item,
+      ),
     );
   };
 
   return (
     <div>
-      <Dialog>
-        <DialogTrigger asChild>
-          <SecondaryButton
-            className="ml-auto"
-            icon={<Plus size={14} />}
-            label="Add another pack"
-            onClick={() => console.log("add another pack clicked")}
-          />
-        </DialogTrigger>
-        <PackModal />
-      </Dialog>
-
-      <div className="border border-dashed border-[#A5A5A5] py-3 px-2 rounded-sm my-2">
+      <div className="my-2 rounded-sm border border-dashed border-[#A5A5A5] px-2 py-3">
         {/* Pack Box header  */}
-        <div className="flex justify-between items-center">
+        <div className="flex items-center justify-between">
           <h2 className="font-medium">Pack 1</h2>
           <Button
             size={"icon"}
-            className="text-red-500 hover:bg-red-500 hover:text-white transition-all bg-[#FF3B3029] rounded-full"
+            className="rounded-full bg-[#FF3B3029] text-red-500 transition-all hover:bg-red-500 hover:text-white"
           >
             <Trash2 />
           </Button>
@@ -87,10 +71,10 @@ function Delivery() {
       <DeliveryItemsSummary items={items} />
 
       <div className="my-6 space-y-3">
-        <Button className="w-full secondary-grad-bg rounded-sm">
+        <Button className="secondary-grad-bg w-full rounded-sm">
           Proceed To Checkout
         </Button>
-        <Button className="text-red-500 hover:bg-red-500 hover:text-white transition-all bg-[#FF3B3029] w-full">
+        <Button className="w-full bg-[#FF3B3029] text-red-500 transition-all hover:bg-red-500 hover:text-white">
           Clear Order
         </Button>
       </div>

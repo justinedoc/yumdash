@@ -1,6 +1,5 @@
 import React from "react";
 import SecondaryButton from "./SecondaryButton";
-import { Plus } from "lucide-react";
 import { PackItem } from "./Delivery";
 import { formatMoney } from "@/lib/formatMoney";
 
@@ -15,10 +14,6 @@ const PackBuilder: React.FC<PackBuilderProps> = ({
   onHandleDecrementQuantity,
   onHandleIncrementQuantity,
 }) => {
-  const handleAddToPack = () => {
-    alert("handling add to pack");
-  };
-
   const handleDuplicatePack = () => {
     alert("Pack duplicated!");
   };
@@ -59,13 +54,6 @@ const PackBuilder: React.FC<PackBuilderProps> = ({
 
       {/* Action buttons */}
       <div className="flex justify-between">
-        <SecondaryButton
-          className="border bg-transparent text-xs text-black"
-          onClick={handleAddToPack}
-          icon={<Plus size={14} />}
-          label="Add to this pack"
-        />
-
         <SecondaryButton
           className="border bg-transparent text-xs text-black"
           onClick={handleDuplicatePack}
