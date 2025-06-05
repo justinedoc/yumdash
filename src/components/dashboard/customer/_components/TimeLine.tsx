@@ -1,10 +1,10 @@
 import { cn } from "@/lib/utils";
 import { OrderDetails, OrderEvent } from "@/types/foodOrderTypes";
 import { format } from "date-fns";
-import { MapPin, Store } from "lucide-react";
-import { formatAddress } from "../../utils/formatAddress";
+import { Store } from "lucide-react";
+// import { formatAddress } from "../../utils/formatAddress";
 import { Button } from "@/components/ui/button";
-import mapImage from "@/assets/images/map-img.png";
+// import mapImage from "@/assets/images/map-img.png";
 
 type TimelineProps = {
   order: OrderDetails;
@@ -24,7 +24,7 @@ export function Timeline({ order }: TimelineProps) {
   const isInProgress = eventStatus("in_progress");
 
   return (
-    <div className="md:max-w-3xl w-full">
+    <div className="w-full md:max-w-3xl">
       <Button variant="ghost" className="mb-6 text-gray-600">
         <Store />
         Collect at store
@@ -39,22 +39,22 @@ export function Timeline({ order }: TimelineProps) {
               className={cn(
                 "flex flex-col items-center justify-center",
                 !isCompleted(event) && "ml-1",
-                isInProgress(event) && "ml-0"
+                isInProgress(event) && "ml-0",
               )}
             >
               <div
                 className={cn(
-                  "w-4 h-4 rounded-full border-2 shrink-0 mx-auto",
+                  "mx-auto h-4 w-4 shrink-0 rounded-full border-2",
                   (isCompleted(event) || isInProgress(event)) &&
-                    "bg-secondary w-6 h-6 border-transparent"
+                    "bg-secondary h-6 w-6 border-transparent",
                 )}
               />
               {/* Connecting line */}
               {index < events.length - 1 && (
                 <div
                   className={cn(
-                    "rounded-full w-1 h-full min-h-24 bg-gray-200 my-1",
-                    isCompleted(event) && "bg-secondary/80"
+                    "my-1 h-full min-h-24 w-1 rounded-full bg-gray-200",
+                    isCompleted(event) && "bg-secondary/80",
                   )}
                 />
               )}
@@ -65,9 +65,9 @@ export function Timeline({ order }: TimelineProps) {
               <div className="space-y-1 text-sm">
                 <h3
                   className={cn(
-                    "text-gray-600 text-base",
+                    "text-base text-gray-600",
                     (isCompleted(event) || isInProgress(event)) &&
-                      "text-lg font-semibold text-black"
+                      "text-lg font-semibold text-black",
                   )}
                 >
                   {event.title}
@@ -76,7 +76,7 @@ export function Timeline({ order }: TimelineProps) {
                   <p className="text-gray-600">{event.description}</p>
                 )}
                 {event.timestamp && isCompleted(event) && (
-                  <p className="text-gray-900 mt-5 text-base font-medium">
+                  <p className="mt-5 text-base font-medium text-gray-900">
                     {format(new Date(event.timestamp), "PPPp")}
                   </p>
                 )}
@@ -87,7 +87,7 @@ export function Timeline({ order }: TimelineProps) {
       </div>
 
       {/* Location details & Map Placeholder */}
-      <div className="mt-8">
+      {/* <div className="mt-8">
         <div className="mb-4 text-sm text-gray-600">{formatAddress(order)}</div>
         <div
           style={{ backgroundImage: `url(${mapImage})` }}
@@ -100,7 +100,10 @@ export function Timeline({ order }: TimelineProps) {
             </Button>
           </div>
         </div>
-      </div>
+      </div> */}
+      <Button className="mt-8 text-white" variant="secondary">
+        Make Enquiry
+      </Button>
     </div>
   );
 }
