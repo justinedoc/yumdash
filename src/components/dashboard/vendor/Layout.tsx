@@ -9,7 +9,9 @@ function VendorDashboardLayout() {
       <VendorAppSideBar />
       <main className="h-screen w-full overflow-x-hidden overflow-y-scroll">
         <Navbar />
-        <Outlet />
+        <div className="p-4 md:p-8">
+          <Outlet />
+        </div>
       </main>
     </SidebarProvider>
   );

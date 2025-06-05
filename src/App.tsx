@@ -19,6 +19,7 @@ import DeliveryInfo from "./components/dashboard/customer/pages/settings/_compon
 import UserVerifyOtp from "./components/auth/customer/page/UserVerifyOtp";
 import VendorVerifyOtp from "./components/auth/vendor/page/VendorVerifyOtp";
 import VendorDashboardLayout from "./components/dashboard/vendor/Layout";
+import GettingStarted from "./components/dashboard/vendor/page/GettingStarted";
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
       <Route path="/vendor">
         <Route index element={<Vendor />} />
         <Route path="dashboard" element={<VendorDashboardLayout />}>
-          <Route index element={<h1>Getting started</h1>} />
+          <Route index element={<GettingStarted />} />
           <Route path="home" element={<h1>Vendor home</h1>} />
           <Route path="menu" element={<h1>Menu here</h1>} />
           <Route path="order" element={<h1>order here</h1>} />
