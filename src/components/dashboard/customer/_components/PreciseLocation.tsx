@@ -1,8 +1,8 @@
 import { useState, useCallback, JSX } from "react";
 import { Button } from "@/components/ui/button";
-import useLocationContext from "../hooks/useLocationContext";
 import { toast } from "sonner";
 import { getLocationFromCoordinates } from "../../utils/getLocation";
+import { useSetAddress } from "@/stores/LocationStore";
 
 function getCurrentPositionAsync(): Promise<GeolocationPosition> {
   const options = {
@@ -16,7 +16,7 @@ function getCurrentPositionAsync(): Promise<GeolocationPosition> {
 }
 
 function PreciseLocation(): JSX.Element {
-  const { handleAddressChange } = useLocationContext();
+  const handleAddressChange = useSetAddress();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFetchLocation = useCallback(async (): Promise<void> => {
@@ -31,7 +31,7 @@ function PreciseLocation(): JSX.Element {
       const { latitude, longitude } = position.coords;
       const formattedAddress = await getLocationFromCoordinates(
         latitude,
-        longitude
+        longitude,
       );
 
       if (!formattedAddress) {
@@ -44,7 +44,7 @@ function PreciseLocation(): JSX.Element {
       toast.error(
         `Error: ${
           error instanceof Error ? error.message : "Unknown error occurred"
-        }`
+        }`,
       );
     } finally {
       setIsLoading(false);
@@ -56,7 +56,7 @@ function PreciseLocation(): JSX.Element {
       variant={"ghost"}
       onClick={handleFetchLocation}
       disabled={isLoading}
-      className="text-gray-500 p-1"
+      className="p-1 text-gray-500"
     >
       {isLoading ? "Loading..." : "Use Precise Location"}
     </Button>

@@ -9,14 +9,14 @@ import {
 } from "@/components/ui/dialog";
 import { Search } from "lucide-react";
 import PreciseLocation from "./PreciseLocation";
-import useLocationContext from "../hooks/useLocationContext";
 import { KeyboardEvent, useState } from "react";
 import { toast } from "sonner";
+import { useAddresses, useSetAddress } from "@/stores/LocationStore";
 
 function AddressManager() {
   const [address, setAddress] = useState("");
-  const { addresses, handleAddressChange } = useLocationContext();
-
+  const addresses = useAddresses();
+  const handleAddressChange = useSetAddress();
   /**
    * Performs validation and saves the address.
    */
@@ -54,7 +54,7 @@ function AddressManager() {
 
       <section
         id="search"
-        className="relative bg-gray-100 w-full max-w-xl rounded-md mt-3 border"
+        className="relative mt-3 w-full max-w-xl rounded-md border bg-gray-100"
       >
         <input
           onKeyDown={handleKeyDown}
@@ -64,7 +64,7 @@ function AddressManager() {
           placeholder="Input your location"
           title="Press Enter to search"
           aria-label="Input your location"
-          className="w-full px-4 py-3 pl-10 text-sm bg-transparent focus:outline-0 focus:ring focus:ring-secondary/30 rounded-md transition-colors duration-200"
+          className="focus:ring-secondary/30 w-full rounded-md bg-transparent px-4 py-3 pl-10 text-sm transition-colors duration-200 focus:ring focus:outline-0"
         />
         <Search
           size={18}
@@ -73,7 +73,7 @@ function AddressManager() {
         />
       </section>
 
-      <DialogDescription className="text-xs mb-0">
+      <DialogDescription className="mb-0 text-xs">
         To update your address, simply enter your new location and click the
         Save button.
       </DialogDescription>
@@ -83,12 +83,12 @@ function AddressManager() {
         <PreciseLocation />
       </div>
 
-      <DialogFooter className="flex justify-end mt-4">
+      <DialogFooter className="mt-4 flex justify-end">
         {/* Using `asChild` to avoid extra markup if your DialogTrigger supports it */}
         <DialogTrigger asChild>
           <Button
             onClick={handleClick}
-            className="secondary-grad-bg md:text-sm text-base py-3 px-6 w-full md:w-auto"
+            className="secondary-grad-bg w-full px-6 py-3 text-base md:w-auto md:text-sm"
           >
             Save
           </Button>

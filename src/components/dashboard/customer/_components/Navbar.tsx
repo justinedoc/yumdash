@@ -6,7 +6,6 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { Search } from "lucide-react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
-import AddressManager from "./AddressManager";
 
 // Import SVG icons directly
 import cartIcon from "@/assets/icons/cart.svg";
@@ -14,11 +13,13 @@ import profileIcon from "@/assets/icons/profile.svg";
 import notificationsIcon from "@/assets/icons/notifications.svg";
 import { useAuthStateContext } from "../hooks/useAuthStateContext";
 import { cn } from "@/lib/utils";
-import useLocationContext from "../hooks/useLocationContext";
+import { useActiveAddress, useAddresses } from "@/stores/LocationStore";
+import AddressesModal from "./AddressesModal";
+import { truncateChar } from "@/lib/truncateChar";
 
 const Navbar = () => {
-  const { addresses } = useLocationContext();
-
+  const addresses = useAddresses();
+  const activeAddress = useActiveAddress();
   const { state } = useSidebar();
   const isMobile = useIsMobile();
   const { isLoggedIn } = useAuthStateContext();
@@ -26,7 +27,7 @@ const Navbar = () => {
   const shouldShowSidebarTrigger = state === "collapsed" || isMobile;
 
   return (
-    <nav className="bg-white shadow p-4 sticky top-0 right-0 z-[40]">
+    <nav className="sticky top-0 right-0 z-[40] bg-white p-4 shadow">
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         {/* ============ Top Row (Mobile) / Left Side (Desktop) ============ */}
         <div className="flex items-center justify-between">
@@ -40,18 +41,18 @@ const Navbar = () => {
             )}
 
             {/* Address dropdown - hidden on mobile, visible on md+ */}
-            <div className="hidden md:flex items-center gap-2">
+            <div className="hidden items-center gap-2 md:flex">
               <Dialog>
                 <FaMapMarkerAlt className="text-secondary" aria-hidden="true" />
                 <DialogTrigger className="cursor-pointer">
-                  <h3 className="text-sm text-left font-medium">
-                    {!addresses
+                  <h3 className="text-left text-sm font-medium">
+                    {addresses.length === 0
                       ? "Enter Address"
-                      : addresses.at(0)?.slice(0, 20) + "..."}
+                      : truncateChar(activeAddress, 20)}
                   </h3>
                 </DialogTrigger>
                 <IoIosArrowDown aria-hidden="true" />
-                <AddressManager />
+                <AddressesModal />
               </Dialog>
             </div>
           </div>
@@ -59,12 +60,12 @@ const Navbar = () => {
           {/* Right cluster: Address (mobile), Cart, Profile, Notification */}
           <div className="flex items-center space-x-1 md:hidden">
             {/* Address dropdown - visible on mobile, hidden on md+ */}
-            <div className="flex md:hidden cursor-pointer">
+            <div className="flex cursor-pointer md:hidden">
               <Dialog>
                 <DialogTrigger className="cursor-pointer">
                   <FaMapMarkerAlt className="text-secondary text-3xl" />
                 </DialogTrigger>
-                <AddressManager />
+                <AddressesModal />
               </Dialog>
             </div>
 
@@ -76,14 +77,14 @@ const Navbar = () => {
         <div className="flex items-center justify-center md:justify-start">
           <section
             id="search"
-            className="relative bg-[#ECECEC] w-full max-w-xl rounded-md"
+            className="relative w-full max-w-xl rounded-md bg-[#ECECEC]"
           >
             <Input
               type="text"
               placeholder="Search for anything..."
               title="Press Enter to search"
               aria-label="Search for anything"
-              className="w-full xl:min-w-[31rem] px-4 py-5 pl-10 text-sm bg-transparent focus:outline-none rounded-md"
+              className="w-full rounded-md bg-transparent px-4 py-5 pl-10 text-sm focus:outline-none xl:min-w-[31rem]"
             />
             <Search
               size={18}
@@ -94,7 +95,7 @@ const Navbar = () => {
         </div>
 
         {/* ============ Right Side (Desktop) ============ */}
-        <div className="hidden md:flex items-center">
+        <div className="hidden items-center md:flex">
           <NavActions isLoggedIn={isLoggedIn} />
         </div>
       </div>

@@ -1,32 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 
-import { Plus } from "lucide-react";
-import { useState } from "react";
-
-import AddressSelector from "../../../_components/AddressSelector";
-import AddressManager from "../../../_components/AddressManager";
 import { IoIosArrowDown } from "react-icons/io";
+import AddressesModal from "../../../_components/AddressesModal";
+import { useActiveAddress } from "@/stores/LocationStore";
+import { truncateChar } from "@/lib/truncateChar";
 
 function DeliveryActions() {
-  const [selectedAddress, setSelectedAddress] = useState("");
-
-  function handleSelectAddress(addr: string) {
-    setSelectedAddress(addr);
-  }
-
-  const addressSelectProps = { selectedAddress, handleSelectAddress };
+  const activeAddress = useActiveAddress();
   return (
-    <div className="space-y-2 font-medium text-sm my-3">
+    <div className="my-3 space-y-2 text-sm font-medium">
       <DeliveryAction label="Promo Code">
         <Input
           type="text"
@@ -39,44 +23,12 @@ function DeliveryActions() {
           {/* Choose delivery address trigger  */}
           <DialogTrigger asChild>
             <Button variant={"ghost"} className="text-secondary">
-              {selectedAddress
-                ? selectedAddress.slice(0, 15) + " ..."
-                : "Choose"}
-              {selectedAddress && <IoIosArrowDown aria-hidden="true" />}
+              {activeAddress ? truncateChar(activeAddress, 15) : "Choose"}
+              {activeAddress && <IoIosArrowDown aria-hidden="true" />}
             </Button>
           </DialogTrigger>
 
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle className="text-center py-5">
-                Delivery Address
-              </DialogTitle>
-              <DialogDescription>Select an address</DialogDescription>
-            </DialogHeader>
-
-            {/* Delivery address comp  */}
-            <AddressSelector {...addressSelectProps} />
-
-            <DialogFooter className="w-full flex-col sm:flex-col justify-center">
-              {/* Choose location and close dialog  */}
-              <DialogTrigger asChild>
-                <Button className="secondary-grad-bg py-5">
-                  Choose location
-                </Button>
-              </DialogTrigger>
-
-              {/* Add new address  */}
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button variant="ghost" className="text-secondary text-sm">
-                    Add new address <Plus />
-                  </Button>
-                </DialogTrigger>
-                <AddressManager />
-              </Dialog>
-              {/*  */}
-            </DialogFooter>
-          </DialogContent>
+          <AddressesModal />
         </Dialog>
       </DeliveryAction>
 
@@ -96,7 +48,7 @@ type DeliveryActionProps = {
 
 function DeliveryAction({ children, label }: DeliveryActionProps) {
   return (
-    <div className="flex justify-between items-center gap-7">
+    <div className="flex items-center justify-between gap-7">
       <h2 className="shrink-0 text-nowrap">{label}</h2>
       {children}
     </div>
