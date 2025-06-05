@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import Loading from "../../ui/Loading";
+import Loading from "../ui/Loading";
 
 export const LoadingContext = createContext<
   | {

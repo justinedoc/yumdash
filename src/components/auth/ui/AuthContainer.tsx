@@ -1,4 +1,4 @@
-import AuthContainerCover from "../../ui/AuthContainerCover";
+import AuthContainerCover from "./AuthContainerCover";
 import { Outlet } from "react-router";
 
 function AuthContainer() {

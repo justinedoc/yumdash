@@ -1,9 +1,10 @@
 import { Route, Routes } from "react-router";
 import Customer from "./components/landing/customer";
 import Signup from "./components/auth/customer/page/Signup";
-import { AnimateLoad } from "./components/auth/customer/_components/AnimateLoad";
-import VerifyOtp from "./components/auth/customer/page/VerifyOtp";
+import VendorSignup from "./components/auth/vendor/page/Signup";
+import { AnimateLoad } from "./components/auth/_components/AnimateLoad";
 import Login from "./components/auth/customer/page/Login";
+import VendorLogin from "./components/auth/vendor/page/Login";
 import DashboardLayout from "./components/dashboard/customer/Layout";
 import Home from "./components/dashboard/customer/pages/Home";
 import FoodOrder from "./components/dashboard/customer/pages/FoodOrder";
@@ -11,20 +12,25 @@ import SelectedFoodOrder from "./components/dashboard/customer/pages/SelectedFoo
 import Favourites from "./components/dashboard/customer/pages/Favourites";
 import FoodOrderLayout from "./components/dashboard/customer/_components/FoodOrderLayout";
 import Restaurant from "./components/dashboard/customer/pages/restaurant/_components/Restaurant";
-import AuthContainer from "./components/auth/customer/_components/AuthContainer";
+import AuthContainer from "./components/auth/ui/AuthContainer";
 import Vendor from "./components/landing/vendor";
 import Settings from "./components/dashboard/customer/pages/settings/Index";
 import DeliveryInfo from "./components/dashboard/customer/pages/settings/_components/DeliveryInfo";
+import UserVerifyOtp from "./components/auth/customer/page/UserVerifyOtp";
+import VendorVerifyOtp from "./components/auth/vendor/page/VendorVerifyOtp";
 
 function App() {
   return (
     <Routes>
       {/* Landing page route */}
       <Route path="/" element={<Customer />} />
-      <Route path="/vendor" element={<Vendor />} />
+      <Route path="/vendor">
+        <Route index element={<Vendor />} />
+      </Route>
 
       {/* Auth routes */}
       <Route path="/" element={<AuthContainer />}>
+        {/* Customer auth routes */}
         <Route path="signup">
           <Route
             index
@@ -38,7 +44,7 @@ function App() {
             path="verify-otp"
             element={
               <AnimateLoad>
-                <VerifyOtp />
+                <UserVerifyOtp />
               </AnimateLoad>
             }
           />
@@ -51,6 +57,36 @@ function App() {
             </AnimateLoad>
           }
         />
+
+        {/* Vendor auth routes */}
+        <Route path="vendor">
+          <Route path="signup">
+            <Route
+              index
+              element={
+                <AnimateLoad>
+                  <VendorSignup />
+                </AnimateLoad>
+              }
+            />
+            <Route
+              path="verify-otp"
+              element={
+                <AnimateLoad>
+                  <VendorVerifyOtp />
+                </AnimateLoad>
+              }
+            />
+          </Route>
+          <Route
+            path="login"
+            element={
+              <AnimateLoad>
+                <VendorLogin />
+              </AnimateLoad>
+            }
+          />
+        </Route>
       </Route>
 
       {/* Dashboard routes */}

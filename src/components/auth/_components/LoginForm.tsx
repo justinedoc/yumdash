@@ -1,4 +1,4 @@
-import { FieldValues, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import Logo from "@/components/landing/ui/Logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,21 +11,24 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-import FormHeader from "../../ui/FormHeader";
-import GoogleSignInButton from "../../ui/GoogleSignInBtn";
+import FormHeader from "../ui/FormHeader";
+import GoogleSignInButton from "../ui/GoogleSignInBtn";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Link } from "react-router";
 import { useState } from "react";
 import { IoEye, IoEyeOff } from "react-icons/io5";
+import { TVendorLogin } from "../vendor/page/Login";
+import { TLogin } from "../customer/page/Login";
+
+type TLoginFormFields = TVendorLogin | TLogin;
 
 export default function LoginForm({
   onSubmit,
 }: {
-  onSubmit: (data: FieldValues) => void;
+  onSubmit: (data: TLoginFormFields) => void;
 }) {
   const [isPasswordHidden, setIsPasswordHidden] = useState(true);
-  // Initialize form with react-hook-form & Zod
-  const form = useFormContext();
+  const form = useFormContext<TLoginFormFields>();
 
   return (
     <section className="flex flex-1 flex-col justify-center p-4 md:mt-15 md:p-10">
