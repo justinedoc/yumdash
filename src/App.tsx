@@ -18,14 +18,28 @@ import Settings from "./components/dashboard/customer/pages/settings/Index";
 import DeliveryInfo from "./components/dashboard/customer/pages/settings/_components/DeliveryInfo";
 import UserVerifyOtp from "./components/auth/customer/page/UserVerifyOtp";
 import VendorVerifyOtp from "./components/auth/vendor/page/VendorVerifyOtp";
+import VendorDashboardLayout from "./components/dashboard/vendor/Layout";
 
 function App() {
   return (
     <Routes>
-      {/* Landing page route */}
       <Route path="/" element={<Customer />} />
       <Route path="/vendor">
         <Route index element={<Vendor />} />
+        <Route path="dashboard" element={<VendorDashboardLayout />}>
+          <Route index element={<h1>Getting started</h1>} />
+          <Route path="home" element={<h1>Vendor home</h1>} />
+          <Route path="menu" element={<h1>Menu here</h1>} />
+          <Route path="order" element={<h1>order here</h1>} />
+          <Route path="customers" element={<h1>customers here</h1>} />
+          <Route path="payment-method" element={<h1>payment method here</h1>} />
+          <Route path="transactions" element={<h1>transactions here</h1>} />
+
+          <Route path="settings">
+            <Route index element={<h1>vendor settings</h1>} />
+            <Route path="business" element={<h1>Business settings here</h1>} />
+          </Route>
+        </Route>
       </Route>
 
       {/* Auth routes */}

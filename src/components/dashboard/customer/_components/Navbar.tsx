@@ -1,9 +1,7 @@
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger, useSidebar } from "@/components/ui/sidebar";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Search } from "lucide-react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 
@@ -16,6 +14,7 @@ import { cn } from "@/lib/utils";
 import { useActiveAddress, useAddresses } from "@/stores/LocationStore";
 import AddressesModal from "./AddressesModal";
 import { truncateChar } from "@/lib/truncateChar";
+import NavSearchbar from "../../_components/NavSearchbar";
 
 const Navbar = () => {
   const addresses = useAddresses();
@@ -75,23 +74,7 @@ const Navbar = () => {
 
         {/* ============ Second Row (Mobile) / Center (Desktop) ============ */}
         <div className="flex items-center justify-center md:justify-start">
-          <section
-            id="search"
-            className="relative w-full max-w-xl rounded-md bg-[#ECECEC]"
-          >
-            <Input
-              type="text"
-              placeholder="Search for anything..."
-              title="Press Enter to search"
-              aria-label="Search for anything"
-              className="w-full rounded-md bg-transparent px-4 py-5 pl-10 text-sm focus:outline-none xl:min-w-[31rem]"
-            />
-            <Search
-              size={18}
-              className="absolute top-1/2 left-3 -translate-y-1/2 text-gray-500 dark:text-blue-300/40"
-              aria-hidden="true"
-            />
-          </section>
+          <NavSearchbar />
         </div>
 
         {/* ============ Right Side (Desktop) ============ */}
@@ -122,7 +105,7 @@ function NavActions({ isLoggedIn }: { isLoggedIn: boolean }) {
       </button>
       <button
         type="button"
-        aria-label="Toggle dark mode"
+        aria-label="open notification"
         className={cn("p-2 focus:outline-none", !isLoggedIn && "hidden")}
       >
         <img src={notificationsIcon} alt="Notification icon" />
