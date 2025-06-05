@@ -25,11 +25,11 @@ export default function OnboardingTaskCard({
       onClick={() => navigate(to)}
     >
       <div className="flex items-center gap-2">
-        <div className="flex size-16 items-center justify-center overflow-hidden rounded-full bg-white">
+        <div className="flex items-center justify-center overflow-hidden rounded-full bg-white p-2 md:size-16 md:p-0">
           <img src={BreifCaseImg} width={39} alt="briefcase image" />
         </div>
 
-        <div className="w-64">
+        <div className="w-full md:w-64">
           <h2 className="text-xl font-light text-white">{task.name}</h2>
           <p className="text-xs text-gray-400">{task.desc}</p>
         </div>

@@ -20,6 +20,7 @@ import UserVerifyOtp from "./components/auth/customer/page/UserVerifyOtp";
 import VendorVerifyOtp from "./components/auth/vendor/page/VendorVerifyOtp";
 import VendorDashboardLayout from "./components/dashboard/vendor/Layout";
 import GettingStarted from "./components/dashboard/vendor/page/GettingStarted";
+import VendorHome from "./components/dashboard/vendor/page/Home";
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
         <Route index element={<Vendor />} />
         <Route path="dashboard" element={<VendorDashboardLayout />}>
           <Route index element={<GettingStarted />} />
-          <Route path="home" element={<h1>Vendor home</h1>} />
+          <Route path="home" element={<VendorHome />} />
           <Route path="menu" element={<h1>Menu here</h1>} />
           <Route path="order" element={<h1>order here</h1>} />
           <Route path="customers" element={<h1>customers here</h1>} />

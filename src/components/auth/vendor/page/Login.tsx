@@ -38,7 +38,7 @@ function Login() {
       await sleep(2000);
       console.log("Final Data:", data);
       toast.success("Login successful");
-      navigate("/vendor/dashboard/home", {
+      navigate("/vendor/dashboard", {
         replace: true,
       });
       // TODO: Add api call here

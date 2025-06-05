@@ -13,7 +13,10 @@ function OnboardingProgress() {
 
       <Progress className="bg-[#00674B29]" value={2} />
 
-      <Button variant="secondary" className="rounded-sm text-sm text-white">
+      <Button
+        variant="secondary"
+        className="rounded-sm text-sm font-medium text-white"
+      >
         Next Step: Complete KYC
       </Button>
     </div>

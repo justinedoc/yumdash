@@ -155,14 +155,14 @@ function Navbar() {
             </li>
           ))}
           <li className="w-full">
-            <Link to={"/register"}>
+            <Link to={"/vendor/signup"}>
               <Button className="text-primary w-full rounded-full bg-white px-7 py-5 font-semibold shadow-none hover:text-white">
                 Register
               </Button>
             </Link>
           </li>
           <li className="w-full">
-            <Link to={"/login"}>
+            <Link to={"/vendor/login"}>
               <Button className="w-full rounded-full border bg-amber-500 px-7 py-5 font-bold text-white shadow-none hover:text-white">
                 Log in
               </Button>
