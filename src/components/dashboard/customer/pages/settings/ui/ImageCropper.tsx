@@ -7,7 +7,7 @@ import ReactCrop, {
   type PercentCrop,
   type PixelCrop,
 } from "react-image-crop";
-import setCanvasPreview from "../_components/SetCanvasPreview";
+import { setCanvasPreview } from "../_components/SetCanvasPreview";
 
 const ASPECT_RATIO = 1;
 const MIN_DIMENSION = 150;
