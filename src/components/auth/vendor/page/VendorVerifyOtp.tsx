@@ -20,7 +20,7 @@ function VendorVerifyOtp() {
       handleLoading("end");
     }
   }
-  return <VerifyOtp onSubmit={onSubmit} onErrorPath="vendor/signup" />;
+  return <VerifyOtp onSubmit={onSubmit} onErrorPath="/vendor/signup" />;
 }
 
 export default VendorVerifyOtp;

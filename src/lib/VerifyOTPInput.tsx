@@ -24,7 +24,7 @@ function VerifyOTPInput({
 }) {
   return (
     <main className="relative flex w-fit max-w-[20rem] flex-col items-center gap-1 rounded-md border border-[#0F5D8F29] bg-white p-5 md:p-6">
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <Button
           size={"icon"}
           className={cn(
