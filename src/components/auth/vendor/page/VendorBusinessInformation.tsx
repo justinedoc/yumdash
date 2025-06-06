@@ -1,3 +1,4 @@
+import React, { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -14,26 +15,27 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { activeLocations as nigerianCities } from "../data/state-cities";
-import Logo from "@/components/landing/ui/Logo";
-import { Textarea } from "@/components/ui/textarea";
 import { ClassValue } from "clsx";
 import { cn } from "@/lib/utils";
-import React, { useState } from "react";
+
+import Logo from "@/components/landing/ui/Logo";
 import SocialLinksForm from "../_components/SocialLinksForm";
 
-const basicInfoFields = [
-  {
-    id: "restaurantName",
-    label: "Restaurant name",
-    placeholder: "Enter your restaurant's name...",
-  },
-];
+import { useLoadingContext } from "../../hooks/useLoadingContext";
+import { sleep } from "../../utils/sleep";
+import { activeLocations as nigerianCities } from "../data/state-cities";
+
+import AddLogoIcon from "@/assets/icons/add-logo.svg?react";
+import { validateFile } from "@/lib/validateFile";
+import { toast } from "sonner";
+import { truncateChar } from "@/lib/truncateChar";
+import { useNavigate } from "react-router";
 
 const BusinessInformationSchema = z.object({
   restaurantName: z.string().min(1, { message: "Restaurant name is required" }),
@@ -47,6 +49,12 @@ type TBusinessInfo = z.infer<typeof BusinessInformationSchema>;
 
 function VendorBusinessInformation() {
   const [addedLinks, setAddedLinks] = useState<{ [key: string]: string }>({});
+  const [logoImgFile, setLogoImgFile] = useState<File>();
+  const [logoImg, setLogoImg] = useState("");
+  const { handleLoading } = useLoadingContext();
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const navigate = useNavigate();
 
   const form = useForm<TBusinessInfo>({
     resolver: zodResolver(BusinessInformationSchema),
@@ -57,7 +65,39 @@ function VendorBusinessInformation() {
   }
 
   async function onSubmit(data: TBusinessInfo) {
-    console.log({ ...data, links: addedLinks });
+    if (!logoImg) {
+      toast.error("Please upload your logo image");
+      return;
+    }
+    try {
+      handleLoading("start");
+      console.log({ ...data, links: addedLinks, logoImg });
+      await sleep(2000);
+      navigate("/vendor/dashboard", { replace: true });
+    } catch (err) {
+      console.error("Failed to verify OTP", err);
+    } finally {
+      handleLoading("end");
+    }
+  }
+
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+
+    const { valid, error } = validateFile(file, "image");
+
+    if (!valid || !file) {
+      toast.error(error);
+      return;
+    }
+
+    setLogoImgFile(file);
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      setLogoImg(reader.result as string);
+    };
   }
 
   const selectedState = form.watch("state");
@@ -75,28 +115,26 @@ function VendorBusinessInformation() {
             className="mt-4 space-y-3"
           >
             {/* Basic info Field */}
-            {basicInfoFields.map((f) => (
-              <FormField
-                control={form.control}
-                name={f.id as keyof TBusinessInfo}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-sm font-light">
-                      {f.label}
-                    </FormLabel>
-                    <FormControl>
-                      <Input
-                        type="text"
-                        placeholder={f.placeholder}
-                        className="rounded-sm border-[#00674B52] py-6 ring-[#00674B52]/30 md:py-5"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            ))}
+            <FormField
+              control={form.control}
+              name="restaurantName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-sm font-light">
+                    Restaurant name
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      type="text"
+                      placeholder="Enter your restaurant's name..."
+                      className="rounded-sm border-[#00674B52] py-6 ring-[#00674B52]/30 md:py-5"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
             <FormField
               control={form.control}
@@ -116,6 +154,30 @@ function VendorBusinessInformation() {
                 </FormItem>
               )}
             />
+
+            <input
+              onChange={handleFileChange}
+              ref={inputRef}
+              type="file"
+              accept="image/*"
+              className="hidden"
+            />
+
+            <Button
+              variant="ghost"
+              type="button"
+              className="border-secondary/30 text-secondary hover:text-secondary rounded-full border text-sm"
+              onClick={() => {
+                inputRef.current?.click();
+              }}
+            >
+              <span>
+                {logoImgFile
+                  ? truncateChar(logoImgFile.name, 15)
+                  : "Upload Business Logo"}
+              </span>
+              <AddLogoIcon />
+            </Button>
 
             {/* Address info fields */}
 
@@ -217,6 +279,7 @@ function VendorBusinessInformation() {
 
               <SocialLinksForm
                 handleUpdateAddedLinks={handleUpdateAddedLinks}
+                addedLinks={addedLinks}
               />
             </div>
 

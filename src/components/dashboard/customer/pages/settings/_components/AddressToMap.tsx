@@ -11,7 +11,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { toast } from "react-toastify";
-import { useDebounce } from "@/lib/useDebounce";
+import { useDebounce } from "@/hooks/useDebounce";
 
 // -------------------------------
 // AddressToMap Component
