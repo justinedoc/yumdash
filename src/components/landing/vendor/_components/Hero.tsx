@@ -10,7 +10,7 @@ function Hero() {
     <section className="bg-secondary relative overflow-hidden pb-44">
       <Navbar />
 
-      <div className="text-hero relative w-full px-2 py-6 pt-[8rem] md:px-0 md:pt-[10rem]">
+      <div className="text-hero relative w-full px-2 py-6 pt-[6rem] md:px-0 md:pt-[10rem]">
         <h1 className="slider-track flex items-center justify-center text-3xl text-white md:text-5xl">
           Yakoyo.Yumdash.com OurFood.Yumdash.com Yakoyo.Yumdash.com
           OurFood.Yumdash.com Yakoyo.Yumdash.com OurFood.Yumdash.com
@@ -38,12 +38,12 @@ function Hero() {
               </p>
 
               <div className="flex w-full flex-col gap-4 sm:flex-row">
-                <Link to={"/register"} className="w-full sm:w-auto">
+                <Link to={"/vendor/signup"} className="w-full sm:w-auto">
                   <Button className="text-primary w-full rounded-full bg-white px-5 py-4 font-semibold shadow-none hover:text-white md:px-7 md:py-5">
                     Register
                   </Button>
                 </Link>
-                <Link to={"/login"} className="w-full sm:w-auto">
+                <Link to={"/vendor/login"} className="w-full sm:w-auto">
                   <Button className="w-full rounded-full bg-amber-500 px-5 py-4 font-bold text-white shadow-none hover:text-white md:px-7 md:py-5">
                     Log in
                   </Button>
