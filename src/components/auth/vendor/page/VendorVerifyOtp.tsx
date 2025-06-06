@@ -13,7 +13,7 @@ function VendorVerifyOtp() {
       handleLoading("start");
       // Simulate API call to verify OTP
       await sleep(2000);
-      navigate("/vendor/dashboard", { replace: true });
+      navigate("/vendor/signup/business-info", { replace: true });
     } catch (err) {
       console.error("Failed to verify OTP", err);
     } finally {

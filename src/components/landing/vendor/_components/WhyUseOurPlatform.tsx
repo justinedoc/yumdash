@@ -68,7 +68,7 @@ function WhyUseOurPlatform() {
               ))}
             </div>
 
-            <Link to={"/login"}>
+            <Link to={"/vendor/signup"}>
               <Button className="bg-primary rounded-full px-7 py-5 font-bold text-white shadow-none">
                 Register Now
               </Button>

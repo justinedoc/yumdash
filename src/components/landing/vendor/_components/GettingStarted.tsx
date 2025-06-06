@@ -105,7 +105,7 @@ function GettingStarted() {
               ))}
             </div>
 
-            <Link to={"/login"} className="mt-10">
+            <Link to={"/vendor/signup"} className="mt-10">
               <Button className="rounded-full bg-amber-500 px-7 py-5 font-bold text-white shadow-none hover:text-white">
                 Join us today
               </Button>

@@ -191,7 +191,7 @@
   }
 }
 @utility slide {
-  @apply h-[200px] w-[250px]  items-center p-3;
+  @apply h-[200px] w-[250px] items-center p-3;
 }
 
 @utility main_wavy {
@@ -203,8 +203,8 @@
 
 @utility secondary-grad-bg {
   background: linear-gradient(180deg, rgba(0, 103, 75, 0.8) 0%, #00674b 100%);
+  transition: .5s ease;
 }
-
 @utility btn-glow {
   box-shadow: 4px 4px 14px 0px #076b5040;
 }

@@ -21,6 +21,7 @@ import VendorVerifyOtp from "./components/auth/vendor/page/VendorVerifyOtp";
 import VendorDashboardLayout from "./components/dashboard/vendor/Layout";
 import GettingStarted from "./components/dashboard/vendor/page/GettingStarted";
 import VendorHome from "./components/dashboard/vendor/page/Home";
+import VendorInformation from "./components/auth/vendor/page/VendorBusinessInformation";
 
 function App() {
   return (
@@ -90,6 +91,14 @@ function App() {
               element={
                 <AnimateLoad>
                   <VendorVerifyOtp />
+                </AnimateLoad>
+              }
+            />
+            <Route
+              path="business-info"
+              element={
+                <AnimateLoad>
+                  <VendorInformation />
                 </AnimateLoad>
               }
             />
